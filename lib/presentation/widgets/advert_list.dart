@@ -223,7 +223,7 @@ class _AdvertPreview extends StatelessWidget {
           child: Stack(
             children: [
               AspectRatio(
-                aspectRatio: 9 / 16,
+                aspectRatio: 9 / 15.5,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: advert.images.isEmpty

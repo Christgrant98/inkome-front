@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomIndicatorProgress extends StatelessWidget {
@@ -6,9 +6,16 @@ class CustomIndicatorProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoActivityIndicator(
-      color: Colors.white,
-      radius: 14,
+    return const CircleAvatar(
+      backgroundColor: Color.fromARGB(255, 230, 230, 230),
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: CircularProgressIndicator(
+          strokeWidth: 5,
+          color: Colors.black,
+          // radius: 14,
+        ),
+      ),
     );
   }
 }
