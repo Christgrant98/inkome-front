@@ -45,8 +45,11 @@ class _AdvertSearchFieldState extends State<AdvertSearchField> {
         color: Color.fromARGB(207, 0, 0, 0),
       ),
       decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+        ),
         borderRadius: BorderRadius.circular(30),
-        color: Color.fromARGB(255, 255, 255, 255),
+        color: Colors.white,
       ),
       onChanged: (value) {
         if (widget.onChange == null) return;

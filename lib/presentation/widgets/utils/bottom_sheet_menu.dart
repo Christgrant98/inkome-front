@@ -49,7 +49,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
           gap: 8,
           onTabChange: (index) {
             if (!_isDisposed) {
-              switcher(
+              _setSwitcher(
                 context,
                 index,
                 isLogged,
@@ -86,7 +86,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     );
   }
 
-  void switcher(BuildContext context, int index, bool isLogged) {
+  void _setSwitcher(BuildContext context, int index, bool isLogged) {
     return setState(() {
       context.read<NavigationCubit>().setSelectedIndex(index);
       switch (index) {
