@@ -47,17 +47,21 @@ class _SliderInputState extends State<AgeFormField> {
     return Column(
       children: [
         TextView(
-            text: t.selectYourAgeLinkText, fontSize: 12, color: Colors.white),
+          text: t.selectYourAgeLinkText,
+          fontSize: 12,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
         if (widget.ageToShow != null)
           TextView(
             text: widget.ageToShow,
             fontSize: 16,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            fontWeight: FontWeight.w300,
           ),
         Slider(
           thumbColor: Colors.black,
-          activeColor: const Color.fromARGB(255, 144, 10, 0),
+          activeColor: const Color.fromARGB(255, 105, 105, 105),
           value: sliderValue.toDouble(),
           min: widget.minAge.toDouble(),
           max: widget.maxAge.toDouble(),

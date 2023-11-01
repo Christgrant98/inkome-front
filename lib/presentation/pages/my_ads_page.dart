@@ -26,7 +26,7 @@ class MyAdsPage extends StatelessWidget {
           const TextView(
             fontSize: 20,
             text: 'Mis anuncios',
-            color: Colors.white,
+            color: Colors.black,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20),
@@ -38,7 +38,8 @@ class MyAdsPage extends StatelessWidget {
                     return const Center(
                       child: TextView(
                         text: 'No ads posted by you so far',
-                        color: Colors.white,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w300,
                       ),
                     );
                   }

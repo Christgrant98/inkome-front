@@ -31,7 +31,7 @@ class CreateAdvertPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Colors.white),
+                      color: Colors.black),
                   const AdvertForm(),
                 ],
               ),

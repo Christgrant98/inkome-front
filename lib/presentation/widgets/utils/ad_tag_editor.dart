@@ -54,8 +54,9 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
       children: [
         if (_tags.isNotEmpty)
           const TextView(
-            color: Colors.white,
+            color: Colors.black,
             text: 'Tags:',
+            fontWeight: FontWeight.bold,
           ),
         SizedBox(
           height: _tags.isNotEmpty ? 15 : 0,
@@ -69,11 +70,15 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
               label: TextView(
                 text: tag,
                 color: Colors.white,
+                fontWeight: FontWeight.w300,
               ),
-              deleteIcon: const Icon(
-                CupertinoIcons.xmark,
-                color: Colors.white,
-                size: 10,
+              deleteIcon: const CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(
+                  CupertinoIcons.xmark,
+                  color: Colors.black,
+                  size: 11,
+                ),
               ),
               onDeleted: () {
                 _removeTag(tag);

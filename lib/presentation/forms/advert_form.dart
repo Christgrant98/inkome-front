@@ -94,7 +94,7 @@ class _AdvertForm extends State<AdvertForm> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               AgeFormField(
                 ageToShow: age == null ? '18 años' : '$age años',
@@ -104,7 +104,7 @@ class _AdvertForm extends State<AdvertForm> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               PhoneFormField(
                 onFieldSubmitted: (_) => _submitForm(),
@@ -114,7 +114,7 @@ class _AdvertForm extends State<AdvertForm> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               AdTagEditor(
                 onFieldSubmitted: (_) => _submitForm(),
@@ -123,7 +123,7 @@ class _AdvertForm extends State<AdvertForm> {
                 },
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               DescriptionFormField(
                 onFieldSubmitted: (_) => _submitForm(),

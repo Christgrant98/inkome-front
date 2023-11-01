@@ -30,7 +30,8 @@ class FavAdvertsPage extends StatelessWidget {
               return const Center(
                 child: TextView(
                   text: 'No favorite adverts',
-                  color: Colors.white,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w300,
                 ),
               );
             }

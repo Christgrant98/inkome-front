@@ -48,11 +48,13 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        const SizedBox(height: 15),
         if (_pickedFiles.isNotEmpty)
           TextView(
             text: t.advertPicturesLinkText,
-            color: Colors.white,
+            color: Colors.black,
             fontSize: 14,
+            fontWeight: FontWeight.w300,
           ),
         const SizedBox(height: 15),
         Stack(
@@ -66,84 +68,18 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
                     const TextView(
                       text: 'Selecciona una imagen para mostrar',
                       color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w300,
                     )
                   ]),
-                if (_pickedFiles.isNotEmpty)
-                  CarouselSlider(
-                    options: CarouselOptions(
-                        // animateToClosest: true,
-                        enableInfiniteScroll:
-                            (_pickedFiles.length) >= 3 ? true : false,
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        aspectRatio: 1.4,
-                        viewportFraction: 0.5,
-                        onPageChanged: (index, _) {
-                          setState(() {
-                            _currentImageIndex = index;
-                          });
-                        }),
-                    items: _pickedFiles.map((image) {
-                      final int index = _pickedFiles.indexOf(image);
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(18.5),
-                        child: index == 0
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(18.5),
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: [
-                                    Image.memory(
-                                      image,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: Container(
-                                        color: Colors.black.withOpacity(0.65),
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.05,
-                                        child: const Center(
-                                            child: TextView(
-                                          text: 'Portada del anuncio',
-                                          color: Colors.white,
-                                        )),
-                                      ),
-                                    ),
-                                    const Positioned(
-                                        top: 5,
-                                        right: 5,
-                                        child: Icon(
-                                          shadows: [
-                                            BoxShadow(
-                                                color: Colors.black,
-                                                offset: Offset(0, 2),
-                                                blurRadius: 5.0)
-                                          ],
-                                          Icons.loyalty_rounded,
-                                          color: Colors.black,
-                                          size: 30,
-                                        ))
-                                  ],
-                                ),
-                              )
-                            : Image.memory(
-                                image,
-                                fit: BoxFit.cover,
-                              ),
-                      );
-                    }).toList(),
-                  ),
+                if (_pickedFiles.isNotEmpty) _buildCarouselSlider(context),
                 _pickedFiles.isNotEmpty
                     ? DotsIndicator(
                         dotsCount: _pickedFiles.length,
                         position: _currentImageIndex,
                         decorator: DotsDecorator(
-                          activeColor: Colors.white,
+                          activeColor: Colors.black,
                           activeSize: const Size(7, 7),
-                          color: Colors.grey[400]!,
+                          color: Colors.grey[600]!,
                           size: const Size(4, 4),
                         ),
                       )
@@ -170,6 +106,72 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildCarouselSlider(BuildContext context) {
+    return CarouselSlider(
+      options: CarouselOptions(
+          // animateToClosest: true,
+          enableInfiniteScroll: (_pickedFiles.length) >= 3 ? true : false,
+          autoPlay: false,
+          enlargeCenterPage: true,
+          aspectRatio: 1.4,
+          viewportFraction: 0.5,
+          onPageChanged: (index, _) {
+            setState(() {
+              _currentImageIndex = index;
+            });
+          }),
+      items: _pickedFiles.map((image) {
+        final int index = _pickedFiles.indexOf(image);
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(18.5),
+          child: index == 0
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(18.5),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.memory(
+                        image,
+                        fit: BoxFit.cover,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          color: Colors.black.withOpacity(0.65),
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: const Center(
+                              child: TextView(
+                            text: 'Portada del anuncio',
+                            color: Colors.white,
+                          )),
+                        ),
+                      ),
+                      const Positioned(
+                          top: 5,
+                          right: 5,
+                          child: Icon(
+                            shadows: [
+                              BoxShadow(
+                                  color: Colors.black,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 5.0)
+                            ],
+                            Icons.loyalty_rounded,
+                            color: Colors.white,
+                            size: 30,
+                          ))
+                    ],
+                  ),
+                )
+              : Image.memory(
+                  image,
+                  fit: BoxFit.cover,
+                ),
+        );
+      }).toList(),
     );
   }
 
