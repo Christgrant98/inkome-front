@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blissbite_front/data/models/user.dart';
-import 'package:blissbite_front/logic/states/user.dart';
-import 'package:blissbite_front/data/repositories/user.dart';
+import 'package:inkome_front/data/models/user.dart';
+import 'package:inkome_front/logic/states/user.dart';
+import 'package:inkome_front/data/repositories/user.dart';
 
 class UserCubit extends Cubit<UserState> {
   final UserRepository _userRepository = UserRepository();

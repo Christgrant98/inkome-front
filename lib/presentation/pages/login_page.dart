@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:blissbite_front/presentation/forms/login_form.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/presentation/forms/login_form.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import '../router/app_router.dart';
 import '../widgets/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

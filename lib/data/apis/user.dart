@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mime/mime.dart';
 import 'package:http_parser/http_parser.dart';
 
-import 'package:blissbite_front/data/apis/base.dart';
+import 'package:inkome_front/data/apis/base.dart';
 
 class UserAPI extends BaseAPI {
   Future<Map<String, dynamic>> create(Map<String, dynamic> rawUser) async {

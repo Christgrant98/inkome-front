@@ -1,6 +1,6 @@
-import 'package:blissbite_front/data/models/user.dart';
-import 'package:blissbite_front/data/apis/authentication.dart';
-import 'package:blissbite_front/data/repositories/base.dart';
+import 'package:inkome_front/data/models/user.dart';
+import 'package:inkome_front/data/apis/authentication.dart';
+import 'package:inkome_front/data/repositories/base.dart';
 
 class AuthenticationRepository extends BaseRepository {
   final AuthenticationAPI _api = AuthenticationAPI();

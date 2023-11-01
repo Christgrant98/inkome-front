@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:blissbite_front/presentation/widgets/utils/indicator_progress.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/presentation/widgets/utils/indicator_progress.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class ImagePickerButton extends StatefulWidget {
   final Function(Uint8List?)? onChanged;

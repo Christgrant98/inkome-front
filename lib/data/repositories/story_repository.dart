@@ -1,6 +1,6 @@
-import 'package:blissbite_front/data/apis/story.dart';
-import 'package:blissbite_front/data/models/story.dart';
-import 'package:blissbite_front/data/repositories/base.dart';
+import 'package:inkome_front/data/apis/story.dart';
+import 'package:inkome_front/data/models/story.dart';
+import 'package:inkome_front/data/repositories/base.dart';
 
 import '../models/user.dart';
 

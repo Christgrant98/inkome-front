@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:blissbite_front/data/models/advert.dart';
-import 'package:blissbite_front/presentation/widgets/utils/base_text_form_field.dart';
-import 'package:blissbite_front/presentation/widgets/utils/custom_button.dart';
-import 'package:blissbite_front/presentation/widgets/utils/tag_selector_field.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
-// import 'package:blissbite_front/presentation/widgets/utils/custom_range_slider.dart';
+import 'package:inkome_front/data/models/advert.dart';
+import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
+import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
+import 'package:inkome_front/presentation/widgets/utils/tag_selector_field.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
+// import 'package:inkome_front/presentation/widgets/utils/custom_range_slider.dart';
 
 class FilterWidget extends StatefulWidget {
   final List<String> adTags;

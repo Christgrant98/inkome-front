@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blissbite_front/logic/cubits/adverts.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/logic/cubits/adverts.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class PaginationIndex extends StatelessWidget {
   final int currentPageIndex;

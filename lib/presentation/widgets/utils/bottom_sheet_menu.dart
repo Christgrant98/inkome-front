@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:blissbite_front/logic/cubits/authentication_cubit.dart';
-import 'package:blissbite_front/logic/cubits/navigation.dart';
-import 'package:blissbite_front/presentation/router/app_router.dart';
+import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
+import 'package:inkome_front/logic/cubits/navigation.dart';
+import 'package:inkome_front/presentation/router/app_router.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 
 class BottomNavigator extends StatefulWidget {

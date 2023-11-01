@@ -1,6 +1,6 @@
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
-// import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+// import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 // class OfferContentWidget extends StatefulWidget {
 //   final String? timeText;

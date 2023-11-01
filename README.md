@@ -1,4 +1,4 @@
-# blissbite_front
+# inkome_front
 
 A new Flutter project.
 

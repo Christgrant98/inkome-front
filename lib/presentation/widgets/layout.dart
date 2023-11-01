@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:blissbite_front/logic/cubits/adverts.dart';
-import 'package:blissbite_front/logic/cubits/authentication_cubit.dart';
-import 'package:blissbite_front/logic/cubits/navigation.dart';
-import 'package:blissbite_front/presentation/router/app_router.dart';
-import 'package:blissbite_front/presentation/widgets/utils/advert_search_field.dart';
+import 'package:inkome_front/logic/cubits/adverts.dart';
+import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
+import 'package:inkome_front/logic/cubits/navigation.dart';
+import 'package:inkome_front/presentation/router/app_router.dart';
+import 'package:inkome_front/presentation/widgets/utils/advert_search_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:blissbite_front/presentation/widgets/utils/bottom_sheet_menu.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/presentation/widgets/utils/bottom_sheet_menu.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 import '../../data/models/user.dart';
 

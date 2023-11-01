@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee_text/marquee_text.dart';
-import 'package:blissbite_front/data/models/advert.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/data/models/advert.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class ModalClosedContainerContent extends StatelessWidget {
   final Advert advert;

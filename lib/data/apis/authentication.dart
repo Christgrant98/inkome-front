@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:blissbite_front/data/apis/base.dart';
+import 'package:inkome_front/data/apis/base.dart';
 
 import '../../presentation/widgets/utils/map.dart';
 

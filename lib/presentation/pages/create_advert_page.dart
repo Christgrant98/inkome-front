@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:blissbite_front/presentation/widgets/layout.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/presentation/widgets/layout.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import '../forms/advert_form.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:blissbite_front/presentation/widgets/layout.dart';
-import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
-import 'package:blissbite_front/presentation/router/app_router.dart';
+import 'package:inkome_front/presentation/widgets/layout.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
+import 'package:inkome_front/presentation/router/app_router.dart';
 
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key});

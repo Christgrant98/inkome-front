@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blissbite_front/logic/cubits/authentication_cubit.dart';
-import 'package:blissbite_front/logic/states/authentication.dart';
-import 'package:blissbite_front/presentation/widgets/utils/custom_button.dart';
-import 'package:blissbite_front/presentation/widgets/utils/email_form_field.dart';
-import 'package:blissbite_front/presentation/widgets/utils/indicator_progress.dart';
-import 'package:blissbite_front/presentation/widgets/utils/password_form_field.dart';
-import 'package:blissbite_front/presentation/widgets/utils/snackbar_util.dart';
+import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
+import 'package:inkome_front/logic/states/authentication.dart';
+import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
+import 'package:inkome_front/presentation/widgets/utils/email_form_field.dart';
+import 'package:inkome_front/presentation/widgets/utils/indicator_progress.dart';
+import 'package:inkome_front/presentation/widgets/utils/password_form_field.dart';
+import 'package:inkome_front/presentation/widgets/utils/snackbar_util.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../router/app_router.dart';

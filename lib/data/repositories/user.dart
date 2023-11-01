@@ -1,5 +1,5 @@
-import 'package:blissbite_front/data/apis/user.dart';
-import 'package:blissbite_front/data/models/user.dart';
+import 'package:inkome_front/data/apis/user.dart';
+import 'package:inkome_front/data/models/user.dart';
 
 import 'base.dart';
 
