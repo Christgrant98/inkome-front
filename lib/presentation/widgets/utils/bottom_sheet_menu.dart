@@ -33,7 +33,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         topRight: Radius.circular(35),
       ),
       blur: 18,
-      color: Colors.orange,
+      color: const Color.fromRGBO(0, 0, 0, 0.6),
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
@@ -43,37 +43,17 @@ class _BottomNavigatorState extends State<BottomNavigator> {
               ? MainAxisAlignment.spaceEvenly
               : MainAxisAlignment.spaceBetween,
           selectedIndex: context.watch<NavigationCubit>().state.selectedIndex,
-          color: Colors.white,
-          activeColor: Colors.black,
+          color: Colors.grey,
+          activeColor: const Color(0xFFFF0000),
           padding: const EdgeInsets.all(5),
           gap: 8,
           onTabChange: (index) {
             if (!_isDisposed) {
-              setState(() {
-                context.read<NavigationCubit>().setSelectedIndex(index);
-                switch (index) {
-                  case 0:
-                    Navigator.pushReplacementNamed(context, Routes.indexPage);
-                    break;
-                  case 1:
-                    !isLogged
-                        ? Navigator.pushReplacementNamed(
-                            context, Routes.loginPage)
-                        : Navigator.pushReplacementNamed(
-                            context, Routes.favoritesPage);
-                    break;
-                  case 2:
-                    Navigator.pushReplacementNamed(
-                        context, Routes.createAdvertPage);
-                    break;
-                  case 3:
-                    Navigator.pushReplacementNamed(context, Routes.myAdsPage);
-                    break;
-                  case 4:
-                    Navigator.pushReplacementNamed(context, Routes.editProfile);
-                    break;
-                }
-              });
+              switcher(
+                context,
+                index,
+                isLogged,
+              );
             }
           },
           tabs: [
@@ -104,5 +84,30 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         ),
       ),
     );
+  }
+
+  void switcher(BuildContext context, int index, bool isLogged) {
+    return setState(() {
+      context.read<NavigationCubit>().setSelectedIndex(index);
+      switch (index) {
+        case 0:
+          Navigator.pushReplacementNamed(context, Routes.indexPage);
+          break;
+        case 1:
+          !isLogged
+              ? Navigator.pushReplacementNamed(context, Routes.loginPage)
+              : Navigator.pushReplacementNamed(context, Routes.favoritesPage);
+          break;
+        case 2:
+          Navigator.pushReplacementNamed(context, Routes.createAdvertPage);
+          break;
+        case 3:
+          Navigator.pushReplacementNamed(context, Routes.myAdsPage);
+          break;
+        case 4:
+          Navigator.pushReplacementNamed(context, Routes.editProfile);
+          break;
+      }
+    });
   }
 }

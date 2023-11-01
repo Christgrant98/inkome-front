@@ -159,7 +159,7 @@ class Layout extends StatelessWidget {
             currentUser: currentUser,
           ),
           extendBody: true,
-          body: content,
+          body: _buildBackground(constraints),
           bottomNavigationBar: !isLargeScreen ? const BottomNavigator() : null,
         );
       },
@@ -207,48 +207,48 @@ class Layout extends StatelessWidget {
     );
   }
 
-  // Widget _buildBackground(BoxConstraints constraints) {
-  //   return Container(
-  //     height: constraints.maxHeight,
-  //     width: constraints.maxWidth,
-  //     decoration: const BoxDecoration(
-  //         // gradient: LinearGradient(
-  //         //   colors: [
-  //         //     Colors.black,
-  //         //     Color(0xFFFF0000),
-  //         //   ],
-  //         //   begin: Alignment.center,
-  //         //   end: Alignment.bottomCenter,
-  //         // ),
-  //         ),
-  //     child: Stack(
-  //       children: [
-  //         Positioned(
-  //           bottom: 0,
-  //           left: 0,
-  //           child: ClipPath(
-  //             clipper: WaveClipperTwo(reverse: true),
-  //             child: Container(
-  //               height: constraints.maxHeight * 0.2,
-  //               width: constraints.maxWidth,
-  //               decoration: const BoxDecoration(
-  //                 gradient: LinearGradient(
-  //                   colors: [
-  //                     Color.fromARGB(255, 76, 5, 0),
-  //                     Color(0xFFFF0000),
-  //                   ],
-  //                   begin: Alignment.topLeft,
-  //                   end: Alignment.bottomRight,
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //         content,
-  //       ],
-  //     ),
-  //   );
-  // }
+  Widget _buildBackground(BoxConstraints constraints) {
+    return Container(
+      height: constraints.maxHeight,
+      width: constraints.maxWidth,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.black,
+            Color(0xFFFF0000),
+          ],
+          begin: Alignment.center,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: ClipPath(
+              clipper: WaveClipperTwo(reverse: true),
+              child: Container(
+                height: constraints.maxHeight * 0.2,
+                width: constraints.maxWidth,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 76, 5, 0),
+                      Color(0xFFFF0000),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          content,
+        ],
+      ),
+    );
+  }
 
   Widget _buildMenuOption({
     required BuildContext context,
@@ -285,22 +285,6 @@ class Layout extends StatelessWidget {
     required User? currentUser,
   }) {
     return AppBar(
-      elevation: 0,
-      leading: Builder(
-        builder: (BuildContext context) {
-          return IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-              size: 25,
-            ),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-          );
-        },
-      ),
       centerTitle: true,
       title: navState == 0
           ? SizedBox(
@@ -327,7 +311,7 @@ class Layout extends StatelessWidget {
           icon: const Icon(
             CupertinoIcons.home,
             size: 25,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         !isLogged
@@ -366,7 +350,7 @@ class Layout extends StatelessWidget {
               ),
       ],
       toolbarHeight: 60,
-      backgroundColor: Colors.orange,
+      backgroundColor: const Color.fromARGB(255, 11, 11, 11),
     );
   }
 }
