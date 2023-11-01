@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AdvertSearchField extends StatefulWidget {
   final Function(String, bool)? onChange;
@@ -38,11 +39,10 @@ class _AdvertSearchFieldState extends State<AdvertSearchField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoSearchTextField(
-      itemColor: const Color.fromARGB(255, 0, 0, 0),
+      itemColor: Colors.black,
       controller: _textEditingController,
-      style: const TextStyle(
-        fontFamily: 'SanFrancisco',
-        color: Color.fromARGB(207, 0, 0, 0),
+      style: GoogleFonts.quicksand(
+        color: Colors.black,
       ),
       decoration: BoxDecoration(
         border: Border.all(

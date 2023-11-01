@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TextView extends StatelessWidget {
   final String? text;
-  final String? fontFamily;
   final Color? color;
   final FontWeight? fontWeight;
   final double? fontSize;
@@ -18,7 +18,6 @@ class TextView extends StatelessWidget {
     this.textAlign,
     this.fontStyle,
     this.decoration,
-    this.fontFamily = 'SanFrancisco',
   });
 
   @override
@@ -26,12 +25,11 @@ class TextView extends StatelessWidget {
     return Text(
       '$text',
       textAlign: textAlign,
-      style: TextStyle(
+      style: GoogleFonts.quicksand(
         fontStyle: fontStyle,
-        fontFamily: fontFamily,
         color: color,
         fontWeight: fontWeight,
-        fontSize: fontSize,
+        fontSize: fontSize ?? 14,
         decoration: decoration,
       ),
     );

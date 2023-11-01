@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -44,8 +45,7 @@ class _DatePickerState extends State<DatePickerField> {
 
     return TextFormField(
       readOnly: true,
-      // style: GoogleFonts.quicksand(),
-      style: const TextStyle(fontFamily: 'SanFrancisco'),
+      style: GoogleFonts.quicksand(),
       controller: _date,
       decoration: InputDecoration(
         prefixIcon: const Icon(
@@ -102,38 +102,26 @@ class _DatePickerState extends State<DatePickerField> {
               ),
             ).copyWith(
               dialogBackgroundColor: const Color.fromARGB(255, 25, 25, 25),
-              textTheme: const TextTheme(
-                displayLarge:
-                    TextStyle(fontFamily: 'SanFrancisco'), // no aplica
-                displayMedium:
-                    TextStyle(fontFamily: 'SanFrancisco'), // no aplica
-                displaySmall:
-                    TextStyle(fontFamily: 'SanFrancisco'), // no aplica
-                headlineMedium: TextStyle(
-                    fontFamily:
-                        'SanFrancisco'), // controla: fecha en cabecera, día - mes. mod. 1 y mod. 2
-                headlineSmall:
-                    TextStyle(fontFamily: 'SanFrancisco'), // no aplica
-                titleMedium: TextStyle(
-                  fontFamily: 'SanFrancisco',
+              textTheme: TextTheme(
+                displayLarge: GoogleFonts.quicksand(), // no aplica
+                displayMedium: GoogleFonts.quicksand(), // no aplica
+                displaySmall: GoogleFonts.quicksand(), // no aplica
+                headlineMedium: GoogleFonts.quicksand(),
+                headlineSmall: GoogleFonts.quicksand(), // no aplica
+                titleMedium: GoogleFonts.quicksand(
                   color: Colors.white,
                   fontSize: 18,
                 ), // controla: título y fecha seleccionada en mod. 2
-                titleSmall: TextStyle(
-                    fontFamily:
-                        'SanFrancisco'), // Controla: seleccionador de mes y años en mod. 1
-                bodyLarge: TextStyle(fontFamily: 'SanFrancisco'), // no aplica
-                bodyMedium: TextStyle(fontFamily: 'SanFrancisco'), // no aplica
-                bodySmall: TextStyle(
-                  fontFamily: 'SanFrancisco',
+                titleSmall: GoogleFonts.quicksand(),
+                bodyLarge: GoogleFonts.quicksand(), // no aplica
+                bodyMedium: GoogleFonts.quicksand(), // no aplica
+                bodySmall: GoogleFonts.quicksand(
                   fontSize: 14,
                 ), // controla: numeros de fecha del calendario mod. 1
-                labelLarge: TextStyle(
-                  fontFamily: 'SanFrancisco',
+                labelLarge: GoogleFonts.quicksand(
                   fontWeight: FontWeight.bold,
                 ), // controla: botones de aceptar y cancelar mod. 1 y mod. 2
-                labelSmall: TextStyle(
-                  fontFamily: 'SanFrancisco',
+                labelSmall: GoogleFonts.quicksand(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ), // controla: seleccionar fecha mod. 1 y mod. 2

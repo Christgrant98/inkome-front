@@ -48,7 +48,7 @@ class Layout extends StatelessWidget {
                   child: const SizedBox.expand(),
                 ),
                 Drawer(
-                  backgroundColor: const Color.fromARGB(190, 0, 0, 0),
+                  backgroundColor: Color.fromARGB(255, 240, 240, 240),
                   child: Column(
                     children: [
                       Expanded(
@@ -211,16 +211,17 @@ class Layout extends StatelessWidget {
     return Container(
       height: constraints.maxHeight,
       width: constraints.maxWidth,
-      decoration: const BoxDecoration(color: Colors.white
-          // gradient: LinearGradient(
-          //   colors: [
-          //     Colors.black,
-          //     Color(0xFFFF0000),
-          //   ],
-          //   begin: Alignment.center,
-          //   end: Alignment.bottomCenter,
-          // ),
-          ),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 240, 240, 240),
+        // gradient: LinearGradient(
+        //   colors: [
+        //     Colors.black,
+        //     Color(0xFFFF0000),
+        //   ],
+        //   begin: Alignment.center,
+        //   end: Alignment.bottomCenter,
+        // ),
+      ),
       child: Stack(
         children: [
           // Positioned(
@@ -257,19 +258,20 @@ class Layout extends StatelessWidget {
     required IconData icon,
   }) {
     return Card(
+      elevation: 1.2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
-      color: const Color.fromARGB(255, 20, 20, 20),
+      color: const Color.fromARGB(255, 230, 230, 230),
       child: ListTile(
         leading: Icon(
           icon,
-          color: const Color(0xFFFF0000),
+          color: Colors.black,
         ),
         title: TextView(
           text: title,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.black,
         ),
         onTap: onTap,
       ),
@@ -366,7 +368,7 @@ class Layout extends StatelessWidget {
               ),
       ],
       toolbarHeight: 60,
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 240, 240, 240),
     );
   }
 }

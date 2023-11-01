@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BaseTextFormField extends StatefulWidget {
   final Function(String?, bool) onChange;
@@ -58,8 +59,7 @@ class _BaseTextFormField extends State<BaseTextFormField> {
     return TextFormField(
       textAlign: widget.textAlign ?? TextAlign.start,
       readOnly: widget.readOnly,
-      // style: GoogleFonts.quicksand(),
-      style: const TextStyle(fontFamily: 'SanFrancisco'),
+      style: GoogleFonts.quicksand(),
       maxLines: widget.maxLines,
       minLines: widget.minLines,
       controller: _controller,
