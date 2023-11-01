@@ -56,319 +56,301 @@ class Layout extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               right: 10, bottom: 10, left: 10, top: 30),
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 30),
-                              child: DrawerHeader(
-                                decoration: const BoxDecoration(
-                                  color: Colors.transparent,
-                                ),
-                                child: SvgPicture.asset(
-                                  'assets/Logo blanco.svg',
-                                ),
-                              ),
+                            _buildDrawerHeader(),
+                            _buildMenuOption(
+                              context: context,
+                              title: 'home',
+                              icon: CupertinoIcons.house_alt,
+                              onTap: () => Navigator.pushReplacementNamed(
+                                  context, Routes.indexPage),
                             ),
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              color: const Color.fromARGB(255, 20, 20, 20),
-                              child: ListTile(
-                                leading: const Icon(
-                                  CupertinoIcons.house_alt,
-                                  color: Color(0xFFFF0000),
-                                ),
-                                title: const TextView(
-                                    text: 'Home',
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
+                            SizedBox(height: isLogged ? 5 : 0),
+                            if (isLogged)
+                              _buildMenuOption(
+                                context: context,
+                                title: 'My fav Adverts',
+                                icon: CupertinoIcons.suit_heart,
                                 onTap: () {
-                                  Navigator.pushReplacementNamed(
-                                      context, Routes.indexPage);
+                                  !isLogged
+                                      ? Navigator.pushReplacementNamed(
+                                          context, Routes.loginPage)
+                                      : Navigator.pushReplacementNamed(
+                                          context, Routes.favoritesPage);
                                 },
                               ),
-                            ),
-                            SizedBox(height: isLogged ? 5 : 0),
-                            if (isLogged)
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                color: const Color.fromARGB(255, 20, 20, 20),
-                                child: ListTile(
-                                  leading: const Icon(
-                                    CupertinoIcons.suit_heart,
-                                    color: Color(0xFFFF0000),
-                                  ),
-                                  title: const TextView(
-                                      text: 'My fav Adverts',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  onTap: () {
-                                    !isLogged
-                                        ? Navigator.pushReplacementNamed(
-                                            context, Routes.loginPage)
-                                        : Navigator.pushReplacementNamed(
-                                            context, Routes.favoritesPage);
-                                  },
-                                ),
-                              ),
                             const SizedBox(height: 5),
                             if (isLogged)
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                color: const Color.fromARGB(255, 20, 20, 20),
-                                child: ListTile(
-                                  leading: const Icon(
-                                    CupertinoIcons.add_circled_solid,
-                                    color: Color(0xFFFF0000),
-                                  ),
-                                  title: const TextView(
-                                      text: 'add a new advert',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  onTap: () {
-                                    Navigator.pushReplacementNamed(
-                                        context, Routes.createAdvertPage);
-                                  },
-                                ),
+                              _buildMenuOption(
+                                context: context,
+                                title: 'add a new advert',
+                                icon: CupertinoIcons.add_circled_solid,
+                                onTap: () => Navigator.pushReplacementNamed(
+                                    context, Routes.createAdvertPage),
                               ),
                             SizedBox(height: isLogged ? 5 : 0),
                             if (isLogged)
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                color: const Color.fromARGB(255, 20, 20, 20),
-                                child: ListTile(
-                                    leading: const Icon(
-                                      CupertinoIcons.square_stack_3d_down_right,
-                                      color: Color(0xFFFF0000),
-                                    ),
-                                    title: const TextView(
-                                        text: 'My adverts',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                    onTap: () {
-                                      Navigator.pushReplacementNamed(
-                                          context, Routes.myAdsPage);
-                                    }),
+                              _buildMenuOption(
+                                context: context,
+                                title: 'My adverts',
+                                icon: CupertinoIcons.square_stack_3d_down_right,
+                                onTap: () => Navigator.pushReplacementNamed(
+                                    context, Routes.myAdsPage),
                               ),
                             SizedBox(height: isLogged ? 5 : 0),
                             if (isLogged)
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                color: const Color.fromARGB(255, 20, 20, 20),
-                                child: ListTile(
-                                    leading: const Icon(
-                                      CupertinoIcons.macwindow,
-                                      color: Color(0xFFFF0000),
-                                    ),
-                                    title: const TextView(
-                                        text: 'My Wallet',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                    onTap: () {
-                                      Navigator.pushReplacementNamed(
-                                          context, Routes.walletPage);
-                                    }),
+                              _buildMenuOption(
+                                context: context,
+                                title: 'My Wallet',
+                                icon: CupertinoIcons.macwindow,
+                                onTap: () => Navigator.pushReplacementNamed(
+                                    context, Routes.walletPage),
                               ),
                             const SizedBox(height: 5),
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              color: const Color.fromARGB(255, 20, 20, 20),
-                              child: ListTile(
-                                  leading: const Icon(
-                                    CupertinoIcons.person_badge_plus,
-                                    color: Color(0xFFFF0000),
-                                  ),
-                                  title: const TextView(
-                                      text: 'My profile',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  onTap: () {
-                                    isLogged
-                                        ? Navigator.pushReplacementNamed(
-                                            context, Routes.editProfile)
-                                        : Navigator.pushReplacementNamed(
-                                            context, Routes.loginPage);
-                                  }),
+                            _buildMenuOption(
+                              context: context,
+                              title: 'My profile',
+                              icon: CupertinoIcons.person_badge_plus,
+                              onTap: () {
+                                isLogged
+                                    ? Navigator.pushReplacementNamed(
+                                        context, Routes.editProfile)
+                                    : Navigator.pushReplacementNamed(
+                                        context, Routes.loginPage);
+                              },
                             ),
                           ],
                         ),
                       ),
                       if (!isLogged)
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 10, right: 10, bottom: !isLogged ? 20 : 0),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            color: Colors.green,
-                            child: ListTile(
-                                title: const TextView(
-                                    textAlign: TextAlign.center,
-                                    text: 'Log In',
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                                onTap: () {
-                                  Navigator.pushReplacementNamed(
-                                      context, Routes.loginPage);
-                                }),
-                          ),
+                        _buildLogActionButton(
+                          isLogged: isLogged,
+                          context: context,
+                          textBtn: 'Log In',
+                          colorBtn: Colors.green,
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                                context, Routes.loginPage);
+                          },
                         ),
                       if (isLogged)
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 10, right: 10, bottom: isLogged ? 20 : 0),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            color: const Color(0xFFFF0000),
-                            child: ListTile(
-                                title: const TextView(
-                                    textAlign: TextAlign.center,
-                                    text: 'Log Out',
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                                onTap: () {
-                                  BlocProvider.of<AuthenticationCubit>(context)
-                                      .logout();
-                                  Navigator.pushReplacementNamed(
-                                      context, Routes.indexPage);
-                                }),
-                          ),
-                        ),
+                        _buildLogActionButton(
+                            isLogged: isLogged,
+                            context: context,
+                            textBtn: 'Log Out',
+                            colorBtn: const Color(0xFFFF0000),
+                            onTap: () {
+                              BlocProvider.of<AuthenticationCubit>(context)
+                                  .logout();
+                              Navigator.pushReplacementNamed(
+                                  context, Routes.indexPage);
+                            }),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          //! APPBAR ---------------------------------------------------------- X
-          appBar: AppBar(
-            centerTitle: true,
-            title: navState == 0
-                ? SizedBox(
-                    width: constraints.maxWidth * .55,
-                    child: AdvertSearchField(
-                      searchText: searchText,
-                      onChange: (value, shouldSearch) {
-                        if (value.length >= 3) {
-                          context
-                              .read<AdvertsCubit>()
-                              .fetchAdverts(token, searchText: value);
-                        } else if (value.isEmpty) {
-                          context.read<AdvertsCubit>().fetchAdverts(token);
-                        }
-                      },
-                    ),
-                  )
-                : Container(),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, Routes.indexPage);
-                },
-                icon: const Icon(
-                  CupertinoIcons.home,
-                  size: 25,
-                  color: Colors.white,
-                ),
-              ),
-              !isLogged
-                  ? Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: IconButton(
-                        onPressed: () {
-                          !isLogged
-                              ? Navigator.pushReplacementNamed(
-                                  context, Routes.loginPage)
-                              : Navigator.pushReplacementNamed(
-                                  context, Routes.editProfile);
-                        },
-                        icon: const Icon(
-                          CupertinoIcons.person_crop_circle,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
-                      child: InkWell(
-                        child: currentUser?.image != null
-                            ? CircleAvatar(
-                                backgroundImage:
-                                    MemoryImage(currentUser!.image!),
-                              )
-                            : const CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/user_default1.jpg'),
-                              ),
-                        onTap: () => Navigator.pushReplacementNamed(
-                            context, Routes.editProfile),
-                      ),
-                    ),
-            ],
-            toolbarHeight: 60,
-            backgroundColor: const Color.fromARGB(255, 11, 11, 11),
+          appBar: _buildAppBar(
+            navState: navState,
+            constraints: constraints,
+            context: context,
+            token: token,
+            isLogged: isLogged,
+            currentUser: currentUser,
           ),
-          //! APPBAR ---------------------------------------------------------- X
           extendBody: true,
-          body: Container(
-            height: constraints.maxHeight,
-            width: constraints.maxWidth,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Color(0xFFFF0000),
-                ],
-                begin: Alignment.center,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: Stack(
-              children: [
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: ClipPath(
-                    clipper: WaveClipperTwo(reverse: true),
-                    child: Container(
-                      height: constraints.maxHeight * 0.2,
-                      width: constraints.maxWidth,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(255, 76, 5, 0),
-                            Color(0xFFFF0000),
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                content
-              ],
-            ),
-          ),
+          body: _buildBackground(constraints),
           bottomNavigationBar: !isLargeScreen ? const BottomNavigator() : null,
         );
       },
+    );
+  }
+
+  Padding _buildDrawerHeader() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: DrawerHeader(
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: SvgPicture.asset(
+          'assets/Logo blanco.svg',
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLogActionButton({
+    required bool isLogged,
+    required BuildContext context,
+    required String textBtn,
+    required void Function() onTap,
+    required Color colorBtn,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(left: 10, right: 10, bottom: !isLogged ? 20 : 0),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: colorBtn,
+        child: ListTile(
+          title: TextView(
+              textAlign: TextAlign.center,
+              text: textBtn,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
+          onTap: onTap,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBackground(BoxConstraints constraints) {
+    return Container(
+      height: constraints.maxHeight,
+      width: constraints.maxWidth,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.black,
+            Color(0xFFFF0000),
+          ],
+          begin: Alignment.center,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: ClipPath(
+              clipper: WaveClipperTwo(reverse: true),
+              child: Container(
+                height: constraints.maxHeight * 0.2,
+                width: constraints.maxWidth,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 76, 5, 0),
+                      Color(0xFFFF0000),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          content,
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuOption({
+    required BuildContext context,
+    required String title,
+    required void Function() onTap,
+    required IconData icon,
+  }) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      color: const Color.fromARGB(255, 20, 20, 20),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: const Color(0xFFFF0000),
+        ),
+        title: TextView(
+          text: title,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  AppBar _buildAppBar({
+    required int navState,
+    required BoxConstraints constraints,
+    required BuildContext context,
+    required String? token,
+    required bool isLogged,
+    required User? currentUser,
+  }) {
+    return AppBar(
+      centerTitle: true,
+      title: navState == 0
+          ? SizedBox(
+              width: constraints.maxWidth * .55,
+              child: AdvertSearchField(
+                searchText: searchText,
+                onChange: (value, shouldSearch) {
+                  if (value.length >= 3) {
+                    context
+                        .read<AdvertsCubit>()
+                        .fetchAdverts(token, searchText: value);
+                  } else if (value.isEmpty) {
+                    context.read<AdvertsCubit>().fetchAdverts(token);
+                  }
+                },
+              ),
+            )
+          : Container(),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, Routes.indexPage);
+          },
+          icon: const Icon(
+            CupertinoIcons.home,
+            size: 25,
+            color: Colors.white,
+          ),
+        ),
+        !isLogged
+            ? Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: IconButton(
+                  onPressed: () {
+                    !isLogged
+                        ? Navigator.pushReplacementNamed(
+                            context, Routes.loginPage)
+                        : Navigator.pushReplacementNamed(
+                            context, Routes.editProfile);
+                  },
+                  icon: const Icon(
+                    CupertinoIcons.person_crop_circle,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(
+                    top: 10, bottom: 10, left: 20, right: 20),
+                child: InkWell(
+                  child: currentUser?.image != null
+                      ? CircleAvatar(
+                          backgroundImage: MemoryImage(currentUser!.image!),
+                        )
+                      : const CircleAvatar(
+                          backgroundImage:
+                              AssetImage('assets/user_default1.jpg'),
+                        ),
+                  onTap: () => Navigator.pushReplacementNamed(
+                      context, Routes.editProfile),
+                ),
+              ),
+      ],
+      toolbarHeight: 60,
+      backgroundColor: const Color.fromARGB(255, 11, 11, 11),
     );
   }
 }
