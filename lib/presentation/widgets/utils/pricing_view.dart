@@ -23,7 +23,7 @@ class _PricingViewState extends State<PricingView> {
           Center(
             child: TextView(
               text: 'Choose your membership type',
-              color: const Color(0xFFFF0000),
+              color: Colors.black,
               fontSize: isLargeScreen ? 30 : 18,
               fontWeight: FontWeight.bold,
             ),

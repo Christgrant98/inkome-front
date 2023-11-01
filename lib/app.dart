@@ -18,9 +18,9 @@ class InkomeApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textSelectionTheme: const TextSelectionThemeData(
-            cursorColor: Color(0xFFFF0000),
+            cursorColor: Colors.black,
           ),
-          primaryColor: const Color(0xFFFF0000),
+          primaryColor: Colors.black,
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

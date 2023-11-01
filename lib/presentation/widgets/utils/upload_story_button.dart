@@ -30,7 +30,7 @@ class _UploadStoryButtonState extends State<UploadStoryButton> {
             gradient: const LinearGradient(
               colors: [
                 Color.fromARGB(255, 76, 5, 0),
-                Color(0xFFFF0000),
+                Colors.black,
               ],
               stops: [
                 0.1,
@@ -61,7 +61,7 @@ class _UploadStoryButtonState extends State<UploadStoryButton> {
                               decoration: const BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    // Color(0xFFFF0000),
+                                    // Colors.black,
                                     Color.fromARGB(255, 76, 5, 0),
                                     Color.fromARGB(255, 0, 0, 0),
                                   ],

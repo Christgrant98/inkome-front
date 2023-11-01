@@ -38,7 +38,7 @@
 //                 header: const Center(
 //                   child: TextView(
 //                     text: 'Choose your membership type',
-//                     color: Color(0xFFFF0000),
+//                     color: Colors.black,
 //                     fontSize: 25,
 //                     fontWeight: FontWeight.bold,
 //                   ),
@@ -64,7 +64,7 @@
 //           header: const Center(
 //             child: TextView(
 //               text: 'Choose your membership type',
-//               color: Color(0xFFFF0000),
+//               color: Colors.black,
 //               fontSize: 25,
 //               fontWeight: FontWeight.bold,
 //             ),

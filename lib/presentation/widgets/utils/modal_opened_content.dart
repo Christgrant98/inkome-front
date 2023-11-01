@@ -45,7 +45,7 @@ class _ModalOpenedContainerContentState
         gradient: LinearGradient(
           colors: [
             Color.fromARGB(255, 0, 0, 0),
-            Color(0xFFFF0000),
+            Colors.black,
           ],
           begin: Alignment.center,
           end: Alignment.bottomCenter,
@@ -161,7 +161,7 @@ class _ModalOpenedContainerContentState
                               runSpacing: isLargeScreen ? 8 : -2.5,
                               children: widget.advert.adTags!.map((tag) {
                                 return Chip(
-                                  backgroundColor: const Color(0xFFFF0000),
+                                  backgroundColor: Colors.black,
                                   label: TextView(
                                     text: tag,
                                     color: Colors.white,
@@ -238,7 +238,7 @@ class _ModalOpenedContainerContentState
                   textAlign: TextAlign.center,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFFFF0000),
+                  color: Colors.black,
                 ),
                 content: TextView(
                   fontSize: 13.5,

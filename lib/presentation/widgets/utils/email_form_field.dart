@@ -26,7 +26,7 @@ class EmailFormField extends StatelessWidget {
           contentPadding: EdgeInsets.all(10),
           floatingLabelBehavior: FloatingLabelBehavior.never,
           floatingLabelStyle: const TextStyle(
-            color: Color(0xFFFF0000),
+            color: Colors.black,
           ),
           prefixIcon: const Icon(
             CupertinoIcons.envelope,

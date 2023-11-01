@@ -22,7 +22,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
     borderRadius: BorderRadius.circular(30),
     borderSide: const BorderSide(
       width: 1,
-      color: Color(0xFFFF0000),
+      color: Colors.black,
     ),
   );
   final TextStyle defaultLabelSTyle = const TextStyle(
@@ -146,7 +146,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
                         : MediaQuery.of(context).size.width * .5,
                     height: 60,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFF0000),
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ElevatedButton(
@@ -187,7 +187,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
   //     borderRadius: BorderRadius.circular(30),
   //     borderSide: const BorderSide(
   //       width: 1,
-  //       color: Color(0xFFFF0000),
+  //       color: Colors.black,
   //     ),
   //   );
 
@@ -215,7 +215,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
   //           : MediaQuery.of(context).size.width * .3,
   //       height: 60,
   //       decoration: BoxDecoration(
-  //         color: const Color(0xFFFF0000),
+  //         color: Colors.black,
   //         borderRadius: BorderRadius.circular(10),
   //       ),
   //       child: ElevatedButton(

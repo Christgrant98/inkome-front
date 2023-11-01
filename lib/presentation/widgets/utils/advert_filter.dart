@@ -125,7 +125,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                       borderColor: Colors.white,
                       selectedBorderColor: Colors.white,
                       selectedColor: Colors.white,
-                      fillColor: const Color(0xFFFF0000),
+                      fillColor: Colors.black,
                       color: Colors.red[400],
                       constraints: const BoxConstraints(
                         minHeight: 40.0,

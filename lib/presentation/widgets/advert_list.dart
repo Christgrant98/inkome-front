@@ -320,7 +320,7 @@ class _AdvertPreview extends StatelessWidget {
                 const TextView(
                   fontSize: 14,
                   text: 'Accede para marcar como favorito!',
-                  color: Color(0xFFFF0000),
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
                 const SizedBox(
@@ -359,7 +359,7 @@ class _AdvertPreview extends StatelessWidget {
                               fontSize: 14,
                               decoration: TextDecoration.underline,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFFFF0000),
+                              color: Colors.black,
                               text: 'Registrate',
                             ),
                           ),

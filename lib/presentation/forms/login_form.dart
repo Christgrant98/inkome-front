@@ -37,7 +37,7 @@ class _LoginFormState extends State<LoginForm> {
           SnackBarUtil.showSnackBar(
               context,
               icon: const Icon(Icons.error_outline),
-              backgroundColor: const Color(0xFFFF0000),
+              backgroundColor: Colors.black,
               errorMessage);
         }
       },

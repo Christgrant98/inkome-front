@@ -136,7 +136,7 @@ class Layout extends StatelessWidget {
                       //       isLogged: isLogged,
                       //       context: context,
                       //       textBtn: 'Log Out',
-                      //       colorBtn: const Color(0xFFFF0000),
+                      //       colorBtn: Colors.black,
                       //       onTap: () {
                       //         BlocProvider.of<AuthenticationCubit>(context)
                       //             .logout();
@@ -215,7 +215,7 @@ class Layout extends StatelessWidget {
         // gradient: LinearGradient(
         //   colors: [
         //     Colors.black,
-        //     Color(0xFFFF0000),
+        //     Colors.black,
         //   ],
         //   begin: Alignment.center,
         //   end: Alignment.bottomCenter,
@@ -235,7 +235,7 @@ class Layout extends StatelessWidget {
           //         gradient: LinearGradient(
           //           colors: [
           //             Color.fromARGB(255, 76, 5, 0),
-          //             Color(0xFFFF0000),
+          //             Colors.black,
           //           ],
           //           begin: Alignment.topLeft,
           //           end: Alignment.bottomRight,

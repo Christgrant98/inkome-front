@@ -38,7 +38,7 @@ class CustomAlertDialog extends StatelessWidget {
         title: header ??
             TextView(
               fontWeight: FontWeight.bold,
-              color: const Color(0xFFFF0000),
+              color: Colors.black,
               text: titleText,
             ),
         content: content ??

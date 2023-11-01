@@ -56,7 +56,7 @@ class _SliderInputState extends State<AgeFormField> {
             fontWeight: FontWeight.bold,
           ),
         Slider(
-          thumbColor: const Color(0xFFFF0000),
+          thumbColor: Colors.black,
           activeColor: const Color.fromARGB(255, 144, 10, 0),
           value: sliderValue.toDouble(),
           min: widget.minAge.toDouble(),

@@ -65,7 +65,7 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
           runSpacing: 2,
           children: _tags.map((tag) {
             return Chip(
-              backgroundColor: const Color(0xFFFF0000),
+              backgroundColor: Colors.black,
               label: TextView(
                 text: tag,
                 color: Colors.white,

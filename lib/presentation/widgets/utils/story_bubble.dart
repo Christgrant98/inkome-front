@@ -28,7 +28,7 @@ class StoryBubble extends StatelessWidget {
               gradient: const LinearGradient(
                 colors: [
                   Color.fromARGB(255, 76, 5, 0),
-                  Color(0xFFFF0000),
+                  Colors.black,
                 ],
                 stops: [
                   0.1,

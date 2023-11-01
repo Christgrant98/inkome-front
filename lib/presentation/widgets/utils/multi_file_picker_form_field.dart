@@ -65,7 +65,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
                     const SizedBox(height: 10),
                     const TextView(
                       text: 'Selecciona una imagen para mostrar',
-                      color: Color(0xFFFF0000),
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     )
                   ]),
@@ -123,7 +123,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
                                                 blurRadius: 5.0)
                                           ],
                                           Icons.loyalty_rounded,
-                                          color: Color(0xFFFF0000),
+                                          color: Colors.black,
                                           size: 30,
                                         ))
                                   ],
@@ -226,7 +226,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
           borderRadius: const BorderRadius.all(
             Radius.circular(50),
           ),
-          color: const Color(0xFFFF0000),
+          color: Colors.black,
           boxShadow: [
             BoxShadow(
               offset: const Offset(2, 4),
@@ -260,7 +260,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
           borderRadius: const BorderRadius.all(
             Radius.circular(50),
           ),
-          color: const Color(0xFFFF0000),
+          color: Colors.black,
           boxShadow: [
             BoxShadow(
               offset: const Offset(2, 4),
@@ -292,7 +292,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
           borderRadius: const BorderRadius.all(
             Radius.circular(50),
           ),
-          color: const Color(0xFFFF0000),
+          color: Colors.black,
           boxShadow: [
             BoxShadow(
               offset: const Offset(2, 4),

@@ -110,7 +110,7 @@ class WalletPage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 60,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFF0000),
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: ElevatedButton(
@@ -203,7 +203,7 @@ class WalletPage extends StatelessWidget {
   //       width: MediaQuery.of(context).size.width,
   //       height: 60,
   //       decoration: BoxDecoration(
-  //         color: Color(0xFFFF0000),
+  //         color: Colors.black,
   //         borderRadius: BorderRadius.circular(10),
   //       ),
   //       child: ElevatedButton(

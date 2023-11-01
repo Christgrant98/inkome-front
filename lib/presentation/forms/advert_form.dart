@@ -62,7 +62,7 @@ class _AdvertForm extends State<AdvertForm> {
           String errorMessage = state.error;
           SnackBarUtil.showSnackBar(
             context,
-            backgroundColor: const Color(0xFFFF0000),
+            backgroundColor: Colors.black,
             textColor: Colors.black,
             errorMessage,
           );

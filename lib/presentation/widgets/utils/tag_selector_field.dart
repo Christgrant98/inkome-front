@@ -89,7 +89,7 @@ class _TagSelectorFieldState extends State<TagSelectorField> {
 
     return tagsToDisplay.map((tag) {
       return FilterChip(
-        selectedColor: const Color(0xFFFF0000),
+        selectedColor: Colors.black,
         backgroundColor: const Color.fromARGB(187, 247, 83, 83),
         label: Text(
           '#$tag',

@@ -128,8 +128,8 @@ class _DatePickerState extends State<DatePickerField> {
                 ), // controla: seleccionar fecha mod. 1 y mod. 2
               ),
               colorScheme: Theme.of(context).colorScheme.copyWith(
-                    primary: const Color(0xFFFF0000),
-                    surface: const Color(0xFFFF0000),
+                    primary: Colors.black,
+                    surface: Colors.black,
                     onPrimary: Colors.white,
                     onSurface: Colors.white,
                   ),

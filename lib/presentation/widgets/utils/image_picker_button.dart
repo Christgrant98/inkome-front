@@ -87,7 +87,7 @@ class _ImagePickerButtonState extends State<ImagePickerButton> {
         borderRadius: const BorderRadius.all(
           Radius.circular(50),
         ),
-        color: const Color(0xFFFF0000),
+        color: Colors.black,
         boxShadow: [
           BoxShadow(
             offset: const Offset(2, 4),

@@ -74,8 +74,7 @@ class IndexPage extends StatelessWidget {
                     ],
                   );
                 } else if (state.status == AdvertsStatus.indexFailure) {
-                  return TextView(
-                      text: state.error, color: const Color(0xFFFF0000));
+                  return TextView(text: state.error, color: Colors.black);
                 } else {
                   return const Center(child: CustomIndicatorProgress());
                 }
