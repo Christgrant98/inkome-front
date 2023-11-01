@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swc_front/logic/cubits/adverts.dart';
-import 'package:swc_front/logic/states/adverts.dart';
-import 'package:swc_front/presentation/widgets/advert_list.dart';
-import 'package:swc_front/presentation/widgets/layout.dart';
-import 'package:swc_front/presentation/widgets/utils/indicator_progress.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/logic/cubits/adverts.dart';
+import 'package:blissbite_front/logic/states/adverts.dart';
+import 'package:blissbite_front/presentation/widgets/advert_list.dart';
+import 'package:blissbite_front/presentation/widgets/layout.dart';
+import 'package:blissbite_front/presentation/widgets/utils/indicator_progress.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 class MyAdsPage extends StatelessWidget {
   final int currentMyAdsPage;

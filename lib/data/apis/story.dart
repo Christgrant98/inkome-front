@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
 
-import 'package:swc_front/data/apis/base.dart';
+import 'package:blissbite_front/data/apis/base.dart';
 
 class StoryAPI extends BaseAPI {
   Future<Map<String, dynamic>> createStory(

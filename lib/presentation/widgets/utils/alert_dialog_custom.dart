@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:swc_front/presentation/widgets/utils/custom_button.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/presentation/widgets/utils/custom_button.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   final String? titleText;

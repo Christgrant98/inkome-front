@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swc_front/data/models/advert.dart';
-import 'package:swc_front/logic/cubits/authentication_cubit.dart';
-import 'package:swc_front/presentation/widgets/layout.dart';
-import 'package:swc_front/presentation/widgets/utils/indicator_progress.dart';
-import 'package:swc_front/presentation/widgets/utils/pagination_index.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/data/models/advert.dart';
+import 'package:blissbite_front/logic/cubits/authentication_cubit.dart';
+import 'package:blissbite_front/presentation/widgets/layout.dart';
+import 'package:blissbite_front/presentation/widgets/utils/indicator_progress.dart';
+import 'package:blissbite_front/presentation/widgets/utils/pagination_index.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 import '../../logic/cubits/adverts.dart';
 import '../../logic/states/adverts.dart';
 import '../widgets/advert_list.dart';

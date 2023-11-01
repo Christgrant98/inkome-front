@@ -2,11 +2,11 @@
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 
-// import 'package:swc_front/presentation/widgets/layout.dart';
-// import 'package:swc_front/presentation/widgets/utils/alert_dialog_custom.dart';
-// import 'package:swc_front/presentation/widgets/utils/custom_button.dart';
-// import 'package:swc_front/presentation/widgets/utils/pricing_view.dart';
-// import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+// import 'package:blissbite_front/presentation/widgets/layout.dart';
+// import 'package:blissbite_front/presentation/widgets/utils/alert_dialog_custom.dart';
+// import 'package:blissbite_front/presentation/widgets/utils/custom_button.dart';
+// import 'package:blissbite_front/presentation/widgets/utils/pricing_view.dart';
+// import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 // import 'package:flutter/material.dart';
 

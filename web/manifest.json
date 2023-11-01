@@ -1,6 +1,6 @@
 {
-    "name": "swc_front",
-    "short_name": "swc_front",
+    "name": "blissbite_front",
+    "short_name": "blissbite_front",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

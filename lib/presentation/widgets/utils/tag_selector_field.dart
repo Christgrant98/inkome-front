@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:swc_front/presentation/widgets/utils/base_text_form_field.dart';
-import 'package:swc_front/presentation/widgets/utils/tag_search_field.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/presentation/widgets/utils/base_text_form_field.dart';
+import 'package:blissbite_front/presentation/widgets/utils/tag_search_field.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 class TagSelectorField extends StatefulWidget {
   final List<String> adTags;

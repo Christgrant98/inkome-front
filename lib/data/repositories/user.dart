@@ -1,5 +1,5 @@
-import 'package:swc_front/data/apis/user.dart';
-import 'package:swc_front/data/models/user.dart';
+import 'package:blissbite_front/data/apis/user.dart';
+import 'package:blissbite_front/data/models/user.dart';
 
 import 'base.dart';
 

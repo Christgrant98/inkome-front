@@ -1,6 +1,6 @@
-import 'package:swc_front/data/models/user.dart';
-import 'package:swc_front/data/apis/authentication.dart';
-import 'package:swc_front/data/repositories/base.dart';
+import 'package:blissbite_front/data/models/user.dart';
+import 'package:blissbite_front/data/apis/authentication.dart';
+import 'package:blissbite_front/data/repositories/base.dart';
 
 class AuthenticationRepository extends BaseRepository {
   final AuthenticationAPI _api = AuthenticationAPI();

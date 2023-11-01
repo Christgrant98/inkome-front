@@ -3,10 +3,10 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:marquee_text/marquee_text.dart';
-import 'package:swc_front/data/models/advert.dart';
-import 'package:swc_front/presentation/widgets/utils/alert_dialog_custom.dart';
-import 'package:swc_front/presentation/widgets/utils/custom_button.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/data/models/advert.dart';
+import 'package:blissbite_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:blissbite_front/presentation/widgets/utils/custom_button.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ModalOpenedContainerContent extends StatefulWidget {

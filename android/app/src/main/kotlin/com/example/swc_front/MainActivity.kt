@@ -1,4 +1,4 @@
-package com.example.swc_front
+package com.example.blissbite_front
 
 import io.flutter.embedding.android.FlutterActivity
 

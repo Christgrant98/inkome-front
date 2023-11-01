@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:swc_front/presentation/widgets/utils/indicator_progress.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/presentation/widgets/utils/indicator_progress.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FilePickerField extends StatefulWidget {

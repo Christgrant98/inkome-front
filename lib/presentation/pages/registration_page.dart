@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swc_front/presentation/widgets/layout.dart';
-import 'package:swc_front/presentation/forms/registration_form.dart';
+import 'package:blissbite_front/presentation/widgets/layout.dart';
+import 'package:blissbite_front/presentation/forms/registration_form.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({super.key});

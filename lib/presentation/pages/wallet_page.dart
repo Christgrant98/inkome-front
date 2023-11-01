@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:swc_front/presentation/forms/add_payment_method.dart';
-import 'package:swc_front/presentation/widgets/layout.dart';
-import 'package:swc_front/presentation/widgets/utils/alert_dialog_custom.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/presentation/forms/add_payment_method.dart';
+import 'package:blissbite_front/presentation/widgets/layout.dart';
+import 'package:blissbite_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({Key? key}) : super(key: key);

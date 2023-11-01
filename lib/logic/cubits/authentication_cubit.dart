@@ -1,5 +1,5 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:swc_front/logic/states/authentication.dart';
+import 'package:blissbite_front/logic/states/authentication.dart';
 import '../../data/models/user.dart';
 import '../../data/repositories/authentication_repository.dart';
 

@@ -1,6 +1,6 @@
-import 'package:swc_front/data/apis/story.dart';
-import 'package:swc_front/data/models/story.dart';
-import 'package:swc_front/data/repositories/base.dart';
+import 'package:blissbite_front/data/apis/story.dart';
+import 'package:blissbite_front/data/models/story.dart';
+import 'package:blissbite_front/data/repositories/base.dart';
 
 import '../models/user.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:swc_front/data/models/user.dart';
+import 'package:blissbite_front/data/models/user.dart';
 
 enum AuthenticationStatus {
   initial,

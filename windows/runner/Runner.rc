@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "swc_front" "\0"
+            VALUE "FileDescription", "blissbite_front" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "swc_front" "\0"
+            VALUE "InternalName", "blissbite_front" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "swc_front.exe" "\0"
-            VALUE "ProductName", "swc_front" "\0"
+            VALUE "OriginalFilename", "blissbite_front.exe" "\0"
+            VALUE "ProductName", "blissbite_front" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

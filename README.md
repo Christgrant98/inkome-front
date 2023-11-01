@@ -1,4 +1,4 @@
-# swc_front
+# blissbite_front
 
 A new Flutter project.
 

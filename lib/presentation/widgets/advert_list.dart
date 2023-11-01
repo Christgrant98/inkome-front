@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:swc_front/data/models/advert.dart';
-import 'package:swc_front/logic/cubits/adverts.dart';
-import 'package:swc_front/presentation/forms/login_form.dart';
-import 'package:swc_front/presentation/router/app_router.dart';
-import 'package:swc_front/presentation/widgets/utils/alert_dialog_custom.dart';
-import 'package:swc_front/presentation/widgets/utils/custom_button.dart';
-import 'package:swc_front/presentation/widgets/utils/fav_icon_container.dart';
-import 'package:swc_front/presentation/widgets/utils/image_swiper.dart';
-import 'package:swc_front/presentation/widgets/utils/modal_closed_content.dart';
-import 'package:swc_front/presentation/widgets/utils/modal_opened_content.dart';
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/data/models/advert.dart';
+import 'package:blissbite_front/logic/cubits/adverts.dart';
+import 'package:blissbite_front/presentation/forms/login_form.dart';
+import 'package:blissbite_front/presentation/router/app_router.dart';
+import 'package:blissbite_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:blissbite_front/presentation/widgets/utils/custom_button.dart';
+import 'package:blissbite_front/presentation/widgets/utils/fav_icon_container.dart';
+import 'package:blissbite_front/presentation/widgets/utils/image_swiper.dart';
+import 'package:blissbite_front/presentation/widgets/utils/modal_closed_content.dart';
+import 'package:blissbite_front/presentation/widgets/utils/modal_opened_content.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 import '../../logic/cubits/authentication_cubit.dart';
 import 'utils/base_modal.dart';

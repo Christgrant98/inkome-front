@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:swc_front/presentation/widgets/utils/base_text_form_field.dart';
+import 'package:blissbite_front/presentation/widgets/utils/base_text_form_field.dart';
 
 class TagSearchField extends StatelessWidget {
   final List<String>? tags;

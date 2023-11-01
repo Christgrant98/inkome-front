@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swc_front/data/repositories/advert_repository.dart';
+import 'package:blissbite_front/data/repositories/advert_repository.dart';
 
 import '../../data/models/advert.dart';
 import '../states/adverts.dart';

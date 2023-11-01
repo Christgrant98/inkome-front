@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:swc_front/presentation/widgets/utils/text_view.dart';
+import 'package:blissbite_front/presentation/widgets/utils/text_view.dart';
 
 class UploadStoryButton extends StatefulWidget {
   final void Function(Uint8List) onChanged;
