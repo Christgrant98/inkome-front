@@ -168,6 +168,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                       });
                     },
                     decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       prefixIcon: Icon(
                         CupertinoIcons.circle_grid_hex_fill,

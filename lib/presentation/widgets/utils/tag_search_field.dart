@@ -18,6 +18,7 @@ class TagSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseTextFormField(
       decoration: const InputDecoration(
+        contentPadding: EdgeInsets.all(10),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         prefixIcon: Icon(
           CupertinoIcons.search,

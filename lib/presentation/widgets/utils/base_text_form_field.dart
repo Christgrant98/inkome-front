@@ -114,6 +114,7 @@ class _BaseTextFormField extends State<BaseTextFormField> {
     );
 
     return InputDecoration(
+      contentPadding: const EdgeInsets.all(10),
       border: defaultBorder,
       enabledBorder: defaultBorder,
       focusedBorder: defaultBorder,

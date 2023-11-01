@@ -113,6 +113,7 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
               newTag = value!;
             },
             decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(10),
                 floatingLabelBehavior: FloatingLabelBehavior.never,
                 prefixIcon: Icon(
                   CupertinoIcons.tag_circle,

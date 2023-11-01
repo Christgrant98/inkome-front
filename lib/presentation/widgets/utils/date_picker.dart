@@ -48,6 +48,7 @@ class _DatePickerState extends State<DatePickerField> {
       style: GoogleFonts.quicksand(),
       controller: _date,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(10),
         prefixIcon: const Icon(
           CupertinoIcons.calendar,
           color: Colors.grey,

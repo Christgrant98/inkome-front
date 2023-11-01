@@ -42,6 +42,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
               color: const Color(0xFFFF0000),
               obscureText ? Icons.visibility : Icons.visibility_off),
         ),
+        contentPadding: EdgeInsets.all(10),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         labelText: widget.labelText ?? t.passwordLinkText,
         filled: true,
