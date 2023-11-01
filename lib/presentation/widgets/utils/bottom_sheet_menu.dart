@@ -33,7 +33,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         topRight: Radius.circular(35),
       ),
       blur: 18,
-      color: const Color.fromRGBO(0, 0, 0, 0.6),
+      color: Colors.orange,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
@@ -43,8 +43,8 @@ class _BottomNavigatorState extends State<BottomNavigator> {
               ? MainAxisAlignment.spaceEvenly
               : MainAxisAlignment.spaceBetween,
           selectedIndex: context.watch<NavigationCubit>().state.selectedIndex,
-          color: Colors.grey,
-          activeColor: const Color(0xFFFF0000),
+          color: Colors.white,
+          activeColor: Colors.black,
           padding: const EdgeInsets.all(5),
           gap: 8,
           onTabChange: (index) {

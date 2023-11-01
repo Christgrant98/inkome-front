@@ -31,12 +31,19 @@ class PaginationIndex extends StatelessWidget {
           paginationButton(
             onTap: onFirstPage,
             child: const Icon(
-                size: 20, color: Colors.white, Icons.skip_previous_rounded),
+              size: 20,
+              color: Colors.black,
+              Icons.skip_previous_rounded,
+            ),
           ),
         paginationButton(
+          border: Border.all(color: Colors.black, width: 1),
           onTap: onPreviousPage,
           child: const Icon(
-              size: 20, color: Colors.white, Icons.arrow_back_ios_rounded),
+            size: 20,
+            color: Colors.black,
+            Icons.arrow_back_ios_rounded,
+          ),
         ),
         if (decreasedCurrentPageIndex > 0)
           paginationButton(
@@ -45,16 +52,16 @@ class PaginationIndex extends StatelessWidget {
               child: TextView(
                   fontWeight: FontWeight.bold,
                   text: '$decreasedCurrentPageIndex',
-                  color: Colors.white),
+                  color: Colors.black),
             ),
           ),
         paginationButton(
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(color: Colors.orange, width: 2.5),
           child: Center(
             child: TextView(
                 fontWeight: FontWeight.bold,
                 text: '$currentPageIndex',
-                color: Colors.white),
+                color: Colors.black),
           ),
           onTap: () {},
         ),
@@ -65,13 +72,17 @@ class PaginationIndex extends StatelessWidget {
               child: TextView(
                   fontWeight: FontWeight.bold,
                   text: '$increasedCurrentPageIndex',
-                  color: Colors.white),
+                  color: Colors.black),
             ),
           ),
         paginationButton(
+          border: Border.all(color: Colors.black, width: 1),
           onTap: onNextPage,
           child: const Icon(
-              size: 20, color: Colors.white, Icons.arrow_forward_ios_rounded),
+            size: 20,
+            color: Colors.black,
+            Icons.arrow_forward_ios_rounded,
+          ),
         ),
       ],
     );
@@ -85,7 +96,7 @@ class PaginationIndex extends StatelessWidget {
           onTap: onTap,
           child: Container(
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 18, 18, 18),
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
                 border: border),
             height: 40,

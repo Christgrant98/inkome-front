@@ -38,15 +38,15 @@ class _AdvertSearchFieldState extends State<AdvertSearchField> {
   @override
   Widget build(BuildContext context) {
     return CupertinoSearchTextField(
-      itemColor: Colors.white,
+      itemColor: const Color.fromARGB(255, 0, 0, 0),
       controller: _textEditingController,
       style: const TextStyle(
         fontFamily: 'SanFrancisco',
-        color: Color.fromARGB(207, 255, 255, 255),
+        color: Color.fromARGB(207, 0, 0, 0),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: const Color.fromARGB(255, 41, 41, 41),
+        color: Color.fromARGB(255, 255, 255, 255),
       ),
       onChanged: (value) {
         if (widget.onChange == null) return;
