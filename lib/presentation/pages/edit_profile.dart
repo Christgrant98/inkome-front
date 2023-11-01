@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inkome_front/presentation/widgets/layout.dart';
-import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import '../forms/profile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,20 +22,7 @@ class EditProfilePage extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: SizedBox(
             width: desiredWidth,
-            child: SingleChildScrollView(
-              child: Column(children: [
-                SizedBox(
-                  height: isLargeScreen ? 20 : 10,
-                ),
-                TextView(
-                    text: t.myProfileTitleLinkText,
-                    textAlign: TextAlign.center,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16,
-                    color: Colors.white),
-                const ProfileForm(),
-              ]),
-            ),
+            child: const ProfileForm(),
           ),
         ),
       );

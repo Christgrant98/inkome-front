@@ -48,6 +48,8 @@ class _ProfileForm extends State<ProfileForm> {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations? t = AppLocalizations.of(context);
+    if (t == null) throw Exception('AppLocalizations not found');
     bool isLogged = context.watch<AuthenticationCubit>().isLogged();
     User? currentUser = context.watch<AuthenticationCubit>().state.user;
     Uint8List? userImage = currentUser?.image;
@@ -68,71 +70,83 @@ class _ProfileForm extends State<ProfileForm> {
           );
         }
       },
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 25,
-          ),
-          if (isLogged)
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
             TextView(
-              text: '$name',
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+                text: t.myProfileTitleLinkText,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
+                color: Colors.black),
+            const SizedBox(
+              height: 25,
             ),
-          const SizedBox(
-            height: 25,
-          ),
-          ImagePickerButton(
-            initialValue: image ?? userImage,
-            onChanged: (Uint8List? bytes) {
-              setState(() => image = bytes);
-            },
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          NameFormField(
-            initialValue: name,
-            onChange: (String? value, bool valid) {
-              setState(() => name = valid ? value : null);
-            },
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          DatePickerField(
-            initialValue: birthdate,
-            onChange: (int value, DateTime selectedBirthdate) {
-              setState(() => birthdate = selectedBirthdate);
-            },
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          PhoneFormField(
-            initialValue: phoneNumber,
-            onChange: (String? value, bool valid) {
-              setState(() => phoneNumber = valid ? value : null);
-            },
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          EmailFormField(
-            initialValue: email,
-            onChange: (String? value, bool valid) {
-              setState(() => email = valid ? value : null);
-            },
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          // if (_canShowSubmitButton())
-          _buildSubmitButton(),
-          const SizedBox(height: 10),
-          Align(alignment: Alignment.centerRight, child: _buildLogoutButton()),
-        ],
+            if (isLogged)
+              TextView(
+                text: '$name',
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            const SizedBox(
+              height: 25,
+            ),
+            ImagePickerButton(
+              initialValue: image ?? userImage,
+              onChanged: (Uint8List? bytes) {
+                setState(() => image = bytes);
+              },
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            NameFormField(
+              initialValue: name,
+              onChange: (String? value, bool valid) {
+                setState(() => name = valid ? value : null);
+              },
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            DatePickerField(
+              initialValue: birthdate,
+              onChange: (int value, DateTime selectedBirthdate) {
+                setState(() => birthdate = selectedBirthdate);
+              },
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            PhoneFormField(
+              initialValue: phoneNumber,
+              onChange: (String? value, bool valid) {
+                setState(() => phoneNumber = valid ? value : null);
+              },
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            EmailFormField(
+              initialValue: email,
+              onChange: (String? value, bool valid) {
+                setState(() => email = valid ? value : null);
+              },
+            ),
+            const SizedBox(
+              height: 35,
+            ),
+            // Spacer(),
+            // if (_canShowSubmitButton())
+            _buildSubmitButton(),
+            const SizedBox(height: 15),
+            Align(
+              alignment: Alignment.centerRight,
+              child: _buildLogoutButton(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -173,73 +187,63 @@ class _ProfileForm extends State<ProfileForm> {
   }
 
   Widget _buildLogoutButton() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(
-          const Color(0xFFFF0000),
-        ),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
-      ),
-      icon: const Icon(Icons.logout_rounded),
-      label: const TextView(
-        text: 'Logout',
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
+    return CustomButton(
+      buttonTextColor: Colors.black,
+      isAppColor: false,
+      text: 'Logout',
       onPressed: () {
-        showDialog(
-            context: context,
-            builder: (_) {
-              return CustomAlertDialog(
-                hasButton: false,
-                header: const Column(
-                  children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextView(
-                      text: 'Are you sure to Log out?',
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    )
-                  ],
-                ),
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CustomButton(
-                      height: 40,
-                      width: 100,
-                      text: 'Cancel',
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    CustomButton(
-                      height: 40,
-                      width: 100,
-                      text: 'Logout',
-                      onPressed: () {
-                        BlocProvider.of<AuthenticationCubit>(context).logout();
-                        Navigator.pushReplacementNamed(
-                            context, Routes.indexPage);
-                      },
-                    ),
-                  ],
-                ),
-              );
-            });
+        _buildConfirmationLogoutModal();
       },
     );
+  }
+
+  Future<dynamic> _buildConfirmationLogoutModal() {
+    return showDialog(
+        context: context,
+        builder: (_) {
+          return CustomAlertDialog(
+            hasButton: false,
+            header: const Column(
+              children: [
+                SizedBox(
+                  height: 15,
+                ),
+                TextView(
+                  text: 'Are you sure to Log out?',
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                SizedBox(
+                  height: 15,
+                )
+              ],
+            ),
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CustomButton(
+                  height: 40,
+                  width: 100,
+                  text: 'Cancel',
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                CustomButton(
+                  height: 40,
+                  width: 100,
+                  text: 'Logout',
+                  onPressed: () {
+                    BlocProvider.of<AuthenticationCubit>(context).logout();
+                    Navigator.pushReplacementNamed(context, Routes.indexPage);
+                  },
+                ),
+              ],
+            ),
+          );
+        });
   }
 }

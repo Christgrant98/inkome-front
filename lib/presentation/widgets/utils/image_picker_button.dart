@@ -40,48 +40,7 @@ class _ImagePickerButtonState extends State<ImagePickerButton> {
         ClipOval(
           child: Stack(
             children: [
-              SizedBox(
-                width: 150,
-                height: 150,
-                child: (_pickedFile != null)
-                    ? InkWell(
-                        onTap: () => showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return BackdropFilter(
-                                filter:
-                                    ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                  child: AlertDialog(
-                                    backgroundColor:
-                                        Colors.black.withOpacity(0.25),
-                                    title: const TextView(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        textAlign: TextAlign.center,
-                                        text: 'Profile Picture'),
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(16),
-                                      ),
-                                    ),
-                                    content: Image.memory(
-                                      _pickedFile!,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                        child: Image.memory(
-                          _pickedFile!,
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    : Image.asset('user_default1.jpg'),
-              ),
+              _buildProfilePicture(context),
               if (isLoading)
                 const Positioned.fill(
                   child: Center(
@@ -97,37 +56,84 @@ class _ImagePickerButtonState extends State<ImagePickerButton> {
             right: 1,
             child: GestureDetector(
               onTap: pickFile,
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(50),
-                  ),
-                  color: const Color(0xFFFF0000),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(2, 4),
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 3,
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  CupertinoIcons.switch_camera,
-                  color: Colors.white,
-                  shadows: [
-                    BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(0, 2),
-                        blurRadius: 5.0)
-                  ],
-                ),
-              ),
+              child: _buildUploadImageButton(),
             ),
           ),
       ],
     );
+  }
+
+  SizedBox _buildProfilePicture(BuildContext context) {
+    return SizedBox(
+      width: 120,
+      height: 120,
+      child: (_pickedFile != null)
+          ? InkWell(
+              onTap: () => _showProfilePicturePreview(context),
+              child: Image.memory(
+                _pickedFile!,
+                fit: BoxFit.cover,
+              ),
+            )
+          : Image.asset('user_default1.jpg'),
+    );
+  }
+
+  Widget _buildUploadImageButton() {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(50),
+        ),
+        color: const Color(0xFFFF0000),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(2, 4),
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 3,
+          ),
+        ],
+      ),
+      child: const Icon(
+        CupertinoIcons.switch_camera,
+        color: Colors.white,
+        shadows: [
+          BoxShadow(color: Colors.black, offset: Offset(0, 2), blurRadius: 5.0)
+        ],
+      ),
+    );
+  }
+
+  Future<dynamic> _showProfilePicturePreview(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: AlertDialog(
+                backgroundColor: Colors.black.withOpacity(0.25),
+                title: const TextView(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    textAlign: TextAlign.center,
+                    text: 'Profile Picture'),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                ),
+                content: Image.memory(
+                  _pickedFile!,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   void pickFile() async {

@@ -35,10 +35,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width ?? MediaQuery.of(context).size.width,
-      height: height ?? 60,
+      height: height ?? 50,
       decoration: BoxDecoration(
-        color: color ??
-            (isAppColor ? Theme.of(context).primaryColor : Colors.transparent),
+        color: color ?? (isAppColor ? Colors.black : Colors.transparent),
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         border: border ?? (isAppColor ? null : Border.all(color: Colors.black)),
       ),
@@ -56,7 +55,7 @@ class CustomButton extends StatelessWidget {
                 text: text,
                 fontWeight: fontWeight ?? FontWeight.w600,
                 fontSize: fontSize ?? 15,
-                color: buttonTextColor ?? Colors.black,
+                color: buttonTextColor ?? Colors.white,
               )
             : Row(
                 children: [

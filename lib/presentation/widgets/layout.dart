@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:inkome_front/logic/cubits/adverts.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
@@ -132,18 +131,18 @@ class Layout extends StatelessWidget {
                                 context, Routes.loginPage);
                           },
                         ),
-                      if (isLogged)
-                        _buildLogActionButton(
-                            isLogged: isLogged,
-                            context: context,
-                            textBtn: 'Log Out',
-                            colorBtn: const Color(0xFFFF0000),
-                            onTap: () {
-                              BlocProvider.of<AuthenticationCubit>(context)
-                                  .logout();
-                              Navigator.pushReplacementNamed(
-                                  context, Routes.indexPage);
-                            }),
+                      // if (isLogged)
+                      //   _buildLogActionButton(
+                      //       isLogged: isLogged,
+                      //       context: context,
+                      //       textBtn: 'Log Out',
+                      //       colorBtn: const Color(0xFFFF0000),
+                      //       onTap: () {
+                      //         BlocProvider.of<AuthenticationCubit>(context)
+                      //             .logout();
+                      //         Navigator.pushReplacementNamed(
+                      //             context, Routes.indexPage);
+                      //       }),
                     ],
                   ),
                 ),
@@ -191,7 +190,7 @@ class Layout extends StatelessWidget {
       padding: EdgeInsets.only(left: 10, right: 10, bottom: !isLogged ? 20 : 0),
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(12.0),
         ),
         color: colorBtn,
         child: ListTile(
