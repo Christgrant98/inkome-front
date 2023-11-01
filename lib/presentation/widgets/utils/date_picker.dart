@@ -40,6 +40,8 @@ class _DatePickerState extends State<DatePickerField> {
   Widget build(BuildContext context) {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
+    InputDecoration defaultDecoration = _buildDefaultDecoration();
+
     return TextFormField(
       readOnly: true,
       // style: GoogleFonts.quicksand(),
@@ -53,40 +55,14 @@ class _DatePickerState extends State<DatePickerField> {
         floatingLabelBehavior: FloatingLabelBehavior.never,
         filled: true,
         fillColor: Colors.white,
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(
-            width: 1,
-            color: Color(0xFFFF0000),
-          ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(
-            width: 1,
-            color: Color(0xFFFF0000),
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(
-            width: 1,
-            color: Color(0xFFFF0000),
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: const BorderSide(
-            width: 1,
-            color: Color(0xFFFF0000),
-          ),
-        ),
+        focusedErrorBorder: defaultDecoration.focusedErrorBorder,
+        errorBorder: defaultDecoration.errorBorder,
+        focusedBorder: defaultDecoration.focusedBorder,
+        enabledBorder: defaultDecoration.enabledBorder,
         labelText: pickedDate == null
             ? t.birthdateLabelLinkText
             : DateFormat('dd-MM-yyyy').format(pickedDate!),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
+        border: defaultDecoration.border,
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -209,5 +185,22 @@ class _DatePickerState extends State<DatePickerField> {
     } else {
       return 0;
     }
+  }
+
+  InputDecoration _buildDefaultDecoration() {
+    OutlineInputBorder defaultBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12.5),
+      borderSide: const BorderSide(
+        width: 0.8,
+        color: Color.fromARGB(255, 218, 218, 218),
+      ),
+    );
+    return InputDecoration(
+      border: defaultBorder,
+      enabledBorder: defaultBorder,
+      focusedBorder: defaultBorder,
+      errorBorder: defaultBorder,
+      focusedErrorBorder: defaultBorder,
+    );
   }
 }
