@@ -44,7 +44,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
               : MainAxisAlignment.spaceBetween,
           selectedIndex: context.watch<NavigationCubit>().state.selectedIndex,
           color: Colors.grey,
-          activeColor: Colors.black,
+          activeColor: Colors.white,
           padding: const EdgeInsets.all(5),
           gap: 8,
           onTabChange: (index) {
@@ -86,7 +86,11 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     );
   }
 
-  void _setSwitcher(BuildContext context, int index, bool isLogged) {
+  void _setSwitcher(
+    BuildContext context,
+    int index,
+    bool isLogged,
+  ) {
     return setState(() {
       context.read<NavigationCubit>().setSelectedIndex(index);
       switch (index) {

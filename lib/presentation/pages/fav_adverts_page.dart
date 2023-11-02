@@ -45,7 +45,7 @@ class FavAdvertsPage extends StatelessWidget {
                   const TextView(
                     fontSize: 20,
                     text: 'Mis anuncios favoritos',
-                    color: Colors.white,
+                    color: Colors.black,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: isLargeScreen ? 20 : 10),
