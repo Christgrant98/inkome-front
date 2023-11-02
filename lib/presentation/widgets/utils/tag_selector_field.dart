@@ -37,7 +37,7 @@ class _TagSelectorFieldState extends State<TagSelectorField> {
                 : 'Selección de tags:',
             border: const OutlineInputBorder(),
             floatingLabelBehavior: FloatingLabelBehavior.never,
-            contentPadding: EdgeInsets.all(10),
+            contentPadding: const EdgeInsets.all(10),
             prefixIcon: const Icon(
               Icons.tag,
               color: Colors.grey,

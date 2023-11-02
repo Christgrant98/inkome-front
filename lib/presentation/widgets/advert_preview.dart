@@ -9,7 +9,6 @@ import 'package:inkome_front/presentation/forms/login_form.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
 import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
-import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
 import 'package:inkome_front/presentation/widgets/utils/fav_icon_container.dart';
 import 'package:inkome_front/presentation/widgets/utils/image_swiper.dart';
 import 'package:inkome_front/presentation/widgets/utils/modal_closed_content.dart';
@@ -50,7 +49,6 @@ class _AdvertPreviewState extends State<AdvertPreview> {
 
   Widget _buildModalOpenedContent(BuildContext context) {
     String? token = context.read<AuthenticationCubit>().state.token;
-    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     double desktopScreen = screenWidth * 0.3;
     double mobileScreen = screenWidth;

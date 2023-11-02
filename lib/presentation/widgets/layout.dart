@@ -47,7 +47,7 @@ class Layout extends StatelessWidget {
                   child: const SizedBox.expand(),
                 ),
                 Drawer(
-                  backgroundColor: Color.fromARGB(255, 240, 240, 240),
+                  backgroundColor: const Color.fromARGB(255, 240, 240, 240),
                   child: Column(
                     children: [
                       Expanded(

@@ -22,7 +22,7 @@ class PhoneFormField extends StatelessWidget {
         fieldValue: initialValue,
         decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
-            contentPadding: EdgeInsets.all(10),
+            contentPadding: const EdgeInsets.all(10),
             prefixIcon: const Icon(
               CupertinoIcons.device_phone_portrait,
               color: Colors.grey,

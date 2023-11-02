@@ -8,7 +8,7 @@ class FavIconContainer extends StatelessWidget {
   final bool isSquare;
 
   const FavIconContainer({
-    Key? key,
+    super.key,
     this.onTap,
     required this.selected,
     this.size = 30,
