@@ -2,22 +2,27 @@ import 'package:flutter/material.dart';
 
 class FavIconContainer extends StatelessWidget {
   final bool selected;
-  final double? height;
-  final double? width;
-  final void Function()? onTap;
 
-  const FavIconContainer(
-      {Key? key, this.height, this.width, this.onTap, required this.selected})
-      : super(key: key);
+  final double? size;
+  final void Function()? onTap;
+  final bool isSquare;
+
+  const FavIconContainer({
+    Key? key,
+    this.onTap,
+    required this.selected,
+    this.size = 30,
+    this.isSquare = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 35,
-      width: width ?? 35,
+      height: size ?? 35,
+      width: size ?? 35,
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(.5),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(!isSquare ? 20 : 5),
       ),
       child: InkWell(
         onTap: onTap,
@@ -31,7 +36,7 @@ class FavIconContainer extends StatelessWidget {
               ),
             ],
             color: selected ? Colors.red : Colors.grey,
-            size: selected ? 25 : 20.5,
+            size: selected ? size! * .75 : size! * .7,
             selected ? Icons.favorite : Icons.favorite_border,
           ),
         ),

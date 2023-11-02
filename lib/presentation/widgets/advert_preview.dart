@@ -16,12 +16,17 @@ import 'package:inkome_front/presentation/widgets/utils/modal_closed_content.dar
 import 'package:inkome_front/presentation/widgets/utils/modal_opened_content.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
-class AdvertPreview extends StatelessWidget {
+class AdvertPreview extends StatefulWidget {
   final double width;
   final Advert advert;
 
   const AdvertPreview({super.key, required this.width, required this.advert});
 
+  @override
+  State<AdvertPreview> createState() => _AdvertPreviewState();
+}
+
+class _AdvertPreviewState extends State<AdvertPreview> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,12 +34,15 @@ class AdvertPreview extends StatelessWidget {
         BaseModal.open(
           context: context,
           children: [
-            _buildModalOpenedContent(context),
+            InkWell(
+              child: _buildModalOpenedContent(context),
+              onTap: () {
+                _showContentBottomSheet(context);
+              },
+            ),
           ],
         );
-        _showContentBottomSheet(
-          context,
-        );
+        _showContentBottomSheet(context);
       },
       child: _buildModalClosedContent(context),
     );
@@ -52,54 +60,70 @@ class AdvertPreview extends StatelessWidget {
       children: [
         Column(
           children: [
-            if (advert.images.length == 1)
+            if (widget.advert.images.length == 1)
               SizedBox(
-                height: screenHeight,
-                width: desiredWidth,
+                height: MediaQuery.of(context).size.height,
                 child: Image.memory(
-                  advert.images.first,
+                  widget.advert.images.first,
                   fit: BoxFit.cover,
-                  height: screenHeight,
                 ),
               ),
-            if (advert.images.length > 1)
+            if (widget.advert.images.length > 1)
               FittedBox(
                 fit: BoxFit.cover,
                 child: SizedBox(
-                  // height: MediaQuery.of(context).size.height,
                   width: desiredWidth,
                   child: ImageSlider(
-                    images: advert.images,
+                    images: widget.advert.images,
                   ),
                 ),
               ),
           ],
         ),
-        Positioned(
-          top: 20,
-          left: 20,
-          child: FavIconContainer(
-            selected: advert.isFav,
+        _buildActionButtonsContentOpened(token, context),
+      ],
+    );
+  }
+
+  Widget _buildActionButtonsContentOpened(
+    String? token,
+    BuildContext context,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          FavIconContainer(
+            size: 40,
+            isSquare: true,
+            selected: widget.advert.isFav,
             onTap: () {
               if (token == null) {
                 showLoginDialog(context);
                 return;
               }
-              context.read<AdvertsCubit>().toggleAdvertFav(advert, token);
+              context
+                  .read<AdvertsCubit>()
+                  .toggleAdvertFav(widget.advert, token);
             },
           ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: CustomButton(
-            borderRadius: 0,
-            text: 'Show details',
-            onPressed: () => _showContentBottomSheet(context),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: const Icon(
+              CupertinoIcons.xmark_square_fill,
+              size: 50,
+              shadows: [
+                BoxShadow(
+                    color: Colors.black, offset: Offset(0, 2), blurRadius: 5.0)
+              ],
+              color: Colors.white,
+            ),
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 
@@ -108,20 +132,20 @@ class AdvertPreview extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       child: Center(
         child: SizedBox(
-          width: width,
+          width: widget.width,
           child: Stack(
             children: [
               AspectRatio(
                 aspectRatio: 9 / 15.5,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: advert.images.isEmpty
+                  child: widget.advert.images.isEmpty
                       ? Image.network(
                           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZNQZI9chyqtlvn6KNfid_ACsf4O-NiKn9Cw&usqp=CAU',
                           fit: BoxFit.cover,
                         )
                       : Image.memory(
-                          advert.images.first,
+                          widget.advert.images.first,
                           fit: BoxFit.cover,
                         ),
                 ),
@@ -130,7 +154,7 @@ class AdvertPreview extends StatelessWidget {
                 top: 5,
                 right: 5,
                 child: FavIconContainer(
-                  selected: advert.isFav,
+                  selected: widget.advert.isFav,
                   onTap: () {
                     String? token =
                         context.read<AuthenticationCubit>().state.token;
@@ -138,7 +162,9 @@ class AdvertPreview extends StatelessWidget {
                       showLoginDialog(context);
                       return;
                     }
-                    context.read<AdvertsCubit>().toggleAdvertFav(advert, token);
+                    context
+                        .read<AdvertsCubit>()
+                        .toggleAdvertFav(widget.advert, token);
                   },
                 ),
               ),
@@ -147,7 +173,7 @@ class AdvertPreview extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: ModalClosedContainerContent(
-                  advert: advert,
+                  advert: widget.advert,
                 ),
               ),
             ],
@@ -157,9 +183,9 @@ class AdvertPreview extends StatelessWidget {
     );
   }
 
-  _showContentBottomSheet(context) => showModalBottomSheet(
+  void _showContentBottomSheet(context) => showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color.fromARGB(0, 255, 255, 255),
         constraints: BoxConstraints(
           maxWidth: MediaQuery.of(context).size.width > 800
               ? MediaQuery.of(context).size.width * 0.33
@@ -168,12 +194,12 @@ class AdvertPreview extends StatelessWidget {
         context: context,
         builder: (context) => SingleChildScrollView(
           child: ModalOpenedContainerContent(
-            advert: advert,
+            advert: widget.advert,
           ),
         ),
       );
 
-  showLoginDialog(context) => showDialog(
+  void showLoginDialog(context) => showDialog(
         context: context,
         builder: (context) {
           Future.delayed(

@@ -27,39 +27,15 @@ class BaseModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: AlertDialog(
-            title: title,
-            content: SingleChildScrollView(
-              child: ListBody(children: children),
-            ),
-            contentPadding: EdgeInsets.zero,
-            insetPadding: const EdgeInsets.all(0),
-            backgroundColor: Colors.transparent,
-          ),
+    return AlertDialog(
+      content: SingleChildScrollView(
+        child: SizedBox(
+          child: ListBody(children: children),
         ),
-        Positioned(
-          top: 20,
-          right: 30,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: const Icon(
-              CupertinoIcons.xmark_square_fill,
-              size: 50,
-              shadows: [
-                BoxShadow(
-                    color: Colors.black, offset: Offset(0, 2), blurRadius: 5.0)
-              ],
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ],
+      ),
+      contentPadding: EdgeInsets.zero,
+      insetPadding: const EdgeInsets.all(0),
+      backgroundColor: Colors.transparent,
     );
   }
 }
