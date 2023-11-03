@@ -106,7 +106,7 @@ class _BaseTextFormField extends State<BaseTextFormField> {
 
   InputDecoration _buildDefaultDecoration() {
     OutlineInputBorder defaultBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.5),
+      borderRadius: BorderRadius.circular(8),
       borderSide: const BorderSide(
         width: 0.8,
         color: Color.fromARGB(255, 218, 218, 218),

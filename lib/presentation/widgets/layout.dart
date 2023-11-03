@@ -262,7 +262,7 @@ class Layout extends StatelessWidget {
     return Card(
       elevation: 1.2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(8),
       ),
       color: const Color.fromARGB(255, 230, 230, 230),
       child: ListTile(
