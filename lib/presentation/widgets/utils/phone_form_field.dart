@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -21,15 +22,20 @@ class PhoneFormField extends StatelessWidget {
     return BaseTextFormField(
         fieldValue: initialValue,
         decoration: InputDecoration(
-            floatingLabelBehavior: FloatingLabelBehavior.never,
-            contentPadding: const EdgeInsets.all(10),
-            prefixIcon: const Icon(
-              CupertinoIcons.device_phone_portrait,
-              color: Colors.grey,
-            ),
-            labelText: t.phonLinkText,
-            filled: true,
-            fillColor: Colors.white),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          contentPadding: const EdgeInsets.all(10),
+          prefixIcon: const Icon(
+            CupertinoIcons.device_phone_portrait,
+            color: Colors.grey,
+          ),
+          labelText: t.phonLinkText,
+          labelStyle: GoogleFonts.quicksand(
+            color: const Color.fromARGB(255, 190, 190, 190),
+            fontSize: 14,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
         keyboardType: TextInputType.phone,
         onChange: onChange,
         onFieldSubmitted: onFieldSubmitted,

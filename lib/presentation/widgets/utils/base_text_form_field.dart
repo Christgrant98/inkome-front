@@ -59,7 +59,7 @@ class _BaseTextFormField extends State<BaseTextFormField> {
     return TextFormField(
       textAlign: widget.textAlign ?? TextAlign.start,
       readOnly: widget.readOnly,
-      style: GoogleFonts.quicksand(),
+      style: GoogleFonts.quicksand(fontSize: 14),
       maxLines: widget.maxLines,
       minLines: widget.minLines,
       controller: _controller,
@@ -114,6 +114,10 @@ class _BaseTextFormField extends State<BaseTextFormField> {
     );
 
     return InputDecoration(
+      labelStyle: GoogleFonts.quicksand(
+        color: const Color.fromARGB(255, 190, 190, 190),
+        fontSize: 14,
+      ),
       contentPadding: const EdgeInsets.all(10),
       border: defaultBorder,
       enabledBorder: defaultBorder,

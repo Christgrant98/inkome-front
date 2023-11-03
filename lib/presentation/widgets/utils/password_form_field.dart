@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'base_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,6 +48,10 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
         labelText: widget.labelText ?? t.passwordLinkText,
         filled: true,
         fillColor: Colors.white,
+        labelStyle: GoogleFonts.quicksand(
+          color: const Color.fromARGB(255, 190, 190, 190),
+          fontSize: 14,
+        ),
       ),
       obscureText: obscureText,
       validator: (String? value) {

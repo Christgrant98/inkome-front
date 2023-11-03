@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'base_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,18 +24,23 @@ class EmailFormField extends StatelessWidget {
     return BaseTextFormField(
       fieldValue: initialValue,
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(10),
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          floatingLabelStyle: const TextStyle(
-            color: Colors.black,
-          ),
-          prefixIcon: const Icon(
-            CupertinoIcons.envelope,
-            color: Colors.grey,
-          ),
-          filled: true,
-          fillColor: Colors.white,
-          labelText: t.emailLinkText),
+        contentPadding: const EdgeInsets.all(10),
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        floatingLabelStyle: const TextStyle(
+          color: Colors.black,
+        ),
+        prefixIcon: const Icon(
+          CupertinoIcons.envelope,
+          color: Colors.grey,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        labelText: t.emailLinkText,
+        labelStyle: GoogleFonts.quicksand(
+          color: const Color.fromARGB(255, 190, 190, 190),
+          fontSize: 14,
+        ),
+      ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return t.emailEmptyErrorMessage;

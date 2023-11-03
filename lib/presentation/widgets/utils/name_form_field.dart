@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -30,6 +31,10 @@ class NameFormField extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           labelText: t.nameLinkText,
+          labelStyle: GoogleFonts.quicksand(
+            color: const Color.fromARGB(255, 190, 190, 190),
+            fontSize: 14,
+          ),
         ),
         onChange: onChange,
         onFieldSubmitted: onFieldSubmitted,

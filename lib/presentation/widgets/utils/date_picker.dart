@@ -53,6 +53,10 @@ class _DatePickerState extends State<DatePickerField> {
           CupertinoIcons.calendar,
           color: Colors.grey,
         ),
+        labelStyle: GoogleFonts.quicksand(
+          color: const Color.fromARGB(255, 190, 190, 190),
+          fontSize: 14,
+        ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         filled: true,
         fillColor: Colors.white,
