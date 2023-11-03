@@ -6,6 +6,8 @@ import '../router/app_router.dart';
 import '../widgets/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../widgets/logo_widget.dart';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -27,11 +29,21 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 15),
-                  SizedBox(
-                    height: 165,
-                    width: 165,
-                    child: Image.asset('sqr_logo.png'),
+                  const TextView(
+                    text: 'Login',
+                    fontSize: 30,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.bold,
                   ),
+                  const SizedBox(height: 15),
+                  const SizedBox(
+                    height: 65,
+                    width: 65,
+                    child: Logo(
+                      type: Type.short,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
                   const LoginForm(),
                   InkWell(
                     onTap: () {
@@ -45,7 +57,7 @@ class LoginPage extends StatelessWidget {
                       child: TextView(
                         text: t.registrationLinkText,
                         decoration: TextDecoration.underline,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),

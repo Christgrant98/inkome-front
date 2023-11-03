@@ -15,7 +15,6 @@ import 'package:inkome_front/presentation/widgets/utils/phone_form_field.dart';
 import 'package:inkome_front/presentation/widgets/utils/snackbar_util.dart';
 import '../../logic/cubits/authentication_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/logo_widget.dart';
 
@@ -69,9 +68,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
       child: Column(
         children: [
           const SizedBox(
-            height: 180,
-            width: 180,
-            child: Logo(type: Type.square),
+            height: 65,
+            width: 65,
+            child: Logo(
+              type: Type.short,
+            ),
           ),
           const SizedBox(height: 20),
           Form(

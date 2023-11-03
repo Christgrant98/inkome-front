@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:inkome_front/logic/cubits/adverts.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
 import 'package:inkome_front/logic/cubits/navigation.dart';
@@ -56,7 +55,7 @@ class Layout extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               right: 10, bottom: 10, left: 10, top: 30),
                           children: [
-                            _buildDrawerHeader(),
+                            _buildDrawerHeader(context),
                             _buildMenuOption(
                               context: context,
                               title: 'home',
@@ -166,14 +165,19 @@ class Layout extends StatelessWidget {
     );
   }
 
-  Padding _buildDrawerHeader() {
-    return const Padding(
-      padding: EdgeInsets.only(bottom: 30),
-      child: DrawerHeader(
-        decoration: BoxDecoration(
-          color: Colors.transparent,
+  Widget _buildDrawerHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          dividerTheme: const DividerThemeData(color: Colors.transparent),
         ),
-        child: Logo(type: Type.white),
+        child: const DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+          ),
+          child: Logo(type: Type.white),
+        ),
       ),
     );
   }

@@ -63,7 +63,7 @@ class _LoginFormState extends State<LoginForm> {
               const SizedBox(
                 height: 25,
               ),
-              if (_canBuildSubmitButton()) _buildSubmitButton(),
+              _buildSubmitButton(),
               const SizedBox(height: 15)
             ],
           ),
@@ -85,7 +85,10 @@ class _LoginFormState extends State<LoginForm> {
           return const CustomIndicatorProgress();
         } else {
           return CustomButton(
-              text: t.logInButtonLinkText, onPressed: _submitForm);
+            color: _canBuildSubmitButton() ? null : Colors.grey[300],
+            text: t.logInButtonLinkText,
+            onPressed: _canBuildSubmitButton() ? _submitForm : null,
+          );
         }
       },
     );

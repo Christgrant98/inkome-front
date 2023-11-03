@@ -4,6 +4,7 @@ enum Type {
   square,
   rect,
   white,
+  short,
 }
 
 class Logo extends StatelessWidget {
@@ -42,6 +43,16 @@ class Logo extends StatelessWidget {
           fit: BoxFit.cover,
           child: Image.asset(
             'assets/rect_white_logo.png',
+          ),
+        );
+      case Type.short:
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: FittedBox(
+            fit: BoxFit.cover,
+            child: Image.asset(
+              'assets/k_logo.png',
+            ),
           ),
         );
     }
