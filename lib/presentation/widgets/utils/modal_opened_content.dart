@@ -39,42 +39,40 @@ class _ModalOpenedContainerContentState
     return Container(
       height: !_isExpanded
           ? MediaQuery.of(context).size.height * .2
-          : MediaQuery.of(context).size.height * .4,
+          : MediaQuery.of(context).size.height * .425,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(50),
-          topRight: Radius.circular(50),
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
         ),
         color: Colors.white,
       ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Column(
+      child: Column(
+        children: [
+          Expanded(
+            child: Column(
               children: [
-                Divider(
-                  indent: 160,
-                  endIndent: 160,
-                  color: _isExpanded ? Colors.black : Colors.transparent,
-                  thickness: 4,
-                ),
                 Row(
                   children: [
                     Expanded(
-                      child: _buildHeader(),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: _buildHeader(),
+                      ),
                     ),
                     IconButton(
                         onPressed: () => setState(() {
                               _isExpanded = !_isExpanded;
                             }),
-                        icon: Icon(_isExpanded
-                            ? Icons.arrow_drop_down_rounded
-                            : Icons.arrow_drop_up_rounded))
+                        icon: Icon(
+                          _isExpanded
+                              ? Icons.arrow_drop_down_rounded
+                              : Icons.arrow_drop_up_rounded,
+                          size: 30,
+                        ))
                   ],
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                const SizedBox(height: 5),
                 const Divider(
                   indent: 25,
                   endIndent: 25,
@@ -84,22 +82,22 @@ class _ModalOpenedContainerContentState
                 if (_isExpanded) _buildExpandedContent(isLargeScreen),
               ],
             ),
-            const SizedBox(height: 15),
-            CustomButton(
-              text: formatPhoneNumber(widget.advert.phoneNumber),
-              borderRadius: 15,
-              fontSize: 20,
-              height: 55,
-              width: 250,
-              onPressed: () async {
-                await _performCallEvent(context);
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 15),
+          CustomButton(
+            text: formatPhoneNumber(widget.advert.phoneNumber),
+            borderRadius: 15,
+            fontSize: 20,
+            height: 55,
+            width: 250,
+            onPressed: () async {
+              await _performCallEvent(context);
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+        ],
       ),
     );
   }
@@ -109,7 +107,10 @@ class _ModalOpenedContainerContentState
       children: [
         if (widget.advert.adTags != null && widget.advert.adTags!.isNotEmpty)
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
             child: Wrap(
               spacing: 8,
               runSpacing: isLargeScreen ? 8 : -2.5,
@@ -177,7 +178,11 @@ class _ModalOpenedContainerContentState
             fontWeight: FontWeight.bold,
             color: Colors.black,
             fontSize: 12),
-        const TextView(text: '24 horas', color: Colors.black, fontSize: 12),
+        const TextView(
+          text: '24 horas',
+          color: Colors.black,
+          fontSize: 12,
+        ),
       ],
     );
   }

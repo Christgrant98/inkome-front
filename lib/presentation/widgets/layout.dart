@@ -336,7 +336,7 @@ class Layout extends StatelessWidget {
         ),
         !isLogged
             ? Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: IconButton(
                   onPressed: () {
                     !isLogged
@@ -348,7 +348,7 @@ class Layout extends StatelessWidget {
                   icon: const Icon(
                     CupertinoIcons.person_crop_circle,
                     size: 25,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               )

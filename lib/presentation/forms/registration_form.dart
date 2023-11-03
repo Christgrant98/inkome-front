@@ -67,14 +67,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
       },
       child: Column(
         children: [
-          const SizedBox(
-            height: 65,
-            width: 65,
-            child: Logo(
-              type: Type.short,
-            ),
-          ),
-          const SizedBox(height: 20),
           Form(
             key: _formKey,
             child: Column(
@@ -142,13 +134,21 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 const SizedBox(
                   height: 15,
                 ),
-                if (_canBuildSubmitButton()) _buildSubmitButton(),
+                _buildSubmitButton(),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _setAge(int value) {
+    setState(() => age = value);
+  }
+
+  void _setBirthdate(DateTime selectedBirthdate) {
+    setState(() => birthdate = selectedBirthdate);
   }
 
   bool _canBuildSubmitButton() {
@@ -160,14 +160,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
         email != null;
   }
 
-  void _setAge(int value) {
-    setState(() => age = value);
-  }
-
-  void _setBirthdate(DateTime selectedBirthdate) {
-    setState(() => birthdate = selectedBirthdate);
-  }
-
   Widget _buildSubmitButton() {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
@@ -177,7 +169,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
           return const CustomIndicatorProgress();
         } else {
           return CustomButton(
-              text: t.createUserButtonLinkText, onPressed: _submitForm);
+            color: _canBuildSubmitButton() ? null : Colors.grey[300],
+            text: t.createUserButtonLinkText,
+            onPressed: _canBuildSubmitButton() ? _submitForm : null,
+          );
         }
       },
     );

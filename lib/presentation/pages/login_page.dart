@@ -29,44 +29,65 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 15),
-                  const TextView(
-                    text: 'Login',
-                    fontSize: 30,
-                    textAlign: TextAlign.center,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  _buildtitle('Login'),
                   const SizedBox(height: 15),
-                  const SizedBox(
-                    height: 65,
-                    width: 65,
-                    child: Logo(
-                      type: Type.short,
-                    ),
-                  ),
+                  _buildLogo(),
                   const SizedBox(height: 30),
                   const LoginForm(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        Routes.registrationPage,
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: TextView(
-                        text: t.registrationLinkText,
-                        decoration: TextDecoration.underline,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
+                  _askForSignUpText(context, t),
                 ],
               ),
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildtitle(String title) {
+    return TextView(
+      text: title,
+      fontSize: 30,
+      textAlign: TextAlign.center,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  Widget _buildLogo() {
+    return const SizedBox(
+      height: 65,
+      width: 65,
+      child: Logo(
+        type: Type.short,
+      ),
+    );
+  }
+
+  Widget _askForSignUpText(
+    BuildContext context,
+    AppLocalizations t,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const TextView(
+            fontSize: 13,
+            fontWeight: FontWeight.w300,
+            color: Colors.black,
+            text: '¿No tienes una cuenta?'),
+        // SizedBox(height: 15),
+        TextButton(
+          onPressed: () =>
+              Navigator.pushReplacementNamed(context, Routes.registrationPage),
+          child: const TextView(
+            fontSize: 14,
+            decoration: TextDecoration.underline,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            text: 'Registrate',
+          ),
+        ),
+      ],
     );
   }
 }
