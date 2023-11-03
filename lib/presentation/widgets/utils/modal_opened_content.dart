@@ -224,17 +224,22 @@ class _ModalOpenedContainerContentState
           return StatefulBuilder(
             builder: (context, setState) {
               return const ModalView(
-                content: TextView(
-                  text: 'Número de teléfono copiado',
-                  textAlign: TextAlign.center,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                content: TextView(
-                  fontSize: 13.5,
-                  text: 'El número de teléfono se ha copiado al portapapeles.',
-                  color: Colors.white,
+                content: Column(
+                  children: [
+                    TextView(
+                      text: 'Número de teléfono copiado',
+                      textAlign: TextAlign.center,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    TextView(
+                      fontSize: 13.5,
+                      text:
+                          'El número de teléfono se ha copiado al portapapeles.',
+                      color: Colors.white,
+                    ),
+                  ],
                 ),
               );
             },

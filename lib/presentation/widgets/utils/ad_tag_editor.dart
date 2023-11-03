@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:inkome_front/presentation/widgets/utils/modal_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
 import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
@@ -111,7 +111,7 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
       context: context,
       builder: (context) {
         String newTag = '';
-        return BaseModal(
+        return ModalView(
           content: Column(
             children: [
               const TextView(

@@ -40,21 +40,23 @@ class ModalView extends StatelessWidget {
       onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: FractionallySizedBox(
-        widthFactor: widthFactor,
-        heightFactor: heightFactor,
-        child: Container(
-          padding: EdgeInsets.all(paddingValue!),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadius!),
-            border: Border.all(color: Colors.black),
-            color: Colors.white,
-          ),
-          child: Column(
-            children: [
-              if (content != null) Expanded(child: content!),
-              if (buildFooter != null) buildFooter!(),
-            ],
+      child: Material(
+        child: FractionallySizedBox(
+          widthFactor: widthFactor,
+          heightFactor: heightFactor,
+          child: Container(
+            padding: EdgeInsets.all(paddingValue!),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadius!),
+              border: Border.all(color: Colors.black),
+              color: Colors.white,
+            ),
+            child: Column(
+              children: [
+                if (content != null) Expanded(child: content!),
+                if (buildFooter != null) buildFooter!(),
+              ],
+            ),
           ),
         ),
       ),

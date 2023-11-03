@@ -5,7 +5,7 @@ import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
 import 'package:inkome_front/logic/states/adverts.dart';
 import 'package:inkome_front/logic/states/authentication.dart';
 import 'package:inkome_front/presentation/widgets/utils/ad_tag_editor.dart';
-import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:inkome_front/presentation/widgets/utils/modal_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
 import 'package:inkome_front/presentation/widgets/utils/description_form.dart';
 import 'package:inkome_front/presentation/widgets/utils/name_form_field.dart';
@@ -177,21 +177,24 @@ class _AdvertForm extends State<AdvertForm> {
       context: context,
       builder: (BuildContext modalContext) => BlocProvider.value(
         value: context.read<AdvertsCubit>(),
-        child: CustomAlertDialog(
-          hasButton: false,
-          header: SizedBox(
+        child: ModalView(
+          content: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             child: const PricingView(),
           ),
-          content: CustomButton(
-            onPressed: () {
-              Navigator.of(modalContext).pop();
-              _submitForm();
-            },
-            text: 'Submit advert',
-          ),
+          buildFooter: () => _buidFooterModal(modalContext),
         ),
       ),
+    );
+  }
+
+  Widget _buidFooterModal(BuildContext modalContext) {
+    return CustomButton(
+      onPressed: () {
+        Navigator.of(modalContext).pop();
+        _submitForm();
+      },
+      text: 'Submit advert',
     );
   }
 

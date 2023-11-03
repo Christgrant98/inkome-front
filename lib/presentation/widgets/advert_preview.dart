@@ -7,7 +7,7 @@ import 'package:inkome_front/logic/cubits/adverts.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
 import 'package:inkome_front/presentation/forms/login_form.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
-import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:inkome_front/presentation/widgets/utils/modal_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
 import 'package:inkome_front/presentation/widgets/utils/fav_icon_container.dart';
 import 'package:inkome_front/presentation/widgets/utils/image_swiper.dart';
@@ -30,16 +30,18 @@ class _AdvertPreviewState extends State<AdvertPreview> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        BaseModal(
-          content: InkWell(
-            child: _buildModalOpenedContent(context),
-            onTap: () {
-              _showContentBottomSheet(context);
-            },
-          ),
+        BaseModal.open(
+          context: context,
+          children: [
+            InkWell(
+              child: _buildModalOpenedContent(context),
+              onTap: () {
+                _showContentBottomSheet(context);
+              },
+            ),
+          ],
         );
         _showContentBottomSheet(context);
-        _buildModalOpenedContent(context);
       },
       child: _buildModalClosedContent(context),
     );
@@ -197,9 +199,8 @@ class _AdvertPreviewState extends State<AdvertPreview> {
               Navigator.of(context).pop();
             },
           );
-          return CustomAlertDialog(
-            hasButton: false,
-            header: Column(
+          return ModalView(
+            content: Column(
               children: [
                 Align(
                   alignment: Alignment.topRight,
@@ -235,42 +236,42 @@ class _AdvertPreviewState extends State<AdvertPreview> {
                   width: 140,
                   child: Image.asset('sqr_logo.png'),
                 ),
-              ],
-            ),
-            content: SizedBox(
-              height: 240,
-              width: 400,
-              child: ListView(
-                children: [
-                  Column(
+                SizedBox(
+                  height: 240,
+                  width: 400,
+                  child: ListView(
                     children: [
-                      const LoginForm(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Column(
                         children: [
-                          const TextView(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.white,
-                              text: '¿No tienes una cuenta?'),
-                          // SizedBox(height: 15),
-                          TextButton(
-                            onPressed: () => Navigator.pushReplacementNamed(
-                                context, Routes.registrationPage),
-                            child: const TextView(
-                              fontSize: 14,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              text: 'Registrate',
-                            ),
-                          ),
+                          const LoginForm(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const TextView(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white,
+                                  text: '¿No tienes una cuenta?'),
+                              // SizedBox(height: 15),
+                              TextButton(
+                                onPressed: () => Navigator.pushReplacementNamed(
+                                    context, Routes.registrationPage),
+                                child: const TextView(
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  text: 'Registrate',
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       )
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           );
         },

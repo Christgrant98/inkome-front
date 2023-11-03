@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inkome_front/presentation/forms/add_payment_method.dart';
 import 'package:inkome_front/presentation/widgets/layout.dart';
-import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:inkome_front/presentation/widgets/utils/modal_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class WalletPage extends StatelessWidget {
@@ -88,16 +88,20 @@ class WalletPage extends StatelessWidget {
                                   ),
                                   body: const Center(child: AddPaymentForm()));
                             } else {
-                              return const CustomAlertDialog(
-                                  header: Center(
-                                    child: TextView(
-                                      color: Colors.white,
-                                      text: 'Añadir método de pago',
-                                      fontWeight: FontWeight.bold,
+                              return const ModalView(
+                                content: Column(
+                                  children: [
+                                    Center(
+                                      child: TextView(
+                                        color: Colors.white,
+                                        text: 'Añadir método de pago',
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                  hasButton: false,
-                                  content: AddPaymentForm());
+                                    AddPaymentForm(),
+                                  ],
+                                ),
+                              );
                             }
                           },
                         ),
@@ -134,16 +138,20 @@ class WalletPage extends StatelessWidget {
                                       body: const Center(
                                           child: AddPaymentForm()));
                                 } else {
-                                  return const CustomAlertDialog(
-                                      header: Center(
-                                        child: TextView(
-                                          color: Colors.white,
-                                          text: 'Añadir método de pago',
-                                          fontWeight: FontWeight.bold,
+                                  return const ModalView(
+                                    content: Column(
+                                      children: [
+                                        Center(
+                                          child: TextView(
+                                            color: Colors.white,
+                                            text: 'Añadir método de pago',
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      hasButton: false,
-                                      content: AddPaymentForm());
+                                        AddPaymentForm(),
+                                      ],
+                                    ),
+                                  );
                                 }
                               },
                             );
