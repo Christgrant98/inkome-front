@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
 import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
@@ -61,31 +62,7 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
         SizedBox(
           height: _tags.isNotEmpty ? 15 : 0,
         ),
-        Wrap(
-          spacing: 8,
-          runSpacing: 2,
-          children: _tags.map((tag) {
-            return Chip(
-              backgroundColor: Colors.black,
-              label: TextView(
-                text: tag,
-                color: Colors.white,
-                fontWeight: FontWeight.w300,
-              ),
-              deleteIcon: const CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  CupertinoIcons.xmark,
-                  color: Colors.black,
-                  size: 11,
-                ),
-              ),
-              onDeleted: () {
-                _removeTag(tag);
-              },
-            );
-          }).toList(),
-        ),
+        _buildChipView(),
         SizedBox(
           height: _tags.isNotEmpty ? 15 : 0,
         ),
@@ -101,46 +78,79 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
     );
   }
 
+  Widget _buildChipView() {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 2,
+      children: _tags.map((tag) {
+        return Chip(
+          backgroundColor: Colors.black,
+          label: TextView(
+            text: tag,
+            color: Colors.white,
+            fontWeight: FontWeight.w300,
+          ),
+          deleteIcon: const CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(
+              CupertinoIcons.xmark,
+              color: Colors.black,
+              size: 11,
+            ),
+          ),
+          onDeleted: () {
+            _removeTag(tag);
+          },
+        );
+      }).toList(),
+    );
+  }
+
   void _showAddTagDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
         String newTag = '';
-        return CustomAlertDialog(
-          hasButton: false,
-          header: const TextView(
-            text: 'Agregar Tag',
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontWeight: FontWeight.bold,
+        return BaseModal(
+          content: Column(
+            children: [
+              const TextView(
+                text: 'Agregar Tag',
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              BaseTextFormField(
+                onChange: (value, _) {
+                  newTag = value!;
+                },
+                decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.all(10),
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    prefixIcon: Icon(
+                      CupertinoIcons.tag_circle,
+                      color: Colors.grey,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    labelText: '# type a tag'),
+              ),
+            ],
           ),
-          content: BaseTextFormField(
-            onChange: (value, _) {
-              newTag = value!;
-            },
-            decoration: const InputDecoration(
-                contentPadding: EdgeInsets.all(10),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                prefixIcon: Icon(
-                  CupertinoIcons.tag_circle,
-                  color: Colors.grey,
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                labelText: '# type a tag'),
-          ),
-          actions: [
-            CustomButton(
-              onPressed: () {
-                if (newTag.isNotEmpty) {
-                  _addTag(newTag);
-                }
-                Navigator.pop(context);
-              },
-              text: 'Agregar',
-            ),
-          ],
+          buildFooter: () => _buildFooter(newTag, context),
         );
       },
+    );
+  }
+
+  CustomButton _buildFooter(String newTag, BuildContext context) {
+    return CustomButton(
+      onPressed: () {
+        if (newTag.isNotEmpty) {
+          _addTag(newTag);
+        }
+        Navigator.pop(context);
+      },
+      text: 'Agregar',
     );
   }
 }

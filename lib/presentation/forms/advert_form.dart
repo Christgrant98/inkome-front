@@ -138,7 +138,7 @@ class _AdvertForm extends State<AdvertForm> {
                 height: 10,
               ),
               const SizedBox(height: 10),
-              if (_canShowSubmitButton()) _buildSubmitButton(),
+              _buildSubmitButton(),
               const SizedBox(
                 height: 10,
               ),
@@ -149,7 +149,7 @@ class _AdvertForm extends State<AdvertForm> {
     );
   }
 
-  bool _canShowSubmitButton() {
+  bool _canBuildSubmitButton() {
     return name != null &&
         age != null &&
         phoneNumber != null &&
@@ -162,8 +162,9 @@ class _AdvertForm extends State<AdvertForm> {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
     return CustomButton(
+      color: _canBuildSubmitButton() ? null : Colors.grey[300],
       text: t.sendButtonLinkText,
-      onPressed: _showPricingDialog,
+      onPressed: _canBuildSubmitButton() ? _showPricingDialog : null,
     );
   }
 

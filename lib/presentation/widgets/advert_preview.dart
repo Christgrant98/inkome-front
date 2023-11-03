@@ -30,18 +30,16 @@ class _AdvertPreviewState extends State<AdvertPreview> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        BaseModal.open(
-          context: context,
-          children: [
-            InkWell(
-              child: _buildModalOpenedContent(context),
-              onTap: () {
-                _showContentBottomSheet(context);
-              },
-            ),
-          ],
+        BaseModal(
+          content: InkWell(
+            child: _buildModalOpenedContent(context),
+            onTap: () {
+              _showContentBottomSheet(context);
+            },
+          ),
         );
         _showContentBottomSheet(context);
+        _buildModalOpenedContent(context);
       },
       child: _buildModalClosedContent(context),
     );

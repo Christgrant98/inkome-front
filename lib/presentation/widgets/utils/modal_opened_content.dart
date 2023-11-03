@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:inkome_front/presentation/widgets/utils/custom_bottom_modal.dart';
 import 'package:marquee_text/marquee_text.dart';
 import 'package:inkome_front/data/models/advert.dart';
-import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
+import 'package:inkome_front/presentation/widgets/utils/modal_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -206,7 +206,10 @@ class _ModalOpenedContainerContentState
       }
     } else {
       Clipboard.setData(
-          ClipboardData(text: formatPhoneNumber(widget.advert.phoneNumber)));
+        ClipboardData(
+          text: formatPhoneNumber(widget.advert.phoneNumber),
+        ),
+      );
       showCopiedNumber(context);
     }
   }
@@ -220,8 +223,8 @@ class _ModalOpenedContainerContentState
 
           return StatefulBuilder(
             builder: (context, setState) {
-              return const CustomAlertDialog(
-                header: TextView(
+              return const ModalView(
+                content: TextView(
                   text: 'Número de teléfono copiado',
                   textAlign: TextAlign.center,
                   fontSize: 18,
@@ -233,7 +236,6 @@ class _ModalOpenedContainerContentState
                   text: 'El número de teléfono se ha copiado al portapapeles.',
                   color: Colors.white,
                 ),
-                hasButton: false,
               );
             },
           );
