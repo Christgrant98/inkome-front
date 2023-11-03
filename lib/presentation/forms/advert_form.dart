@@ -178,11 +178,14 @@ class _AdvertForm extends State<AdvertForm> {
       builder: (BuildContext modalContext) => BlocProvider.value(
         value: context.read<AdvertsCubit>(),
         child: ModalView(
-          content: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: const PricingView(),
+          heightFactor: .5,
+          widthFactor: .5,
+          content: Column(
+            children: [
+              const PricingView(),
+              _buidFooterModal(modalContext),
+            ],
           ),
-          buildFooter: () => _buidFooterModal(modalContext),
         ),
       ),
     );

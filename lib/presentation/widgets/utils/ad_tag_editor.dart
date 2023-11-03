@@ -112,13 +112,17 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
       builder: (context) {
         String newTag = '';
         return ModalView(
+          heightFactor: .3,
+          widthFactor: .9,
           content: Column(
             children: [
               const TextView(
                 text: 'Agregar Tag',
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
               ),
+              const Spacer(),
               BaseTextFormField(
                 onChange: (value, _) {
                   newTag = value!;
@@ -134,23 +138,20 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
                     fillColor: Colors.white,
                     labelText: '# type a tag'),
               ),
+              const Spacer(),
+              CustomButton(
+                onPressed: () {
+                  if (newTag.isNotEmpty) {
+                    _addTag(newTag);
+                  }
+                  Navigator.pop(context);
+                },
+                text: 'Agregar',
+              ),
             ],
           ),
-          buildFooter: () => _buildFooter(newTag, context),
         );
       },
-    );
-  }
-
-  CustomButton _buildFooter(String newTag, BuildContext context) {
-    return CustomButton(
-      onPressed: () {
-        if (newTag.isNotEmpty) {
-          _addTag(newTag);
-        }
-        Navigator.pop(context);
-      },
-      text: 'Agregar',
     );
   }
 }
