@@ -172,9 +172,7 @@ class Layout extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Colors.transparent,
         ),
-        child: SvgPicture.asset(
-          'assets/Logo blanco.svg',
-        ),
+        child: Image.asset('assets/sqr_logo.png'),
       ),
     );
   }

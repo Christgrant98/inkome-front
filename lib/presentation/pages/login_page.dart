@@ -30,9 +30,7 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: 165,
                     width: 165,
-                    child: SvgPicture.asset(
-                      'assets/Logo blanco.svg',
-                    ),
+                    child: Image.asset('sqr_logo.png'),
                   ),
                   const LoginForm(),
                   InkWell(

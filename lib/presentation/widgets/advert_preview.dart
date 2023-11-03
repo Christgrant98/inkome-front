@@ -242,9 +242,7 @@ class _AdvertPreviewState extends State<AdvertPreview> {
                 SizedBox(
                   // height: 140,
                   width: 140,
-                  child: SvgPicture.asset(
-                    'assets/Logo blanco.svg',
-                  ),
+                  child: Image.asset('sqr_logo.png'),
                 ),
               ],
             ),

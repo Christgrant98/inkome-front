@@ -69,9 +69,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
           SizedBox(
             height: 175,
             width: 175,
-            child: SvgPicture.asset(
-              'assets/Logo blanco.svg',
-            ),
+            child: Image.asset('sqr_logo.png'),
           ),
           Form(
             key: _formKey,
