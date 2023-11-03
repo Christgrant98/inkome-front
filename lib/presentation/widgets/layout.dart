@@ -8,6 +8,7 @@ import 'package:inkome_front/logic/cubits/adverts.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
 import 'package:inkome_front/logic/cubits/navigation.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
+import 'package:inkome_front/presentation/widgets/logo_widget.dart';
 import 'package:inkome_front/presentation/widgets/utils/advert_search_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:inkome_front/presentation/widgets/utils/bottom_sheet_menu.dart';
@@ -166,13 +167,13 @@ class Layout extends StatelessWidget {
   }
 
   Padding _buildDrawerHeader() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 30),
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 30),
       child: DrawerHeader(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.transparent,
         ),
-        child: Image.asset('assets/sqr_logo.png'),
+        child: Logo(type: Type.white),
       ),
     );
   }
