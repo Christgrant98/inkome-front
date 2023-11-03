@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:inkome_front/presentation/widgets/utils/custom_bottom_modal.dart';
 import 'package:marquee_text/marquee_text.dart';
 import 'package:inkome_front/data/models/advert.dart';
 import 'package:inkome_front/presentation/widgets/utils/alert_dialog_custom.dart';
@@ -34,71 +35,74 @@ class _ModalOpenedContainerContentState
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     bool isLargeScreen = screenWidth > 800;
-    return Container(
-      height: !_isExpanded
-          ? MediaQuery.of(context).size.height * .2
-          : MediaQuery.of(context).size.height * .425,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CustomBottonModal(
+          height: !_isExpanded
+              ? screenHeight * .2
+              : widget.advert.adTags != null && widget.advert.adTags!.isNotEmpty
+                  ? screenHeight * .425
+                  : screenHeight * .325,
+          content: _buildBody(isLargeScreen, context),
         ),
-        color: Colors.white,
-      ),
-      child: Column(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 15),
-                        child: _buildHeader(),
-                      ),
+      ],
+    );
+  }
+
+  Widget _buildBody(bool isLargeScreen, BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: _buildHeader(),
                     ),
-                    IconButton(
-                        onPressed: () => setState(() {
-                              _isExpanded = !_isExpanded;
-                            }),
-                        icon: Icon(
-                          _isExpanded
-                              ? Icons.arrow_drop_down_rounded
-                              : Icons.arrow_drop_up_rounded,
-                          size: 30,
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 5),
-                const Divider(
-                  indent: 25,
-                  endIndent: 25,
-                  color: Colors.black,
-                  thickness: 0.7,
-                ),
-                if (_isExpanded) _buildExpandedContent(isLargeScreen),
-              ],
-            ),
+                  ),
+                  IconButton(
+                      onPressed: () => setState(() {
+                            _isExpanded = !_isExpanded;
+                          }),
+                      icon: Icon(
+                        _isExpanded
+                            ? Icons.arrow_drop_down_rounded
+                            : Icons.arrow_drop_up_rounded,
+                        size: 30,
+                      ))
+                ],
+              ),
+              const SizedBox(height: 5),
+              const Divider(
+                indent: 25,
+                endIndent: 25,
+                color: Colors.black,
+                thickness: 0.7,
+              ),
+              if (_isExpanded) _buildExpandedContent(isLargeScreen),
+            ],
           ),
-          const SizedBox(height: 15),
-          CustomButton(
-            text: formatPhoneNumber(widget.advert.phoneNumber),
-            borderRadius: 15,
-            fontSize: 20,
-            height: 55,
-            width: 250,
-            onPressed: () async {
-              await _performCallEvent(context);
-            },
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 15),
+        CustomButton(
+          text: formatPhoneNumber(widget.advert.phoneNumber),
+          borderRadius: 15,
+          fontSize: 20,
+          height: 55,
+          width: 250,
+          onPressed: () async {
+            await _performCallEvent(context);
+          },
+        ),
+        const SizedBox(height: 20),
+      ],
     );
   }
 

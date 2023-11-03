@@ -183,17 +183,10 @@ class _AdvertPreviewState extends State<AdvertPreview> {
 
   void _showContentBottomSheet(context) => showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: const Color.fromARGB(0, 255, 255, 255),
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width > 800
-              ? MediaQuery.of(context).size.width * 0.33
-              : MediaQuery.of(context).size.width,
-        ),
+        backgroundColor: Colors.transparent,
         context: context,
-        builder: (context) => SingleChildScrollView(
-          child: ModalOpenedContainerContent(
-            advert: widget.advert,
-          ),
+        builder: (context) => ModalOpenedContainerContent(
+          advert: widget.advert,
         ),
       );
 
