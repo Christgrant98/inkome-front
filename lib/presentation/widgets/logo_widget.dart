@@ -19,7 +19,7 @@ class Logo extends StatelessWidget {
     switch (type) {
       case Type.square:
         return ClipRRect(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(25),
           child: FittedBox(
             fit: BoxFit.cover,
             child: Image.asset(
@@ -38,13 +38,10 @@ class Logo extends StatelessWidget {
           ),
         );
       case Type.white:
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: FittedBox(
-            fit: BoxFit.cover,
-            child: Image.asset(
-              'assets/rect_white_logo.png',
-            ),
+        return FittedBox(
+          fit: BoxFit.cover,
+          child: Image.asset(
+            'assets/rect_white_logo.png',
           ),
         );
     }

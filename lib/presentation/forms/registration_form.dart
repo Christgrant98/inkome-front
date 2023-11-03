@@ -17,6 +17,8 @@ import '../../logic/cubits/authentication_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../widgets/logo_widget.dart';
+
 class RegistrationForm extends StatefulWidget {
   const RegistrationForm({Key? key}) : super(key: key);
 
@@ -66,18 +68,17 @@ class _RegistrationFormState extends State<RegistrationForm> {
       },
       child: Column(
         children: [
-          SizedBox(
-            height: 175,
-            width: 175,
-            child: Image.asset('sqr_logo.png'),
+          const SizedBox(
+            height: 180,
+            width: 180,
+            child: Logo(type: Type.square),
           ),
+          const SizedBox(height: 20),
           Form(
             key: _formKey,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 NameFormField(
                   onFieldSubmitted: (_) => _submitForm(),
                   onChange: (String? value, bool valid) {
