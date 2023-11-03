@@ -41,7 +41,7 @@ class _ModalOpenedContainerContentState
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CustomBottonModal(
+        CustomBottomModal(
           height: !_isExpanded
               ? screenHeight * .2
               : widget.advert.adTags != null && widget.advert.adTags!.isNotEmpty

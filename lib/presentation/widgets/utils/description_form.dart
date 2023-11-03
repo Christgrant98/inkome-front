@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,17 +28,22 @@ class DescriptionFormField extends StatelessWidget {
       maxLines: maxLines,
       minLines: maxLines,
       decoration: InputDecoration(
-          prefixIcon: const Icon(
-            CupertinoIcons.doc_person,
-            color: Colors.grey,
-          ),
-          border: const OutlineInputBorder(),
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-          filled: true,
-          fillColor: Colors.white,
-          hintText: t.descriptionLabelLinkText),
+        prefixIcon: const Icon(
+          CupertinoIcons.doc_person,
+          color: Colors.grey,
+        ),
+        border: const OutlineInputBorder(),
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        filled: true,
+        fillColor: Colors.white,
+        hintText: t.descriptionLabelLinkText,
+        labelStyle: GoogleFonts.quicksand(
+          color: const Color.fromARGB(255, 190, 190, 190),
+          fontSize: 14,
+        ),
+      ),
       inputFormatters: maxLength == null
           ? null
           : <TextInputFormatter>[LengthLimitingTextInputFormatter(maxLength)],

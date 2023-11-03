@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomBottonModal extends StatelessWidget {
+class CustomBottomModal extends StatelessWidget {
   final double height;
   final Widget content;
-  const CustomBottonModal({
+  const CustomBottomModal({
     super.key,
     required this.content,
     required this.height,

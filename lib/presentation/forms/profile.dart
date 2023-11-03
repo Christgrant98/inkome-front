@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
@@ -16,6 +17,8 @@ import '../../data/models/user.dart';
 import '../../logic/cubits/authentication_cubit.dart';
 import '../../logic/states/authentication.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../widgets/utils/custom_bottom_modal.dart';
 
 class ProfileForm extends StatefulWidget {
   const ProfileForm({super.key});
@@ -198,52 +201,57 @@ class _ProfileForm extends State<ProfileForm> {
   }
 
   Future<dynamic> _buildConfirmationLogoutModal() {
-    return showDialog(
-        context: context,
-        builder: (_) {
-          return CustomAlertDialog(
-            hasButton: false,
-            header: const Column(
+    return showModalBottomSheet(
+      barrierColor: Colors.black87,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (_) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: CustomBottomModal(
+            height: 200,
+            content: Column(
               children: [
-                SizedBox(
-                  height: 15,
-                ),
-                TextView(
-                  text: 'Are you sure to Log out?',
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(
-                  height: 15,
-                )
-              ],
-            ),
-            content: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomButton(
-                  height: 40,
-                  width: 100,
-                  text: 'Cancel',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
                 const SizedBox(
-                  width: 10,
+                  height: 15,
                 ),
-                CustomButton(
-                  height: 40,
-                  width: 100,
-                  text: 'Logout',
-                  onPressed: () {
-                    BlocProvider.of<AuthenticationCubit>(context).logout();
-                    Navigator.pushReplacementNamed(context, Routes.indexPage);
-                  },
+                const TextView(
+                  text: 'Are you sure to Log out?',
+                  color: Colors.red,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                ),
+                const Spacer(),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                  child: Column(
+                    children: [
+                      CustomButton(
+                        buttonTextColor: Colors.black,
+                        isAppColor: false,
+                        text: 'Cancel',
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      const SizedBox(height: 10),
+                      CustomButton(
+                        color: Colors.red,
+                        text: 'Logout',
+                        onPressed: () {
+                          BlocProvider.of<AuthenticationCubit>(context)
+                              .logout();
+                          Navigator.pushReplacementNamed(
+                              context, Routes.indexPage);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }
