@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inkome_front/logic/cubits/navigation.dart';
+import 'package:inkome_front/logic/cubits/story.dart';
 import 'package:inkome_front/logic/cubits/user.dart';
 import 'package:inkome_front/presentation/pages/default_page.dart';
 import 'package:inkome_front/presentation/pages/fav_adverts_page.dart';
 import 'package:inkome_front/presentation/pages/index_page.dart';
 import 'package:inkome_front/presentation/pages/login_page.dart';
 import 'package:inkome_front/presentation/pages/my_ads_page.dart';
+import 'package:inkome_front/presentation/pages/story_page.dart';
 import 'package:inkome_front/presentation/pages/wallet_page.dart';
 import '../../logic/cubits/adverts.dart';
 import '../../logic/cubits/authentication_cubit.dart';
@@ -32,6 +34,7 @@ class AppRouter {
   final UserCubit _userCubit = UserCubit();
   final NavigationCubit _navigationCubit = NavigationCubit();
   final AuthenticationCubit authenticationCubit;
+  final StoryCubit _storyCubit = StoryCubit();
 
   AppRouter({required this.authenticationCubit});
 
@@ -39,11 +42,13 @@ class AppRouter {
     switch (settings.name) {
       case Routes.indexPage:
         _navigationCubit.setSelectedIndex(0);
+        _storyCubit.fetchAllStoriesUsers(authenticationCubit.state.token);
         _advertsCubit.fetchAdverts(authenticationCubit.state.token);
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider.value(value: _userCubit),
+              BlocProvider.value(value: _storyCubit),
               BlocProvider.value(value: _advertsCubit),
               BlocProvider.value(value: _navigationCubit),
             ],
@@ -127,6 +132,19 @@ class AppRouter {
           ),
         );
 
+      case Routes.storyPage:
+        _storyCubit.fetchUserStories(authenticationCubit.state.token);
+        _navigationCubit.setSelectedIndex(6);
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: _storyCubit),
+              BlocProvider.value(value: _navigationCubit),
+            ],
+            child: StoryPage(),
+          ),
+        );
+
       case Routes.walletPage:
         _navigationCubit.setSelectedIndex(7);
         return MaterialPageRoute(
@@ -134,17 +152,20 @@ class AppRouter {
             providers: [
               BlocProvider.value(value: _navigationCubit),
             ],
-            child: const WalletPage(),
+            child: WalletPage(),
           ),
         );
 
       default:
         _navigationCubit.setSelectedIndex(0);
+        _storyCubit.fetchAllStoriesUsers(authenticationCubit.state.token);
+        _storyCubit.fetchUserStories(authenticationCubit.state.token);
         _advertsCubit.fetchAdverts(authenticationCubit.state.token);
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider.value(value: _userCubit),
+              BlocProvider.value(value: _storyCubit),
               BlocProvider.value(value: _advertsCubit),
               BlocProvider.value(value: _navigationCubit),
             ],
