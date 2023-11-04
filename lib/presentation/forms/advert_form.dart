@@ -174,15 +174,18 @@ class _AdvertForm extends State<AdvertForm> {
       throw Exception('Token is missing');
     }
     showDialog(
+      barrierColor: Colors.black87,
       context: context,
       builder: (BuildContext modalContext) => BlocProvider.value(
         value: context.read<AdvertsCubit>(),
         child: ModalView(
           heightFactor: .5,
-          widthFactor: .5,
+          widthFactor: .9,
           content: Column(
             children: [
-              const PricingView(),
+              const Expanded(
+                child: PricingView(),
+              ),
               _buidFooterModal(modalContext),
             ],
           ),
@@ -194,8 +197,8 @@ class _AdvertForm extends State<AdvertForm> {
   Widget _buidFooterModal(BuildContext modalContext) {
     return CustomButton(
       onPressed: () {
-        Navigator.of(modalContext).pop();
         _submitForm();
+        Navigator.of(modalContext).pop();
       },
       text: 'Submit advert',
     );

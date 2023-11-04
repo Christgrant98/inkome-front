@@ -25,7 +25,7 @@ class _PricingViewState extends State<PricingView> {
               text: 'Choose your membership type',
               color: Colors.black,
               fontSize: isLargeScreen ? 30 : 18,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w900,
             ),
           ),
           const SizedBox(height: 10),
