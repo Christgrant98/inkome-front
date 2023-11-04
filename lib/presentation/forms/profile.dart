@@ -20,6 +20,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../widgets/utils/custom_bottom_modal.dart';
 
+// todo: Check how could you upgrade canBuilBtn
 class ProfileForm extends StatefulWidget {
   const ProfileForm({super.key});
 
@@ -132,6 +133,7 @@ class _ProfileForm extends State<ProfileForm> {
               height: 15,
             ),
             EmailFormField(
+              readOnly: true,
               initialValue: email,
               onChange: (String? value, bool valid) {
                 setState(() => email = valid ? value : null);
@@ -141,22 +143,18 @@ class _ProfileForm extends State<ProfileForm> {
               height: 35,
             ),
             // Spacer(),
-            // if (_canShowSubmitButton())
             _buildSubmitButton(),
             const SizedBox(height: 15),
-            Align(
-              alignment: Alignment.centerRight,
-              child: _buildLogoutButton(),
-            ),
+            _buildLogoutButton(),
           ],
         ),
       ),
     );
   }
 
-  // bool _canShowSubmitButton() {
-  //   return name != null && age != null && phoneNumber != null;
-  // }
+  bool _canShowSubmitButton() {
+    return name != null && phoneNumber != null;
+  }
 
   Widget _buildSubmitButton() {
     AppLocalizations? t = AppLocalizations.of(context);
@@ -169,10 +167,12 @@ class _ProfileForm extends State<ProfileForm> {
       } else {
         return CustomButton(
           text: t.editButtonLinkText,
-          onPressed: () {
-            User user = _buildUser();
-            BlocProvider.of<AuthenticationCubit>(context).update(user);
-          },
+          onPressed: _canShowSubmitButton()
+              ? () {
+                  User user = _buildUser();
+                  BlocProvider.of<AuthenticationCubit>(context).update(user);
+                }
+              : null,
         );
       }
     });
