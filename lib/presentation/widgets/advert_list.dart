@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:inkome_front/data/models/advert.dart';
+import 'package:inkome_front/data/models/story.dart';
+import 'package:inkome_front/logic/cubits/story.dart';
+import 'package:inkome_front/logic/states/stories.dart';
 import 'package:inkome_front/presentation/widgets/advert_preview.dart';
+import 'package:inkome_front/presentation/widgets/story_view.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
-class AdvertList extends StatelessWidget {
+class AdvertContentView extends StatelessWidget {
   final List<Advert> adverts;
   int colsPerRow;
   double colsWidth;
@@ -14,7 +20,7 @@ class AdvertList extends StatelessWidget {
   BoxConstraints constraints = const BoxConstraints();
   int currentPage;
 
-  AdvertList({
+  AdvertContentView({
     Key? key,
     required this.adverts,
     this.colsPerRow = 0,
@@ -32,6 +38,7 @@ class AdvertList extends StatelessWidget {
         setConstraints(constraints);
         return Column(
           children: [
+            _buildStories(),
             SizedBox(
               width: constraints.maxWidth,
               child: Table(
@@ -40,6 +47,45 @@ class AdvertList extends StatelessWidget {
             ),
           ],
         );
+      },
+    );
+  }
+
+  Widget _buildStories() {
+    return BlocBuilder<StoryCubit, StoryState>(
+      builder: (context, state) {
+        if (state.status == StoryStatus.indexSuccess) {
+          Map<String, List<Story>> stories = state.stories;
+          if (stories.isEmpty) {
+            return const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: TextView(
+                  text: 'No se encontraron historias o promociones',
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            );
+          }
+          return StoriesView(
+            stories: state.stories,
+          );
+        } else if (state.status == StoryStatus.indexFailure) {
+          return Center(
+            child: TextView(
+              text: state.error,
+              color: Colors.white,
+            ),
+          );
+        } else {
+          return const Center(
+            child: TextView(
+              text: 'Loading...',
+              color: Colors.black,
+            ),
+          );
+        }
       },
     );
   }

@@ -30,43 +30,6 @@ class IndexPage extends StatelessWidget {
     return Layout(
       content: Column(
         children: [
-          BlocBuilder<StoryCubit, StoryState>(
-            builder: (context, state) {
-              if (state.status == StoryStatus.indexSuccess) {
-                Map<String, List<Story>> stories = state.stories;
-                if (stories.isEmpty) {
-                  return const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Center(
-                      child: TextView(
-                        text: 'No se encontraron historias o promociones',
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  );
-                }
-
-                return StoriesView(
-                  stories: state.stories,
-                );
-              } else if (state.status == StoryStatus.indexFailure) {
-                return Center(
-                  child: TextView(
-                    text: state.error,
-                    color: Colors.white,
-                  ),
-                );
-              } else {
-                return const Center(
-                  child: TextView(
-                    text: 'Loading...',
-                    color: Colors.black,
-                  ),
-                );
-              }
-            },
-          ),
           Expanded(
             child: BlocBuilder<AdvertsCubit, AdvertsState>(
               builder: (BuildContext context, AdvertsState state) {
@@ -92,7 +55,7 @@ class IndexPage extends StatelessWidget {
 
                   return ListView(
                     children: [
-                      AdvertList(adverts: filteredAdverts),
+                      AdvertContentView(adverts: filteredAdverts),
                       const SizedBox(height: 15),
                       PaginationIndex(
                         currentPageIndex: currentFavPageIndex,

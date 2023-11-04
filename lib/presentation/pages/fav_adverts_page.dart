@@ -48,7 +48,7 @@ class FavAdvertsPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: isLargeScreen ? 20 : 10),
-                AdvertList(
+                AdvertContentView(
                   adverts: state.adverts,
                 ),
                 const SizedBox(height: 15),
