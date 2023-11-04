@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inkome_front/presentation/widgets/utils/modal_view.dart';
-import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
 import 'package:inkome_front/presentation/widgets/utils/base_text_form_field.dart';
 import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
@@ -11,9 +10,12 @@ class AdTagEditor extends StatefulWidget {
   final List<String>? tags;
   final Function(List<String>)? onTagsChanged;
 
-  const AdTagEditor(
-      {Key? key, this.tags, this.onTagsChanged, this.onFieldSubmitted})
-      : super(key: key);
+  const AdTagEditor({
+    Key? key,
+    this.tags,
+    this.onTagsChanged,
+    this.onFieldSubmitted,
+  }) : super(key: key);
 
   @override
   _TagEditorWidgetState createState() => _TagEditorWidgetState();
@@ -59,13 +61,9 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
             text: 'Tags:',
             fontWeight: FontWeight.bold,
           ),
-        SizedBox(
-          height: _tags.isNotEmpty ? 15 : 0,
-        ),
+        SizedBox(height: _tags.isNotEmpty ? 15 : 0),
         _buildChipView(),
-        SizedBox(
-          height: _tags.isNotEmpty ? 15 : 0,
-        ),
+        SizedBox(height: _tags.isNotEmpty ? 15 : 0),
         Center(
           child: CustomButton(
             onPressed: () {
@@ -108,6 +106,7 @@ class _TagEditorWidgetState extends State<AdTagEditor> {
 
   void _showAddTagDialog(BuildContext context) {
     showDialog(
+      barrierColor: Colors.black87,
       context: context,
       builder: (context) {
         String newTag = '';

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,22 +31,28 @@ class ModalView extends StatelessWidget {
   }
 
   Widget _buildContent(AppLocalizations t) {
-    return FractionallySizedBox(
-      widthFactor: widthFactor,
-      heightFactor: heightFactor,
-      child: Container(
-        padding: EdgeInsets.all(paddingValue!),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius!),
-          border: Border.all(color: Colors.black),
-          color: Colors.white,
+    return BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: 5.0,
+        sigmaY: 5.0,
+      ),
+      child: FractionallySizedBox(
+        widthFactor: widthFactor,
+        heightFactor: heightFactor,
+        child: Container(
+          padding: EdgeInsets.all(paddingValue!),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(borderRadius!),
+            border: Border.all(color: Colors.black),
+            color: Colors.white,
+          ),
+          child: content != null
+              ? Material(
+                  color: Colors.transparent,
+                  child: content!,
+                )
+              : Container(),
         ),
-        child: content != null
-            ? Material(
-                color: Colors.transparent,
-                child: content!,
-              )
-            : Container(),
       ),
     );
   }

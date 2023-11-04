@@ -36,45 +36,43 @@ class FavAdvertsPage extends StatelessWidget {
               );
             }
 
-            return Expanded(
-              child: ListView(
-                children: [
-                  SizedBox(
-                    height: isLargeScreen ? 50 : 10,
+            return ListView(
+              children: [
+                SizedBox(
+                  height: isLargeScreen ? 50 : 10,
+                ),
+                const TextView(
+                  fontSize: 20,
+                  text: 'Mis anuncios favoritos',
+                  color: Colors.black,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: isLargeScreen ? 20 : 10),
+                AdvertList(
+                  adverts: state.adverts,
+                ),
+                const SizedBox(height: 15),
+                if (state.adverts.length == itemsPerPage ||
+                    state.adverts.length < 10)
+                  PaginationIndex(
+                    currentPageIndex: currentFavPageIndex,
+                    increasedCurrentPageIndex: increasedCurrentPageIndex,
+                    decreasedCurrentPageIndex: decreasedCurrentPageIndex,
+                    onNextPage: () {
+                      if (state.adverts.length >= itemsPerPage) {
+                        context.read<AdvertsCubit>().nextFavPage(token);
+                      }
+                    },
+                    onPreviousPage: () {
+                      if (itemsPerPage > 0) {
+                        context.read<AdvertsCubit>().previousFavPage(token);
+                      }
+                    },
+                    onFirstPage: () =>
+                        context.read<AdvertsCubit>().fetchAdverts(token),
                   ),
-                  const TextView(
-                    fontSize: 20,
-                    text: 'Mis anuncios favoritos',
-                    color: Colors.black,
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: isLargeScreen ? 20 : 10),
-                  AdvertList(
-                    adverts: state.adverts,
-                  ),
-                  const SizedBox(height: 15),
-                  if (state.adverts.length == itemsPerPage ||
-                      state.adverts.length < 10)
-                    PaginationIndex(
-                      currentPageIndex: currentFavPageIndex,
-                      increasedCurrentPageIndex: increasedCurrentPageIndex,
-                      decreasedCurrentPageIndex: decreasedCurrentPageIndex,
-                      onNextPage: () {
-                        if (state.adverts.length >= itemsPerPage) {
-                          context.read<AdvertsCubit>().nextFavPage(token);
-                        }
-                      },
-                      onPreviousPage: () {
-                        if (itemsPerPage > 0) {
-                          context.read<AdvertsCubit>().previousFavPage(token);
-                        }
-                      },
-                      onFirstPage: () =>
-                          context.read<AdvertsCubit>().fetchAdverts(token),
-                    ),
-                  const SizedBox(height: 15)
-                ],
-              ),
+                const SizedBox(height: 15)
+              ],
             );
           } else if (state.status == AdvertsStatus.indexFailure) {
             return TextView(
