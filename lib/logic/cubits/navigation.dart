@@ -7,4 +7,8 @@ class NavigationCubit extends Cubit<NavigationState> {
   void setSelectedIndex(int index) {
     emit(state.copyWith(selectedIndex: index));
   }
+
+  int getCurrentIndex() {
+    return state.selectedIndex;
+  }
 }

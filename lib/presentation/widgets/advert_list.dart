@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:inkome_front/data/models/advert.dart';
 import 'package:inkome_front/data/models/story.dart';
+import 'package:inkome_front/logic/cubits/navigation.dart';
 import 'package:inkome_front/logic/cubits/story.dart';
 import 'package:inkome_front/logic/states/stories.dart';
 import 'package:inkome_front/presentation/widgets/advert_preview.dart';
@@ -33,12 +34,14 @@ class AdvertContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int stateIndex = context.watch<NavigationCubit>().getCurrentIndex();
+
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         setConstraints(constraints);
         return Column(
           children: [
-            _buildStories(),
+            if (stateIndex == 0) _buildStories(),
             SizedBox(
               width: constraints.maxWidth,
               child: Table(
