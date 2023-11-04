@@ -96,7 +96,7 @@ class _ProfileForm extends State<ProfileForm> {
               height: 25,
             ),
             ImagePickerButton(
-              initialValue: image ?? userImage,
+              initialValue: image,
               onChanged: (Uint8List? bytes) {
                 setState(() => image = bytes);
               },

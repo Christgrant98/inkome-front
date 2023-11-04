@@ -37,12 +37,8 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
     if (isLoading) {
-      return const Column(
-        children: [
-          SizedBox(height: 20),
-          CustomIndicatorProgress(),
-          SizedBox(height: 20),
-        ],
+      return const Center(
+        child: CustomIndicatorProgress(),
       );
     }
     return Column(
@@ -140,8 +136,8 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
-                          color: Colors.black.withOpacity(0.65),
-                          height: MediaQuery.of(context).size.height * 0.05,
+                          color: Colors.black.withOpacity(.65),
+                          height: MediaQuery.of(context).size.height * .05,
                           child: const Center(
                               child: TextView(
                             text: 'Portada del anuncio',

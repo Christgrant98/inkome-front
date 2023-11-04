@@ -8,12 +8,12 @@ import 'package:inkome_front/presentation/widgets/utils/indicator_progress.dart'
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class ImagePickerButton extends StatefulWidget {
-  final Function(Uint8List?)? onChanged;
+  final Function(Uint8List) onChanged;
   final Uint8List? initialValue;
 
   const ImagePickerButton({
     Key? key,
-    this.onChanged,
+    required this.onChanged,
     this.initialValue,
   }) : super(key: key);
 
@@ -144,18 +144,20 @@ class _ImagePickerButtonState extends State<ImagePickerButton> {
       result = await _filePicker.pickFiles(
         type: FileType.image,
         allowMultiple: false,
+        withData: true,
       );
+      Uint8List? bytes = result!.files.single.bytes;
 
-      if (result != null) {
-        _pickedFile = result!.files.single.bytes;
-        if (widget.onChanged != null) widget.onChanged!(_pickedFile);
+      if (bytes != null) {
+        _pickedFile = bytes;
+        widget.onChanged(_pickedFile!);
       }
 
       setState(() {
         isLoading = false;
       });
     } catch (error) {
-      TextView(text: error.toString());
+      print(error);
     }
   }
 }
