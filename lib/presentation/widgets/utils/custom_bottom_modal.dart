@@ -11,6 +11,9 @@ class CustomBottomModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    bool isLargeScreen = screenWidth > 800;
+    double behindContainerWidth = screenWidth * .95;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -22,12 +25,13 @@ class CustomBottomModal extends StatelessWidget {
             ),
             color: Color.fromARGB(255, 230, 230, 230),
           ),
-          width: MediaQuery.of(context).size.width * .95,
+          width:
+              isLargeScreen ? behindContainerWidth * .5 : behindContainerWidth,
           height: 10,
         ),
         Container(
           height: height,
-          width: MediaQuery.of(context).size.width,
+          width: isLargeScreen ? screenWidth * .5 : screenWidth,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12.5),

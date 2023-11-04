@@ -25,18 +25,20 @@ class ModalView extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception("AppLocalizations not found");
+    double screenWidth = MediaQuery.of(context).size.width;
+    bool isLargeScreen = screenWidth > 800;
 
-    return _buildContent(t);
+    return _buildContent(t, isLargeScreen);
   }
 
-  Widget _buildContent(AppLocalizations t) {
+  Widget _buildContent(AppLocalizations t, bool isLargeScreen) {
     return BackdropFilter(
       filter: ImageFilter.blur(
         sigmaX: 5.0,
         sigmaY: 5.0,
       ),
       child: FractionallySizedBox(
-        widthFactor: widthFactor,
+        widthFactor: isLargeScreen ? widthFactor! * .3 : widthFactor,
         heightFactor: heightFactor,
         child: Container(
           padding: EdgeInsets.all(paddingValue!),

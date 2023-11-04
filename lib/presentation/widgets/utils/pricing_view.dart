@@ -71,14 +71,13 @@ class _PricingViewState extends State<PricingView> {
               },
             ),
           ),
-          const SizedBox(height: 20),
           if (selectedCardIndex == 0)
             Center(
               child: TextView(
                 fontSize: isLargeScreen ? 20 : 10,
                 text:
                     'Opción FREE seleccionada: El dicho sabio es una urna de masculinidad, y el importante caído es un posadero. El vehículo, el rostro con cuello o, menos urgente, es desagradable, y la virtud del faro debe ser odiada por mi esposo. Un lago y la plaza pueden haber perdido el momento de beber. ',
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           if (selectedCardIndex != 0)
@@ -87,9 +86,10 @@ class _PricingViewState extends State<PricingView> {
                 fontSize: isLargeScreen ? 20 : 10,
                 text:
                     'Opción $selectedCardIndex seleccionado: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum sapien eu urna malesuada, quis volutpat elit posuere. Quisque vehicula, eros at tristique dignissim, justo urna fermentum nisl, vel pharetra velit odio eu metus. Aenean eu urna et velit tristique interdum. Nulla facilisi. Etiam vestibulum ligula ut nulla fermentum, nec varius metus dictum. Nam cursus dapibus erat, non tincidunt mi fermentum in.',
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
+          const SizedBox(height: 25),
         ],
       ),
     );
