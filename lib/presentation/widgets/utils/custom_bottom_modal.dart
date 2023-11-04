@@ -26,16 +26,17 @@ class CustomBottomModal extends StatelessWidget {
             color: Color.fromARGB(255, 230, 230, 230),
           ),
           width:
-              isLargeScreen ? behindContainerWidth * .5 : behindContainerWidth,
+              isLargeScreen ? behindContainerWidth * .35 : behindContainerWidth,
           height: 10,
         ),
         Container(
           height: height,
-          width: isLargeScreen ? screenWidth * .5 : screenWidth,
+          width: isLargeScreen ? screenWidth * .35 : screenWidth,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.5),
-                topRight: Radius.circular(12.5)),
+              topLeft: Radius.circular(12.5),
+              topRight: Radius.circular(12.5),
+            ),
             color: Colors.white,
           ),
           child: content,

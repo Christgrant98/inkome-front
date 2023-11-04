@@ -60,9 +60,12 @@ class _AdvertPreviewState extends State<AdvertPreview> {
             if (widget.advert.images.length == 1)
               SizedBox(
                 height: MediaQuery.of(context).size.height,
-                child: Image.memory(
-                  widget.advert.images.first,
-                  fit: BoxFit.cover,
+                child: AspectRatio(
+                  aspectRatio: 9 / 15,
+                  child: Image.memory(
+                    widget.advert.images.first,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             if (widget.advert.images.length > 1)

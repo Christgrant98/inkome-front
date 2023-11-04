@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class BaseModal extends StatelessWidget {
@@ -6,6 +8,7 @@ class BaseModal extends StatelessWidget {
       required List<Widget> children,
       Widget? title}) {
     return showDialog<void>(
+      barrierColor: Colors.black87,
       context: context,
       builder: (BuildContext context) {
         return BaseModal(
@@ -24,15 +27,18 @@ class BaseModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      content: SingleChildScrollView(
-        child: SizedBox(
-          child: ListBody(children: children),
+    return BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+      child: AlertDialog(
+        content: SingleChildScrollView(
+          child: SizedBox(
+            child: ListBody(children: children),
+          ),
         ),
+        contentPadding: EdgeInsets.zero,
+        insetPadding: const EdgeInsets.all(0),
+        backgroundColor: Colors.transparent,
       ),
-      contentPadding: EdgeInsets.zero,
-      insetPadding: const EdgeInsets.all(0),
-      backgroundColor: Colors.transparent,
     );
   }
 }
