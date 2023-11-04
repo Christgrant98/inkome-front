@@ -7,21 +7,18 @@ import 'package:inkome_front/data/models/user.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
 import 'package:inkome_front/logic/cubits/story.dart';
 import 'package:inkome_front/logic/states/stories.dart';
-import 'package:inkome_front/logic/states/user.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
 import 'package:inkome_front/presentation/widgets/utils/story_bubble.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/upload_story_button.dart';
 
-import '../../logic/cubits/user.dart';
-
 class StoriesView extends StatefulWidget {
   final Map<String, List<Story>>? stories;
 
-  StoriesView({
+  const StoriesView({
     Key? key,
     required this.stories,
-  }) : super(key: key);
+  });
 
   @override
   State<StoriesView> createState() => _StoriesViewState();
@@ -36,7 +33,6 @@ class _StoriesViewState extends State<StoriesView> {
     User? currentUser = context.watch<AuthenticationCubit>().state.user;
     bool isLogged = context.watch<AuthenticationCubit>().isLogged();
     StoryState state = context.watch<StoryCubit>().state;
-    UserState stateUser = context.read<UserCubit>().state;
 
     return Container(
       height: 100,
@@ -55,8 +51,6 @@ class _StoriesViewState extends State<StoriesView> {
                   _buildPreviewStory(currentUser!.image);
                 },
               );
-            } else {
-              return SizedBox();
             }
           } else {
             User user = state.storiesUsers[index - 1];
@@ -78,7 +72,10 @@ class _StoriesViewState extends State<StoriesView> {
   }
 
   Story _buildStory() {
-    return Story(image: imageBytes!, id: id);
+    return Story(
+      image: imageBytes!,
+      id: id,
+    );
   }
 
   void _submitStory() {

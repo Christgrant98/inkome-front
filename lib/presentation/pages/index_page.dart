@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inkome_front/data/models/advert.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';
-import 'package:inkome_front/logic/cubits/story.dart';
 import 'package:inkome_front/presentation/widgets/layout.dart';
-import 'package:inkome_front/presentation/widgets/story_view.dart';
 import 'package:inkome_front/presentation/widgets/utils/indicator_progress.dart';
 import 'package:inkome_front/presentation/widgets/utils/pagination_index.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
-import '../../data/models/story.dart';
 import '../../logic/cubits/adverts.dart';
 import '../../logic/states/adverts.dart';
-import '../../logic/states/stories.dart';
 import '../widgets/advert_list.dart';
 
 class IndexPage extends StatelessWidget {

@@ -7,11 +7,12 @@ class StoryBubble extends StatelessWidget {
   final Uint8List? profilePicture;
   final String? username;
   final String? userId;
-  const StoryBubble(
-      {super.key,
-      required this.profilePicture,
-      required this.username,
-      required this.userId});
+  const StoryBubble({
+    super.key,
+    required this.profilePicture,
+    required this.username,
+    required this.userId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,43 +21,19 @@ class StoryBubble extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(width: 3),
-              gradient: const LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 76, 5, 0),
-                  Colors.black,
-                ],
-                stops: [
-                  0.1,
-                  1,
-                ],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-              ),
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(2),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.memory(
-                  profilePicture!,
-                  fit: BoxFit.cover,
-                  height: 65,
-                  width: 65,
-                ),
+          CircleAvatar(
+            radius: 38.5,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.memory(
+                profilePicture!,
               ),
             ),
           ),
-          const SizedBox(height: 6),
           TextView(
-            // text: '$firstName id:$user_id',
             text: firstName,
             fontSize: 12,
-            color: Colors.white,
+            color: Colors.black,
           )
         ],
       ),

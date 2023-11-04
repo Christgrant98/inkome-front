@@ -57,7 +57,6 @@ class Layout extends StatelessWidget {
                           children: [
                             _buildDrawerHeader(context),
                             _buildMenuOption(
-                              context: context,
                               title: 'home',
                               icon: CupertinoIcons.house_alt,
                               onTap: () => Navigator.pushReplacementNamed(
@@ -66,7 +65,6 @@ class Layout extends StatelessWidget {
                             SizedBox(height: isLogged ? 5 : 0),
                             if (isLogged)
                               _buildMenuOption(
-                                context: context,
                                 title: 'My fav Adverts',
                                 icon: CupertinoIcons.suit_heart,
                                 onTap: () {
@@ -80,7 +78,6 @@ class Layout extends StatelessWidget {
                             const SizedBox(height: 5),
                             if (isLogged)
                               _buildMenuOption(
-                                context: context,
                                 title: 'add a new advert',
                                 icon: CupertinoIcons.add_circled_solid,
                                 onTap: () => Navigator.pushReplacementNamed(
@@ -89,7 +86,6 @@ class Layout extends StatelessWidget {
                             SizedBox(height: isLogged ? 5 : 0),
                             if (isLogged)
                               _buildMenuOption(
-                                context: context,
                                 title: 'My adverts',
                                 icon: CupertinoIcons.square_stack_3d_down_right,
                                 onTap: () => Navigator.pushReplacementNamed(
@@ -98,7 +94,6 @@ class Layout extends StatelessWidget {
                             SizedBox(height: isLogged ? 5 : 0),
                             if (isLogged)
                               _buildMenuOption(
-                                context: context,
                                 title: 'My Wallet',
                                 icon: CupertinoIcons.macwindow,
                                 onTap: () => Navigator.pushReplacementNamed(
@@ -106,7 +101,6 @@ class Layout extends StatelessWidget {
                               ),
                             const SizedBox(height: 5),
                             _buildMenuOption(
-                              context: context,
                               title: 'My profile',
                               icon: CupertinoIcons.person_badge_plus,
                               onTap: () {
@@ -123,7 +117,6 @@ class Layout extends StatelessWidget {
                       if (!isLogged)
                         _buildLogActionButton(
                           isLogged: isLogged,
-                          context: context,
                           textBtn: 'Log In',
                           colorBtn: Colors.green,
                           onTap: () {
@@ -134,7 +127,7 @@ class Layout extends StatelessWidget {
                       // if (isLogged)
                       //   _buildLogActionButton(
                       //       isLogged: isLogged,
-                      //       context: context,
+                      //
                       //       textBtn: 'Log Out',
                       //       colorBtn: Colors.black,
                       //       onTap: () {
@@ -149,10 +142,9 @@ class Layout extends StatelessWidget {
               ],
             ),
           ),
-          appBar: _buildAppBar(
+          appBar: TopBar(
+            searchText: searchText,
             navState: navState,
-            constraints: constraints,
-            context: context,
             token: token,
             isLogged: isLogged,
             currentUser: currentUser,
@@ -184,7 +176,6 @@ class Layout extends StatelessWidget {
 
   Widget _buildLogActionButton({
     required bool isLogged,
-    required BuildContext context,
     required String textBtn,
     required void Function() onTap,
     required Color colorBtn,
@@ -215,46 +206,12 @@ class Layout extends StatelessWidget {
       width: constraints.maxWidth,
       decoration: const BoxDecoration(
         color: Color.fromARGB(255, 240, 240, 240),
-        // gradient: LinearGradient(
-        //   colors: [
-        //     Colors.black,
-        //     Colors.black,
-        //   ],
-        //   begin: Alignment.center,
-        //   end: Alignment.bottomCenter,
-        // ),
       ),
-      child: Stack(
-        children: [
-          // Positioned(
-          //   bottom: 0,
-          //   left: 0,
-          //   child: ClipPath(
-          //     clipper: WaveClipperTwo(reverse: true),
-          //     child: Container(
-          //       height: constraints.maxHeight * 0.2,
-          //       width: constraints.maxWidth,
-          //       decoration: const BoxDecoration(
-          //         gradient: LinearGradient(
-          //           colors: [
-          //             Color.fromARGB(255, 76, 5, 0),
-          //             Colors.black,
-          //           ],
-          //           begin: Alignment.topLeft,
-          //           end: Alignment.bottomRight,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          content,
-        ],
-      ),
+      child: content,
     );
   }
 
   Widget _buildMenuOption({
-    required BuildContext context,
     required String title,
     required void Function() onTap,
     required IconData icon,
@@ -279,15 +236,28 @@ class Layout extends StatelessWidget {
       ),
     );
   }
+}
 
-  AppBar _buildAppBar({
-    required int navState,
-    required BoxConstraints constraints,
-    required BuildContext context,
-    required String? token,
-    required bool isLogged,
-    required User? currentUser,
-  }) {
+class TopBar extends StatelessWidget implements PreferredSizeWidget {
+  const TopBar({
+    super.key,
+    required this.searchText,
+    required this.navState,
+    required this.token,
+    required this.isLogged,
+    required this.currentUser,
+  });
+
+  final String? searchText;
+  final int navState;
+  final String? token;
+  final bool isLogged;
+  final User? currentUser;
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
       leading: Builder(
@@ -308,7 +278,6 @@ class Layout extends StatelessWidget {
       centerTitle: true,
       title: navState == 0
           ? SizedBox(
-              width: constraints.maxWidth * .55,
               child: AdvertSearchField(
                 searchText: searchText,
                 onChange: (value, shouldSearch) {

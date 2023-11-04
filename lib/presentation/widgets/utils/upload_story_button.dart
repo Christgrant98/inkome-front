@@ -1,13 +1,19 @@
+import 'dart:ui';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:inkome_front/presentation/widgets/utils/custom_bottom_modal.dart';
 
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class UploadStoryButton extends StatefulWidget {
   final void Function(Uint8List) onChanged;
-  const UploadStoryButton({super.key, required this.onChanged});
+  const UploadStoryButton({
+    super.key,
+    required this.onChanged,
+  });
 
   @override
   State<UploadStoryButton> createState() => _UploadStoryButtonState();
@@ -22,139 +28,93 @@ class _UploadStoryButtonState extends State<UploadStoryButton> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            border: Border.all(width: 3),
-            gradient: const LinearGradient(
-              colors: [
-                Color.fromARGB(255, 76, 5, 0),
-                Colors.black,
-              ],
-              stops: [
-                0.1,
-                1,
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
+        InkWell(
+          onTap: () => showModalBottomSheet(
+            barrierColor: Colors.black87,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) => BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 5.0,
+                sigmaY: 5.0,
+              ),
+              child: _buildBottomModal(),
             ),
           ),
-          child: Container(
-            padding: const EdgeInsets.all(2),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: PhysicalModel(
-                color: Colors.transparent,
-                elevation: 6,
-                shadowColor: Colors.black.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(50),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () => showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) => Container(
-                              height: 200,
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    // Colors.black,
-                                    Color.fromARGB(255, 76, 5, 0),
-                                    Color.fromARGB(255, 0, 0, 0),
-                                  ],
-                                  stops: [
-                                    0.2,
-                                    1,
-                                  ],
-                                  begin: Alignment.center,
-                                  end: Alignment.bottomCenter,
-                                ),
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(45),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 20, left: 15, right: 15),
-                                child: Wrap(
-                                  children: [
-                                    const Center(
-                                      child: TextView(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        text: 'Select an option',
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                      ),
-                                      color: Colors.transparent,
-                                      child: ListTile(
-                                        onTap: () => getImageAndPickFile(),
-                                        leading: const Icon(
-                                          weight: 100,
-                                          Icons.camera,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                        title: const TextView(
-                                          color: Colors.white,
-                                          text: 'Open camera',
-                                        ),
-                                      ),
-                                    ),
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                      ),
-                                      color: Colors.transparent,
-                                      child: ListTile(
-                                        onTap: () => pickFile(),
-                                        leading: const Icon(
-                                          weight: 100,
-                                          color: Colors.white,
-                                          Icons.cloud_upload,
-                                          size: 30,
-                                        ),
-                                        title: const TextView(
-                                          color: Colors.white,
-                                          text: 'Upload image from device',
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )),
-                    child: const Icon(
-                      Icons.add,
-                      size: 65,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+          child: const CircleAvatar(
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
             ),
           ),
         ),
         const SizedBox(height: 6),
         const TextView(
-          textAlign: TextAlign.justify,
           text: 'Upload Story',
           fontSize: 12,
-          color: Colors.white,
+          color: Colors.black,
         ),
       ],
+    );
+  }
+
+  Widget _buildBottomModal() {
+    return CustomBottomModal(
+      height: 250,
+      content: Padding(
+        padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+        child: Column(
+          children: [
+            const Center(
+              child: TextView(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                text: 'Select an option',
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(height: 15),
+            _buildMenuOption(
+              title: 'Open camera',
+              onTap: () => getImageAndPickFile(),
+              icon: Icons.camera,
+            ),
+            const SizedBox(height: 5),
+            _buildMenuOption(
+              title: 'Upload image from device',
+              onTap: () => pickFile(),
+              icon: Icons.cloud_upload,
+            ),
+            const SizedBox(height: 15),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuOption({
+    required String title,
+    required void Function() onTap,
+    required IconData icon,
+  }) {
+    return Card(
+      elevation: 1.2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      color: const Color.fromARGB(255, 230, 230, 230),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          color: Colors.black,
+        ),
+        title: TextView(
+          text: title,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+        onTap: onTap,
+      ),
     );
   }
 

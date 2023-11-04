@@ -34,7 +34,7 @@ class AdvertContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int stateIndex = context.watch<NavigationCubit>().getCurrentIndex();
+    int stateIndex = context.read<NavigationCubit>().getCurrentIndex();
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -59,20 +59,8 @@ class AdvertContentView extends StatelessWidget {
       builder: (context, state) {
         if (state.status == StoryStatus.indexSuccess) {
           Map<String, List<Story>> stories = state.stories;
-          if (stories.isEmpty) {
-            return const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Center(
-                child: TextView(
-                  text: 'No se encontraron historias o promociones',
-                  color: Colors.black,
-                  fontSize: 16,
-                ),
-              ),
-            );
-          }
           return StoriesView(
-            stories: state.stories,
+            stories: stories,
           );
         } else if (state.status == StoryStatus.indexFailure) {
           return Center(
