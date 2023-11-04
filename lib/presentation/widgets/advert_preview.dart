@@ -14,6 +14,8 @@ import 'package:inkome_front/presentation/widgets/utils/modal_closed_content.dar
 import 'package:inkome_front/presentation/widgets/utils/modal_opened_content.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
+import 'logo_widget.dart';
+
 class AdvertPreview extends StatefulWidget {
   final double width;
   final Advert advert;
@@ -193,6 +195,7 @@ class _AdvertPreviewState extends State<AdvertPreview> {
       );
 
   void showLoginDialog(context) => showDialog(
+        barrierColor: Colors.black87,
         context: context,
         builder: (context) {
           Future.delayed(
@@ -202,14 +205,14 @@ class _AdvertPreviewState extends State<AdvertPreview> {
             },
           );
           return ModalView(
+            widthFactor: .9,
+            heightFactor: .5,
             content: Column(
               children: [
                 Align(
                   alignment: Alignment.topRight,
                   child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
+                    onTap: () => Navigator.of(context).pop(),
                     child: const Icon(
                       CupertinoIcons.xmark_square_fill,
                       shadows: [
@@ -225,54 +228,45 @@ class _AdvertPreviewState extends State<AdvertPreview> {
                 ),
                 const SizedBox(height: 8),
                 const TextView(
-                  fontSize: 14,
+                  fontSize: 16,
                   text: 'Accede para marcar como favorito!',
                   color: Colors.black,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w900,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                SizedBox(
-                  // height: 140,
-                  width: 140,
-                  child: Image.asset('sqr_logo.png'),
-                ),
-                SizedBox(
-                  height: 240,
-                  width: 400,
-                  child: ListView(
-                    children: [
-                      Column(
-                        children: [
-                          const LoginForm(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const TextView(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white,
-                                  text: '¿No tienes una cuenta?'),
-                              // SizedBox(height: 15),
-                              TextButton(
-                                onPressed: () => Navigator.pushReplacementNamed(
-                                    context, Routes.registrationPage),
-                                child: const TextView(
-                                  fontSize: 14,
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  text: 'Registrate',
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      )
-                    ],
+                const SizedBox(
+                  height: 120,
+                  width: 120,
+                  child: Logo(
+                    type: Type.square,
                   ),
                 ),
+                const SizedBox(height: 20),
+                Expanded(child: const LoginForm()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const TextView(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                        text: '¿No tienes una cuenta?'),
+                    // SizedBox(height: 15),
+                    TextButton(
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, Routes.registrationPage),
+                      child: const TextView(
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        text: 'Registrate',
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           );
