@@ -13,6 +13,7 @@ class AdvertList extends StatelessWidget {
   final int itemsPerPage;
   BoxConstraints constraints = const BoxConstraints();
   int currentPage;
+
   AdvertList({
     Key? key,
     required this.adverts,

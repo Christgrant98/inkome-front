@@ -16,8 +16,6 @@ import 'package:inkome_front/presentation/widgets/utils/snackbar_util.dart';
 import '../../logic/cubits/authentication_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../widgets/logo_widget.dart';
-
 class RegistrationForm extends StatefulWidget {
   const RegistrationForm({Key? key}) : super(key: key);
 

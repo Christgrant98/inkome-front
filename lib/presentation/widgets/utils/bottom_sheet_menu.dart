@@ -11,10 +11,10 @@ class BottomNavigator extends StatefulWidget {
   const BottomNavigator({super.key});
 
   @override
-  _BottomNavigatorState createState() => _BottomNavigatorState();
+  BottomNavigatorState createState() => BottomNavigatorState();
 }
 
-class _BottomNavigatorState extends State<BottomNavigator> {
+class BottomNavigatorState extends State<BottomNavigator> {
   bool _isDisposed = false;
 
   @override

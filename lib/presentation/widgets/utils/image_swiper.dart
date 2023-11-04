@@ -9,10 +9,10 @@ class ImageSlider extends StatefulWidget {
   const ImageSlider({super.key, required this.images});
 
   @override
-  _ImageSliderState createState() => _ImageSliderState();
+  ImageSliderState createState() => ImageSliderState();
 }
 
-class _ImageSliderState extends State<ImageSlider> {
+class ImageSliderState extends State<ImageSlider> {
   int _currentImageIndex = 0;
 
   @override

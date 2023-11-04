@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:inkome_front/data/models/advert.dart';
 import 'package:inkome_front/logic/cubits/adverts.dart';
 import 'package:inkome_front/logic/cubits/authentication_cubit.dart';

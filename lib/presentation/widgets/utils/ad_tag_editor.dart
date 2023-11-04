@@ -18,10 +18,10 @@ class AdTagEditor extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TagEditorWidgetState createState() => _TagEditorWidgetState();
+  TagEditorWidgetState createState() => TagEditorWidgetState();
 }
 
-class _TagEditorWidgetState extends State<AdTagEditor> {
+class TagEditorWidgetState extends State<AdTagEditor> {
   List<String> _tags = [];
 
   @override

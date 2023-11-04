@@ -9,10 +9,10 @@ class AddPaymentForm extends StatefulWidget {
   const AddPaymentForm({super.key, this.decoration});
 
   @override
-  _AddPaymentFormState createState() => _AddPaymentFormState();
+  AddPaymentFormState createState() => AddPaymentFormState();
 }
 
-class _AddPaymentFormState extends State<AddPaymentForm> {
+class AddPaymentFormState extends State<AddPaymentForm> {
   String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
