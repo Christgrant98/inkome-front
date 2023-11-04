@@ -27,32 +27,26 @@ class WalletPage extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'My Wallets',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Colors.white),
+                const TextView(
+                  text: 'My Wallets',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black,
                 ),
+                const SizedBox(height: 15),
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Payment methods',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
+                  child: TextView(
+                    text: 'Payment methods',
+                    fontSize: 18,
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Credit or Debit card',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                  child: TextView(
+                    text: 'Credit or Debit card',
+                    fontSize: 14,
                   ),
                 ),
                 const SizedBox(
@@ -63,17 +57,18 @@ class WalletPage extends StatelessWidget {
                     children: [
                       InkWell(
                         child: Card(
+                          elevation: 3,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          color: Colors.grey[200],
+                          color: Colors.grey[300],
                           child: const ListTile(
                             leading: Icon(
                               Icons.payment,
                               size: 30,
                               color: Colors.black,
                             ),
-                            title: Text('**** **** **** 8938'),
+                            title: TextView(text: '**** **** **** 8938'),
                           ),
                         ),
                         onTap: () => showDialog(
@@ -130,13 +125,15 @@ class WalletPage extends StatelessWidget {
                               builder: (_) {
                                 if (!isLargeScreen) {
                                   return Scaffold(
-                                      appBar: AppBar(
-                                        backgroundColor: Colors.black,
-                                        title: const TextView(
-                                            text: 'Add payment method'),
-                                      ),
-                                      body: const Center(
-                                          child: AddPaymentForm()));
+                                    appBar: AppBar(
+                                      backgroundColor: Colors.black,
+                                      title: const TextView(
+                                          text: 'Add payment method'),
+                                    ),
+                                    body: const Center(
+                                      child: AddPaymentForm(),
+                                    ),
+                                  );
                                 } else {
                                   return const ModalView(
                                     content: Column(
@@ -156,12 +153,10 @@ class WalletPage extends StatelessWidget {
                               },
                             );
                           },
-                          child: const Text(
-                            'Add Payment Method',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                            ),
+                          child: const TextView(
+                            text: 'Add Payment Method',
+                            color: Colors.white,
+                            fontSize: 22,
                           ),
                         ),
                       ),
@@ -191,7 +186,7 @@ class WalletPage extends StatelessWidget {
   //             size: 30,
   //             color: Colors.black,
   //           ),
-  //           title: Text('**** **** **** 8938'),
+  //           title: TextView( text: '**** **** **** 8938'),
   //         ),
   //       ),
   //       onTap: () => showDialog(
@@ -239,7 +234,7 @@ class WalletPage extends StatelessWidget {
   //             },
   //           );
   //         },
-  //         child: const Text(
+  //         child: const TextView( text:
   //           'Add Payment Method',
   //           style: TextStyle(
   //             color: Colors.white,

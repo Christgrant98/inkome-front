@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
+// todo: Pending to upgrade this class widget
 class PricingView extends StatefulWidget {
   const PricingView({
     super.key,

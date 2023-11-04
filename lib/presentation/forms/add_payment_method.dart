@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:inkome_front/presentation/widgets/utils/custom_button.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 class AddPaymentForm extends StatefulWidget {
   final InputDecoration? decoration;
@@ -19,14 +22,17 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final OutlineInputBorder defaultOutlineInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(30),
+    borderRadius: BorderRadius.circular(12),
     borderSide: const BorderSide(
       width: 1,
       color: Colors.black,
     ),
   );
-  final TextStyle defaultLabelSTyle = const TextStyle(
-      fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black);
+  final TextStyle defaultLabelSTyle = GoogleFonts.quicksand(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
 
   @override
   Widget build(context) {
@@ -40,17 +46,14 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
           : MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          const SizedBox(
-            height: 20,
+          const SizedBox(height: 20),
+          const TextView(
+            text: 'My Wallet',
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            color: Colors.white,
           ),
-          const Text(
-            'My Wallets',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.white),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           CreditCardWidget(
             // backgroundImage: 'card_bg.png',
             isSwipeGestureEnabled: true,
@@ -82,6 +85,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
                     themeColor: const Color.fromARGB(255, 243, 33, 33),
                     formKey: formKey,
                     cardNumberDecoration: InputDecoration(
+                      hintStyle: defaultLabelSTyle,
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       fillColor: Colors.white,
                       filled: true,
@@ -96,6 +100,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
                       hintText: 'xxxx xxxx xxxx xxxx',
                     ),
                     expiryDateDecoration: InputDecoration(
+                      hintStyle: defaultLabelSTyle,
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       fillColor: Colors.white,
                       filled: true,
@@ -110,6 +115,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
                       hintText: 'xx/xx',
                     ),
                     cvvCodeDecoration: InputDecoration(
+                      hintStyle: defaultLabelSTyle,
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       fillColor: Colors.white,
                       filled: true,
@@ -124,6 +130,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
                       hintText: 'xxx',
                     ),
                     cardHolderDecoration: InputDecoration(
+                      hintStyle: defaultLabelSTyle,
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       fillColor: Colors.white,
                       filled: true,
@@ -137,41 +144,17 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
                       labelText: 'Card Holder',
                     ),
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    width: isLargeScreen
-                        ? MediaQuery.of(context).size.width * .9
-                        : MediaQuery.of(context).size.width * .5,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        elevation: 0.0,
-                      ),
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          // print('valid');
-                        } else {
-                          // print('inValid');
-                        }
-                      },
-                      child: Text(
-                        'Add this Payment Method',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: isLargeScreen ? 22 : 14,
-                        ),
-                      ),
-                    ),
+                  const SizedBox(height: 50),
+                  CustomButton(
+                    color: Colors.green,
+                    text: 'Add this Payment Method',
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        // print('valid');
+                      } else {
+                        // print('inValid');
+                      }
+                    },
                   ),
                 ],
               ),
@@ -191,7 +174,7 @@ class _AddPaymentFormState extends State<AddPaymentForm> {
   //     ),
   //   );
 
-  //   return InputDecoration(
+  //   return InputDecoration( hintStyle: defaultLabelSTyle,
   //       border: defaultBorder,
   //       enabledBorder: defaultBorder,
   //       focusedBorder: defaultBorder,
