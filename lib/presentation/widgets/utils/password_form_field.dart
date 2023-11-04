@@ -21,10 +21,10 @@ class PasswordFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PasswordFormFieldState createState() => _PasswordFormFieldState();
+  PasswordFormFieldState createState() => PasswordFormFieldState();
 }
 
-class _PasswordFormFieldState extends State<PasswordFormField> {
+class PasswordFormFieldState extends State<PasswordFormField> {
   bool obscureText = true;
 
   @override

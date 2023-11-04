@@ -64,11 +64,11 @@ class AuthenticationState {
 
   factory AuthenticationState.fromMap(Map<String, dynamic> map) {
     return AuthenticationState(
-      user: User.fromMap(map['user']), // Convert user from map
+      user: map["user"] != null ? User.fromMap(map["user"]) : null,
       error: map['error'],
       token: map['token'],
-      authenticationStatus: _parseAuthenticationStatus(
-          map['authenticationStatus']), // Parse enum from string
+      authenticationStatus:
+          _parseAuthenticationStatus(map['authenticationStatus']),
     );
   }
 
