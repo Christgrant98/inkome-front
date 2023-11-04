@@ -35,10 +35,14 @@ class IndexPage extends StatelessWidget {
               if (state.status == StoryStatus.indexSuccess) {
                 Map<String, List<Story>> stories = state.stories;
                 if (stories.isEmpty) {
-                  return const Center(
-                    child: TextView(
-                      text: 'No se encontraron historias',
-                      color: Colors.white,
+                  return const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Center(
+                      child: TextView(
+                        text: 'No se encontraron historias o promociones',
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
                     ),
                   );
                 }
@@ -55,7 +59,10 @@ class IndexPage extends StatelessWidget {
                 );
               } else {
                 return const Center(
-                  child: CustomIndicatorProgress(),
+                  child: TextView(
+                    text: 'Loading...',
+                    color: Colors.black,
+                  ),
                 );
               }
             },
@@ -108,7 +115,13 @@ class IndexPage extends StatelessWidget {
                     ],
                   );
                 } else if (state.status == AdvertsStatus.indexFailure) {
-                  return TextView(text: state.error, color: Colors.black);
+                  return Center(
+                    child: TextView(
+                      text: state.error,
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
                 } else {
                   return const Center(child: CustomIndicatorProgress());
                 }

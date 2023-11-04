@@ -75,9 +75,12 @@ class FavAdvertsPage extends StatelessWidget {
               ],
             );
           } else if (state.status == AdvertsStatus.indexFailure) {
-            return TextView(
-              text: state.error,
-              color: Colors.black,
+            return Center(
+              child: TextView(
+                text: state.error,
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
             );
           } else {
             return const Center(child: CustomIndicatorProgress());

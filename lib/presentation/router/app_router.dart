@@ -141,7 +141,7 @@ class AppRouter {
               BlocProvider.value(value: _storyCubit),
               BlocProvider.value(value: _navigationCubit),
             ],
-            child: StoryPage(),
+            child: const StoryPage(),
           ),
         );
 
@@ -152,7 +152,7 @@ class AppRouter {
             providers: [
               BlocProvider.value(value: _navigationCubit),
             ],
-            child: WalletPage(),
+            child: const WalletPage(),
           ),
         );
 
