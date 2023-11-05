@@ -27,31 +27,46 @@ class _UploadStoryButtonState extends State<UploadStoryButton> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        InkWell(
-          onTap: () => showModalBottomSheet(
-            barrierColor: Colors.black87,
-            backgroundColor: Colors.transparent,
-            context: context,
-            builder: (context) => BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: 5.0,
-                sigmaY: 5.0,
-              ),
-              child: _buildBottomModal(),
-            ),
-          ),
-          child: const CircleAvatar(
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-          ),
+        Expanded(
+          child: InkWell(
+              onTap: () => showModalBottomSheet(
+                    barrierColor: Colors.black87,
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) => BackdropFilter(
+                      filter: ImageFilter.blur(
+                        sigmaX: 5.0,
+                        sigmaY: 5.0,
+                      ),
+                      child: _buildBottomModal(),
+                    ),
+                  ),
+              child: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [Colors.black, Color.fromARGB(255, 80, 80, 80)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: const CircleAvatar(
+                  minRadius: 25,
+                  backgroundColor: Colors.transparent,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+                ),
+              )),
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 5),
         const TextView(
-          text: 'Upload Story',
-          fontSize: 12,
+          text: 'Your Story',
+          fontSize: 11,
           color: Colors.black,
         ),
       ],

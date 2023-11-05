@@ -138,7 +138,7 @@ class _AdvertPreviewState extends State<AdvertPreview> {
           child: Stack(
             children: [
               AspectRatio(
-                aspectRatio: 9 / 15.5,
+                aspectRatio: 9 / 16,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: widget.advert.images.isEmpty

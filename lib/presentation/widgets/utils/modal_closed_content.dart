@@ -41,11 +41,14 @@ class ModalClosedContainerContent extends StatelessWidget {
               ),
               const Row(
                 children: [
-                  TextView(
-                    text: '4.5',
-                    color: Color.fromARGB(155, 255, 255, 255),
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: EdgeInsets.only(left: 5),
+                    child: TextView(
+                      text: '4.5',
+                      color: Color.fromARGB(155, 255, 255, 255),
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(width: 2.5),
                   Icon(color: Colors.white, size: 9, CupertinoIcons.star_fill),

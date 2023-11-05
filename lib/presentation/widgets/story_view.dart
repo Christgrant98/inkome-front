@@ -39,34 +39,55 @@ class _StoriesViewState extends State<StoriesView> {
       width: double.infinity,
       margin: const EdgeInsets.only(top: 10, left: 5),
       child: ListView.builder(
+        itemExtent: 80,
         itemCount: state.storiesUsers.length + 1,
         scrollDirection: Axis.horizontal,
         shrinkWrap: false,
         itemBuilder: (context, index) {
           if (index == 0) {
             if (isLogged) {
-              return UploadStoryButton(
-                onChanged: (Uint8List? bytes) {
-                  setState(() => imageBytes = bytes);
-                  _buildPreviewStory(currentUser!.image);
-                },
+              return _buildContentSeparator(
+                content: UploadStoryButton(
+                  onChanged: (Uint8List? bytes) {
+                    setState(() => imageBytes = bytes);
+                    _buildPreviewStory(currentUser!.image);
+                  },
+                ),
               );
             }
           } else {
             User user = state.storiesUsers[index - 1];
-            return InkWell(
-              child: StoryBubble(
-                profilePicture: user.image,
-                username: user.name,
-                userId: user.id,
+            return _buildContentSeparator(
+              content: InkWell(
+                child: StoryBubble(
+                  profilePicture: user.image,
+                  username: user.name,
+                  userId: user.id!,
+                ),
+                onTap: () => {
+                  state.userId = user.id!,
+                  Navigator.pushReplacementNamed(context, Routes.storyPage)
+                },
               ),
-              onTap: () => {
-                state.userId = user.id!,
-                Navigator.pushReplacementNamed(context, Routes.storyPage)
-              },
             );
           }
         },
+      ),
+    );
+  }
+
+  Widget _buildContentSeparator({
+    required Widget content,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 2, right: 2),
+      child: SizedBox(
+        width: 200,
+        height: 200,
+        child: Padding(
+          padding: const EdgeInsets.all(2.5),
+          child: content,
+        ),
       ),
     );
   }
@@ -103,9 +124,7 @@ class _StoriesViewState extends State<StoriesView> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
@@ -124,15 +143,13 @@ class _StoriesViewState extends State<StoriesView> {
                           borderRadius: BorderRadius.circular(50),
                           border: Border.all(width: 1.2, color: Colors.white),
                         ),
-                        child: Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Image.memory(
-                              userImage!,
-                              height: 25,
-                              width: 25,
-                              fit: BoxFit.cover,
-                            ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.memory(
+                            userImage!,
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
@@ -156,9 +173,7 @@ class _StoriesViewState extends State<StoriesView> {
                 left: 8,
                 right: 0,
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
+                  onTap: () => Navigator.of(context).pop(),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
