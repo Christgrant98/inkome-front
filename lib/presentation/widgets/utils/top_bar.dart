@@ -7,7 +7,7 @@ import 'package:inkome_front/presentation/router/app_router.dart';
 import '../../../data/models/user.dart';
 import 'advert_search_field.dart';
 
-class TopBar extends StatelessWidget implements PreferredSizeWidget {
+class TopBar extends StatefulWidget implements PreferredSizeWidget {
   const TopBar({
     super.key,
     required this.searchText,
@@ -22,8 +22,15 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   final String? token;
   final bool isLogged;
   final User? currentUser;
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  @override
+  State<TopBar> createState() => _TopBarState();
+}
+
+class _TopBarState extends State<TopBar> {
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +46,22 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.black,
               size: 25,
             ),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
+            onPressed: () => Scaffold.of(context).openDrawer(),
             tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
           );
         },
       ),
       centerTitle: true,
-      title: navState == 0
+      title: widget.navState == 0
           ? SizedBox(
               width: isLargeScreen ? screenWidth * .4 : screenWidth,
               child: AdvertSearchField(
-                searchText: searchText,
+                searchText: widget.searchText,
                 onChange: (value, shouldSearch) {
                   if (value.length >= 3 || value.isEmpty) {
                     context
                         .read<AdvertsCubit>()
-                        .fetchAdverts(token, searchText: value);
+                        .fetchAdverts(widget.token, searchText: value);
                   }
                 },
               ),
@@ -72,12 +77,12 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
             color: Colors.black,
           ),
         ),
-        !isLogged
+        !widget.isLogged
             ? Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: IconButton(
                   onPressed: () {
-                    !isLogged
+                    !widget.isLogged
                         ? Navigator.pushReplacementNamed(
                             context, Routes.loginPage)
                         : Navigator.pushReplacementNamed(
@@ -94,9 +99,9 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
                 padding: const EdgeInsets.only(
                     top: 10, bottom: 10, left: 20, right: 20),
                 child: InkWell(
-                  child: currentUser?.image != null
+                  child: widget.currentUser?.image != null
                       ? _builProfilePicture(
-                          MemoryImage(currentUser!.image!),
+                          MemoryImage(widget.currentUser!.image!),
                         )
                       : _builProfilePicture(
                           const AssetImage('assets/user_default1.jpg'),
@@ -112,8 +117,20 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _builProfilePicture(ImageProvider<Object>? pic) {
-    return CircleAvatar(
-      backgroundImage: pic,
-    );
+    if (pic != null) {
+      setState(() {
+        isLoading = false;
+      });
+      return CircleAvatar(
+        backgroundImage: pic,
+      );
+    } else {
+      setState(() {
+        isLoading = true;
+      });
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
   }
 }
