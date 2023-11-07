@@ -36,7 +36,11 @@ class _StoryPageState extends State<StoryPage> {
       child: Scaffold(
         body: Container(
           color: Colors.black,
-          child: _buildStoryView(storyState),
+          child: Center(
+            child: _buildStoryView(
+              storyState,
+            ),
+          ),
         ),
       ),
     );
@@ -45,39 +49,54 @@ class _StoryPageState extends State<StoryPage> {
   Widget _buildStoryView(StoryState state) {
     return Stack(
       children: [
-        PageView.builder(
+        _builStoryPicture(
+          state: state,
+        )
+      ],
+    );
+  }
+
+  Widget _buildBttn(StoryState state) {
+    return IconButton(
+      onPressed: () {
+        if (_pageController.page! < state.stories[state.userId]!.length - 1) {
+          _pageController.previousPage(
+              duration: const Duration(milliseconds: 1),
+              curve: Curves.easeInOut);
+        }
+      },
+      icon: const CircleAvatar(
+        child: Icon(
+          color: Colors.white,
+          Icons.arrow_back_ios_rounded,
+        ),
+      ),
+    );
+  }
+
+  Widget _builStoryPicture({
+    required StoryState state,
+  }) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: AspectRatio(
+        aspectRatio: 9 / 16,
+        child: PageView.builder(
           controller: _pageController,
+          scrollDirection: Axis.horizontal,
           onPageChanged: (index) {
             setState(() {
               _currentPageIndex = index;
             });
           },
-          scrollDirection: Axis.horizontal,
           itemCount: state.stories[state.userId]!.length,
-          itemBuilder: (context, index) {
+          itemBuilder: (BuildContext context, int index) {
             final story = state.stories[state.userId]![index];
-            return BaseModal(
-              children: [
-                _builStoryPicture(context, story: story),
-              ],
+            return Image.memory(
+              story.image!,
+              fit: BoxFit.cover,
             );
           },
-        ),
-      ],
-    );
-  }
-
-  Widget _builStoryPicture(
-    BuildContext context, {
-    required Story story,
-  }) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      child: AspectRatio(
-        aspectRatio: 9 / 15,
-        child: Image.memory(
-          story.image!,
-          fit: BoxFit.cover,
         ),
       ),
     );
