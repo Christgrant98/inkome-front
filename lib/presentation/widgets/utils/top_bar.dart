@@ -47,6 +47,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: navState == 0
           ? SizedBox(
+              width: MediaQuery.of(context).size.width * .4,
               child: AdvertSearchField(
                 searchText: searchText,
                 onChange: (value, shouldSearch) {
