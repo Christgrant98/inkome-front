@@ -31,20 +31,11 @@ class IndexPage extends StatelessWidget {
               builder: (BuildContext context, AdvertsState state) {
                 if (state.status == AdvertsStatus.indexSuccess) {
                   List<Advert> filteredAdverts = state.adverts;
-
-                  if (searchText != null && searchText!.length >= 3) {
-                    filteredAdverts = state.adverts
-                        .where((advert) => advert.name
-                            .toLowerCase()
-                            .contains(searchText!.toLowerCase()))
-                        .toList();
-                  }
-
                   if (filteredAdverts.isEmpty) {
                     return const Center(
                       child: TextView(
                         text: 'No se encontraron anuncios',
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     );
                   }
@@ -82,7 +73,9 @@ class IndexPage extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return const Center(child: CustomIndicatorProgress());
+                  return const Center(
+                    child: CustomIndicatorProgress(),
+                  );
                 }
               },
             ),
