@@ -163,22 +163,29 @@ class _ProfileForm extends State<ProfileForm> {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
 
-    return BlocBuilder<AuthenticationCubit, AuthenticationState>(
-        builder: (BuildContext context, AuthenticationState state) {
-      if (state.authenticationStatus == AuthenticationStatus.loading) {
-        return const CustomIndicatorProgress();
-      } else {
-        return CustomButton(
-          text: t.editButtonLinkText,
-          onPressed: _canShowSubmitButton()
-              ? () {
-                  User user = _buildUser();
-                  BlocProvider.of<AuthenticationCubit>(context).update(user);
-                }
-              : null,
-        );
-      }
-    });
+    return CustomButton(
+      height: 70,
+      onPressed: _canShowSubmitButton()
+          ? () {
+              User user = _buildUser();
+              BlocProvider.of<AuthenticationCubit>(context).update(user);
+            }
+          : null,
+      widget: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+          builder: (BuildContext context, AuthenticationState state) {
+        if (state.authenticationStatus == AuthenticationStatus.loading) {
+          return const Center(child: CustomIndicatorProgress());
+        } else {
+          return const TextView(
+            text: 'Editar',
+            fontWeight: FontWeight.w600,
+            fontSize: 15,
+            color: Colors.white,
+          );
+          ;
+        }
+      }),
+    );
   }
 
   User _buildUser() {
