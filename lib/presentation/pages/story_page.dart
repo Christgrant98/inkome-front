@@ -1,11 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:inkome_front/data/models/story.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
-import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
+import 'package:inkome_front/presentation/widgets/utils/indicator_progress.dart';
+import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 
 import '../../logic/cubits/story.dart';
 import '../../logic/states/stories.dart';
@@ -29,16 +28,29 @@ class _StoryPageState extends State<StoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    StoryState storyState = context.watch<StoryCubit>().state;
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+    StoryState storyState = context.read<StoryCubit>().state;
 
     return SafeArea(
       child: Scaffold(
         body: Container(
           color: Colors.black,
-          child: _buildStoryView(
-            storyState,
+          child: BlocBuilder<StoryCubit, StoryState>(
+            builder: (BuildContext context, StoryState state) {
+              if (state.status == StoryStatus.fetchUserStorySuccess) {
+                return _buildStoryView(storyState);
+              } else if (state.status == StoryStatus.fetchUserStoryFailure) {
+                return const Center(
+                  child: TextView(
+                    text: 'Something went wrong',
+                    color: Colors.red,
+                  ),
+                );
+              } else {
+                return const Center(
+                  child: CustomIndicatorProgress(),
+                );
+              }
+            },
           ),
         ),
       ),
@@ -132,7 +144,7 @@ class _StoryPageState extends State<StoryPage> {
           ),
         ),
         Positioned(
-          bottom: 10,
+          bottom: 0,
           left: 0,
           right: 0,
           child: state.stories[state.userId]!.isNotEmpty

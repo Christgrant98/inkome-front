@@ -12,18 +12,18 @@ class StoryCubit extends Cubit<StoryState> {
   Future<void> createStory(Story story, String? token) async {
     try {
       emit(
-        state.copyWith(status: StoryStatus.loading),
+        state.copyWith(status: StoryStatus.createStoryLoading),
       );
       Story createdStory = await _storyRepository.createStory(story, token!);
       state.stories[state.userId]!.add(createdStory);
       emit(state.copyWith(
-        status: StoryStatus.indexSuccess,
+        status: StoryStatus.createStorySuccess,
         stories: state.stories,
       ));
     } catch (error) {
       emit(
         state.copyWith(
-          status: StoryStatus.createFailure,
+          status: StoryStatus.createStoryFailure,
           error: error.toString(),
         ),
       );
@@ -31,7 +31,9 @@ class StoryCubit extends Cubit<StoryState> {
   }
 
   Future<void> fetchUserStories(String? token) async {
-    emit(state.copyWith(status: StoryStatus.loading));
+    emit(
+      state.copyWith(status: StoryStatus.fetchUserStoryLoading),
+    );
     if (state.stories[state.userId]!.isEmpty) {
       List<Story> stories =
           await _storyRepository.fetchStories(token, state.userId);
@@ -40,12 +42,12 @@ class StoryCubit extends Cubit<StoryState> {
     try {
       emit(
         state.copyWith(
-            status: StoryStatus.indexSuccess, stories: state.stories),
+            status: StoryStatus.fetchUserStorySuccess, stories: state.stories),
       );
     } catch (error) {
       emit(
         state.copyWith(
-          status: StoryStatus.indexFailure,
+          status: StoryStatus.fetchUserStoryFailure,
           error: error.toString(),
         ),
       );
@@ -53,17 +55,17 @@ class StoryCubit extends Cubit<StoryState> {
   }
 
   Future<void> fetchAllStoriesUsers(String? token) async {
-    emit(state.copyWith(status: StoryStatus.loading));
+    emit(state.copyWith(status: StoryStatus.indexAllLoading));
     List<User> storiesUsers = await _storyRepository.fetchStoriesUsers(token);
     Map<String, List<Story>>? stories = {};
-    storiesUsers.forEach((user) {
+    for (var user in storiesUsers) {
       String storyUserId = user.id!;
       stories[storyUserId] = [];
-    });
+    }
     try {
       emit(
         state.copyWith(
-          status: StoryStatus.indexSuccess,
+          status: StoryStatus.indexAllSuccess,
           stories: stories,
           storiesUsers: storiesUsers,
         ),
@@ -71,7 +73,7 @@ class StoryCubit extends Cubit<StoryState> {
     } catch (error) {
       emit(
         state.copyWith(
-          status: StoryStatus.indexFailure,
+          status: StoryStatus.indexAllFailure,
           error: error.toString(),
         ),
       );

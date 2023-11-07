@@ -59,12 +59,12 @@ class AdvertContentView extends StatelessWidget {
   Widget _buildStories() {
     return BlocBuilder<StoryCubit, StoryState>(
       builder: (context, state) {
-        if (state.status == StoryStatus.indexSuccess) {
+        if (state.status == StoryStatus.indexAllSuccess) {
           Map<String, List<Story>> stories = state.stories;
           return StoriesView(
             stories: stories,
           );
-        } else if (state.status == StoryStatus.indexFailure) {
+        } else if (state.status == StoryStatus.indexAllFailure) {
           return Center(
             child: TextView(
               text: state.error,
