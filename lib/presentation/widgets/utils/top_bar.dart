@@ -27,6 +27,8 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    bool isLargeScreen = screenWidth > 800;
     return AppBar(
       elevation: 0,
       leading: Builder(
@@ -47,7 +49,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: navState == 0
           ? SizedBox(
-              width: MediaQuery.of(context).size.width * .4,
+              width: isLargeScreen ? screenWidth * .4 : screenWidth,
               child: AdvertSearchField(
                 searchText: searchText,
                 onChange: (value, shouldSearch) {
