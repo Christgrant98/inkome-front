@@ -54,13 +54,17 @@ class _ProfileForm extends State<ProfileForm> {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
     bool isLogged = context.watch<AuthenticationCubit>().state.isLoggedIn();
-    // User? currentUser = context.watch<AuthenticationCubit>().state.user;
-    // Uint8List? userImage = currentUser?.image;
 
     return BlocListener<AuthenticationCubit, AuthenticationState>(
       listener: (BuildContext context, AuthenticationState state) {
         if (state.authenticationStatus == AuthenticationStatus.updateSuccess) {
           Navigator.pushReplacementNamed(context, Routes.indexPage);
+          SnackBarUtil.showSnackBar(
+            context,
+            icon: const Icon(Icons.error_outline),
+            backgroundColor: Colors.green,
+            'Tu perfil se actualizo correctamente',
+          );
         } else if (state.authenticationStatus ==
             AuthenticationStatus.updateFailure) {
           String errorMessage =
