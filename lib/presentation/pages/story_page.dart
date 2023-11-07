@@ -2,13 +2,15 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inkome_front/data/models/story.dart';
 import 'package:inkome_front/presentation/router/app_router.dart';
+import 'package:inkome_front/presentation/widgets/utils/base_modal.dart';
 
 import '../../logic/cubits/story.dart';
 import '../../logic/states/stories.dart';
 
 class StoryPage extends StatefulWidget {
-  const StoryPage();
+  const StoryPage({super.key});
 
   @override
   State<StoryPage> createState() => _StoryPageState();
@@ -26,110 +28,56 @@ class _StoryPageState extends State<StoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    StoryState state = context.watch<StoryCubit>().state;
+    StoryState storyState = context.watch<StoryCubit>().state;
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: Container(
-        color: Colors.black,
-        child: Stack(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          color: Colors.black,
+          child: _buildStoryView(storyState),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStoryView(StoryState state) {
+    return Stack(
+      children: [
+        PageView.builder(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _currentPageIndex = index;
+            });
+          },
+          scrollDirection: Axis.horizontal,
+          itemCount: state.stories[state.userId]!.length,
+          itemBuilder: (context, index) {
+            final story = state.stories[state.userId]![index];
+            return BaseModal(
               children: [
-                InkWell(
-                  onTap: () {
-                    if (_pageController.page! <
-                        state.stories[state.userId]!.length - 1) {
-                      _pageController.previousPage(
-                          duration: const Duration(milliseconds: 1),
-                          curve: Curves.easeInOut);
-                    }
-                  },
-                  child: const Icon(
-                      size: 70,
-                      color: Colors.white,
-                      Icons.arrow_back_ios_rounded),
-                ),
-                SizedBox(
-                  width: screenWidth * 0.8,
-                  height: screenHeight,
-                  child: PageView.builder(
-                    controller: _pageController,
-                    onPageChanged: (index) {
-                      setState(() {
-                        _currentPageIndex = index;
-                      });
-                    },
-                    scrollDirection: Axis.horizontal,
-                    itemCount: state.stories[state.userId]!.length,
-                    itemBuilder: (context, index) {
-                      final story = state.stories[state.userId]![index];
-                      return Image.memory(
-                        story.image!,
-                        fit: BoxFit.cover,
-                      );
-                    },
-                  ),
-                ),
-                InkWell(
-                  child: const Icon(
-                      size: 70,
-                      color: Colors.white,
-                      Icons.arrow_forward_ios_rounded),
-                  onTap: () {
-                    if (_pageController.page! <
-                        state.stories[state.userId]!.length - 1) {
-                      _pageController.nextPage(
-                          duration: const Duration(milliseconds: 1),
-                          curve: Curves.easeInOut);
-                    }
-                  },
-                ),
+                _builStoryPicture(context, story: story),
               ],
-            ),
-            Positioned(
-              top: 20,
-              left: 30,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacementNamed(context, Routes.indexPage);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: const Color.fromARGB(255, 60, 60, 60),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 40,
-              left: 0,
-              right: 0,
-              child: state.stories[state.userId]!.isNotEmpty
-                  ? DotsIndicator(
-                      position: _currentPageIndex,
-                      dotsCount: state.stories[state.userId]!.length,
-                      decorator: DotsDecorator(
-                        activeColor: Colors.white,
-                        activeSize: const Size(7, 7),
-                        color: Colors.grey[400]!,
-                        size: const Size(4, 4),
-                      ),
-                    )
-                  : Container(),
-            )
-          ],
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _builStoryPicture(
+    BuildContext context, {
+    required Story story,
+  }) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: AspectRatio(
+        aspectRatio: 9 / 15,
+        child: Image.memory(
+          story.image!,
+          fit: BoxFit.cover,
         ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:inkome_front/presentation/router/app_router.dart';
 
 import '../../../data/models/user.dart';
 import 'advert_search_field.dart';
+import 'indicator_progress.dart';
 
 class TopBar extends StatefulWidget implements PreferredSizeWidget {
   const TopBar({
@@ -129,7 +130,7 @@ class _TopBarState extends State<TopBar> {
         isLoading = true;
       });
       return const Center(
-        child: CircularProgressIndicator(),
+        child: CustomIndicatorProgress(),
       );
     }
   }
