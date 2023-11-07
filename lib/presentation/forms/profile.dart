@@ -53,9 +53,9 @@ class _ProfileForm extends State<ProfileForm> {
   Widget build(BuildContext context) {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
-    bool isLogged = context.watch<AuthenticationCubit>().isLogged();
-    User? currentUser = context.watch<AuthenticationCubit>().state.user;
-    Uint8List? userImage = currentUser?.image;
+    bool isLogged = context.watch<AuthenticationCubit>().state.isLoggedIn();
+    // User? currentUser = context.watch<AuthenticationCubit>().state.user;
+    // Uint8List? userImage = currentUser?.image;
 
     return BlocListener<AuthenticationCubit, AuthenticationState>(
       listener: (BuildContext context, AuthenticationState state) {

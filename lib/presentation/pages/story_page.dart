@@ -52,32 +52,26 @@ class _StoryPageState extends State<StoryPage> {
                       color: Colors.white,
                       Icons.arrow_back_ios_rounded),
                 ),
-                Column(
-                  children: [
-                    Center(
-                      child: SizedBox(
-                        width: screenWidth * 0.8,
-                        height: screenHeight,
-                        child: PageView.builder(
-                          controller: _pageController,
-                          onPageChanged: (index) {
-                            setState(() {
-                              _currentPageIndex = index;
-                            });
-                          },
-                          scrollDirection: Axis.horizontal,
-                          itemCount: state.stories[state.userId]!.length,
-                          itemBuilder: (context, index) {
-                            final story = state.stories[state.userId]![index];
-                            return Image.memory(
-                              story.image!,
-                              fit: BoxFit.contain,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
+                SizedBox(
+                  width: screenWidth * 0.8,
+                  height: screenHeight,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentPageIndex = index;
+                      });
+                    },
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.stories[state.userId]!.length,
+                    itemBuilder: (context, index) {
+                      final story = state.stories[state.userId]![index];
+                      return Image.memory(
+                        story.image!,
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
                 ),
                 InkWell(
                   child: const Icon(

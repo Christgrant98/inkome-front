@@ -25,7 +25,7 @@ class BottomNavigatorState extends State<BottomNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLogged = context.watch<AuthenticationCubit>().isLogged();
+    bool isLogged = context.watch<AuthenticationCubit>().state.isLoggedIn();
 
     return BlurryContainer(
       borderRadius: const BorderRadius.only(

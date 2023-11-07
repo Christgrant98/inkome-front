@@ -27,7 +27,7 @@ class Layout extends StatelessWidget {
     User? currentUser = context.watch<AuthenticationCubit>().state.user;
     String? token = context.read<AuthenticationCubit>().state.token;
     int navState = context.read<NavigationCubit>().state.selectedIndex;
-    bool isLogged = context.watch<AuthenticationCubit>().isLogged();
+    bool isLogged = context.watch<AuthenticationCubit>().state.isLoggedIn();
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
 

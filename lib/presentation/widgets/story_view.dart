@@ -31,7 +31,7 @@ class _StoriesViewState extends State<StoriesView> {
   @override
   Widget build(BuildContext context) {
     User? currentUser = context.watch<AuthenticationCubit>().state.user;
-    bool isLogged = context.watch<AuthenticationCubit>().isLogged();
+    bool isLogged = context.watch<AuthenticationCubit>().state.isLoggedIn();
     StoryState state = context.watch<StoryCubit>().state;
 
     return Container(

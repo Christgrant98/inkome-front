@@ -50,9 +50,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState>
     emit(AuthenticationState.initial());
   }
 
-  bool isLogged() {
-    return state.token != null && state.user != null;
-  }
+  // bool isLogged() {
+  //   return state.token != null && state.user != null;
+  // }
 
   @override
   AuthenticationState? fromJson(Map<String, dynamic> json) {
