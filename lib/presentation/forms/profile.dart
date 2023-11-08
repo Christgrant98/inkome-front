@@ -136,7 +136,7 @@ class _ProfileForm extends State<ProfileForm> {
               height: 15,
             ),
             EmailFormField(
-              readOnly: true,
+              enabled: false,
               initialValue: email,
               onChange: (String? value, bool valid) {
                 setState(() => email = valid ? value : null);
@@ -164,7 +164,6 @@ class _ProfileForm extends State<ProfileForm> {
     if (t == null) throw Exception('AppLocalizations not found');
 
     return CustomButton(
-      height: 70,
       onPressed: _canShowSubmitButton()
           ? () {
               User user = _buildUser();

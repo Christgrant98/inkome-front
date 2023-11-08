@@ -15,6 +15,7 @@ class BaseTextFormField extends StatefulWidget {
   final TextAlign? textAlign;
   final void Function(String)? onFieldSubmitted;
   final bool readOnly;
+  final bool enabled;
   const BaseTextFormField({
     super.key,
     required this.onChange,
@@ -26,8 +27,9 @@ class BaseTextFormField extends StatefulWidget {
     this.minLines,
     this.fieldValue,
     this.obscureText = false,
-    this.onFieldSubmitted,
+    this.enabled = true,
     this.readOnly = false,
+    this.onFieldSubmitted,
     this.textAlign,
   });
 
@@ -57,6 +59,7 @@ class _BaseTextFormField extends State<BaseTextFormField> {
     InputDecoration defaultDecoration = _buildDefaultDecoration();
 
     return TextFormField(
+      enabled: widget.enabled,
       textAlign: widget.textAlign ?? TextAlign.start,
       readOnly: widget.readOnly,
       style: GoogleFonts.quicksand(fontSize: 14),

@@ -8,15 +8,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class EmailFormField extends StatelessWidget {
   final void Function(String?, bool) onChange;
   final void Function(String)? onFieldSubmitted;
-  final bool readOnly;
   final String? initialValue;
+  final bool enabled;
 
   const EmailFormField({
     super.key,
     this.initialValue,
     this.onFieldSubmitted,
     required this.onChange,
-    this.readOnly = false,
+    this.enabled = true,
   });
 
   @override
@@ -24,7 +24,7 @@ class EmailFormField extends StatelessWidget {
     AppLocalizations? t = AppLocalizations.of(context);
     if (t == null) throw Exception('AppLocalizations not found');
     return BaseTextFormField(
-      readOnly: readOnly,
+      enabled: enabled,
       fieldValue: initialValue,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(10),
