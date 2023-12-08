@@ -116,7 +116,7 @@ class TagEditorWidgetState extends State<AdTagEditor> {
           content: Column(
             children: [
               const TextView(
-                text: 'Agregar Tag',
+                text: 'Add tags',
                 color: Colors.black,
                 fontWeight: FontWeight.w900,
                 fontSize: 18,

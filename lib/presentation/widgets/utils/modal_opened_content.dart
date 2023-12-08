@@ -163,8 +163,7 @@ class _ModalOpenedContainerContentState
             const SizedBox(
               height: 5,
             ),
-            const TextView(
-                text: 'Barranquilla', color: Colors.black, fontSize: 12),
+            const TextView(text: 'Medellin', color: Colors.black, fontSize: 12),
           ],
         ),
         const Padding(
@@ -178,7 +177,7 @@ class _ModalOpenedContainerContentState
           ),
         ),
         TextView(
-            text: '${widget.advert.age} años',
+            text: '${widget.advert.age} years exp.',
             fontWeight: FontWeight.bold,
             color: Colors.black,
             fontSize: 12),
