@@ -47,7 +47,7 @@ class _SliderInputState extends State<ExperienceTimeFormField> {
     if (t == null) throw Exception('AppLocalizations not found');
     return Column(
       children: [
-        TextView(
+        const TextView(
           text: 'Years of experience',
           fontSize: 12,
           color: Colors.black,
