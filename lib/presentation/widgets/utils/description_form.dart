@@ -16,7 +16,7 @@ class DescriptionFormField extends StatelessWidget {
       {super.key,
       required this.onChange,
       this.onFieldSubmitted,
-      this.maxLength,
+      this.maxLength = 150,
       this.maxLines = 1,
       this.minLines});
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AgeFormField extends StatefulWidget {
+class ExperienceTimeFormField extends StatefulWidget {
   final int minAge;
   final int maxAge;
   final Function onChange;
@@ -10,7 +10,7 @@ class AgeFormField extends StatefulWidget {
   final String? ageToShow;
   final int? initialValue;
 
-  const AgeFormField(
+  const ExperienceTimeFormField(
       {super.key,
       required this.onChange,
       this.minAge = 18,
@@ -23,7 +23,7 @@ class AgeFormField extends StatefulWidget {
   State<StatefulWidget> createState() => _SliderInputState();
 }
 
-class _SliderInputState extends State<AgeFormField> {
+class _SliderInputState extends State<ExperienceTimeFormField> {
   late int sliderValue;
 
   @override

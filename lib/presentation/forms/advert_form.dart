@@ -101,7 +101,7 @@ class _AdvertForm extends State<AdvertForm> {
               const SizedBox(
                 height: 20,
               ),
-              AgeFormField(
+              ExperienceTimeFormField(
                 ageToShow: age == null ? '18 años' : '$age años',
                 initialValue: age,
                 onChange: (int value) {
@@ -134,7 +134,7 @@ class _AdvertForm extends State<AdvertForm> {
                 onFieldSubmitted: (_) => _submitForm(),
                 maxLines: 5,
                 minLines: 1,
-                maxLength: 131,
+                maxLength: 200,
                 onChange: (String? value, bool valid) {
                   setState(() => description = valid ? value : null);
                 },
