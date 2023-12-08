@@ -48,7 +48,7 @@ class _SliderInputState extends State<ExperienceTimeFormField> {
     return Column(
       children: [
         TextView(
-          text: t.selectYourAgeLinkText,
+          text: 'Years of experience',
           fontSize: 12,
           color: Colors.black,
           fontWeight: FontWeight.bold,

@@ -76,7 +76,7 @@ class _AdvertForm extends State<AdvertForm> {
             context,
             backgroundColor: Colors.green,
             textColor: Colors.black,
-            'El anuncio se creo exitosamente',
+            'The advert has been created successfully',
           );
           Navigator.pushReplacementNamed(context, Routes.indexPage);
         }
@@ -102,7 +102,7 @@ class _AdvertForm extends State<AdvertForm> {
                 height: 20,
               ),
               ExperienceTimeFormField(
-                expercienceTime: age == null ? '18 años' : '$age años',
+                expercienceTime: age == null ? '18 years' : '$age years',
                 initialValue: age,
                 onChange: (int value) {
                   setState(() => age = value);
@@ -168,7 +168,7 @@ class _AdvertForm extends State<AdvertForm> {
     if (t == null) throw Exception('AppLocalizations not found');
     return CustomButton(
       color: _canBuildSubmitButton() ? null : Colors.grey[300],
-      text: t.sendButtonLinkText,
+      text: 'Submit',
       onPressed: _canBuildSubmitButton() ? _showPricingDialog : null,
     );
   }

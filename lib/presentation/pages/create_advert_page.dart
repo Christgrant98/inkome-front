@@ -26,10 +26,10 @@ class CreateAdvertPage extends StatelessWidget {
               child: ListView(
                 children: [
                   SizedBox(height: isLargeScreen ? 50 : 10),
-                  TextView(
-                      text: t.newAdvertTitleLinkText,
+                  const TextView(
+                      text: 'New Advert',
                       textAlign: TextAlign.center,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w900,
                       fontSize: 20,
                       color: Colors.black),
                   const AdvertForm(),

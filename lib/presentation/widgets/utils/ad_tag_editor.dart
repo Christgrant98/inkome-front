@@ -69,7 +69,7 @@ class TagEditorWidgetState extends State<AdTagEditor> {
             onPressed: () {
               _showAddTagDialog(context);
             },
-            text: 'Agregar Tag',
+            text: 'Add Tags',
           ),
         ),
       ],

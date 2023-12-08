@@ -46,8 +46,8 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
       children: [
         const SizedBox(height: 15),
         if (_pickedFiles.isNotEmpty)
-          TextView(
-            text: t.advertPicturesLinkText,
+          const TextView(
+            text: 'Select photos to upload the advert',
             color: Colors.black,
             fontSize: 14,
             fontWeight: FontWeight.w300,
@@ -62,7 +62,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
                     _buildSelectFileBtn(),
                     const SizedBox(height: 10),
                     const TextView(
-                      text: 'Selecciona una imagen para mostrar',
+                      text: 'Select an image to show',
                       color: Colors.black,
                       fontWeight: FontWeight.w300,
                     )
@@ -140,7 +140,7 @@ class _MultiFilePickerField extends State<MultiFilePickerField> {
                           height: MediaQuery.of(context).size.height * .05,
                           child: const Center(
                               child: TextView(
-                            text: 'Portada del anuncio',
+                            text: 'Advert cover',
                             color: Colors.white,
                           )),
                         ),
