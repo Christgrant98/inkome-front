@@ -43,7 +43,7 @@ class FavAdvertsPage extends StatelessWidget {
                 ),
                 const TextView(
                   fontSize: 20,
-                  text: 'Mis anuncios favoritos',
+                  text: 'My Favs Adverts',
                   color: Colors.black,
                   textAlign: TextAlign.center,
                 ),

@@ -25,7 +25,7 @@ class MyAdsPage extends StatelessWidget {
           ),
           const TextView(
             fontSize: 20,
-            text: 'Mis anuncios',
+            text: 'My Favs Adverts',
             color: Colors.black,
             textAlign: TextAlign.center,
           ),
