@@ -59,14 +59,14 @@ class ModalClosedContainerContent extends StatelessWidget {
           const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
+            children: [
               const TextView(
-                text: 'Barranquilla',
+                text: 'Medellin',
                 color: Color.fromARGB(155, 255, 255, 255),
                 fontSize: 10,
               ),
               TextView(
-                text: '${advert.age} años',
+                text: '${advert.age} years exp.',
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
                 fontSize: 10,
