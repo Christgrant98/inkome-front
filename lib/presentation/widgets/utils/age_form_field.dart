@@ -3,21 +3,22 @@ import 'package:inkome_front/presentation/widgets/utils/text_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExperienceTimeFormField extends StatefulWidget {
-  final int minAge;
-  final int maxAge;
+  final int minExpTime;
+  final int maxExpTime;
   final Function onChange;
   final String? label;
-  final String? ageToShow;
+  final String? expercienceTime;
   final int? initialValue;
 
-  const ExperienceTimeFormField(
-      {super.key,
-      required this.onChange,
-      this.minAge = 18,
-      this.maxAge = 65,
-      this.label,
-      this.initialValue,
-      this.ageToShow});
+  const ExperienceTimeFormField({
+    super.key,
+    required this.onChange,
+    this.minExpTime = 1,
+    this.maxExpTime = 20,
+    this.label,
+    this.initialValue,
+    this.expercienceTime,
+  });
 
   @override
   State<StatefulWidget> createState() => _SliderInputState();
@@ -30,12 +31,12 @@ class _SliderInputState extends State<ExperienceTimeFormField> {
   void initState() {
     bool inRange = widget.initialValue == null
         ? false
-        : widget.initialValue! >= widget.minAge &&
-            widget.initialValue! <= widget.maxAge;
+        : widget.initialValue! >= widget.minExpTime &&
+            widget.initialValue! <= widget.maxExpTime;
     if (inRange) {
       sliderValue = widget.initialValue!;
     } else {
-      sliderValue = widget.minAge;
+      sliderValue = widget.minExpTime;
     }
     super.initState();
   }
@@ -52,9 +53,9 @@ class _SliderInputState extends State<ExperienceTimeFormField> {
           color: Colors.black,
           fontWeight: FontWeight.bold,
         ),
-        if (widget.ageToShow != null)
+        if (widget.expercienceTime != null)
           TextView(
-            text: widget.ageToShow,
+            text: widget.expercienceTime,
             fontSize: 16,
             color: Colors.black,
             fontWeight: FontWeight.w300,
@@ -63,9 +64,9 @@ class _SliderInputState extends State<ExperienceTimeFormField> {
           thumbColor: Colors.black,
           activeColor: const Color.fromARGB(255, 105, 105, 105),
           value: sliderValue.toDouble(),
-          min: widget.minAge.toDouble(),
-          max: widget.maxAge.toDouble(),
-          divisions: widget.maxAge - widget.minAge,
+          min: widget.minExpTime.toDouble(),
+          max: widget.maxExpTime.toDouble(),
+          divisions: widget.maxExpTime - widget.minExpTime,
           label: sliderValue.toString(),
           onChanged: _onChange,
         ),
